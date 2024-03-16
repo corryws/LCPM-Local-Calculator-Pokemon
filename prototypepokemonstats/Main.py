@@ -3,13 +3,14 @@ from tkinter import ttk
 from tkinter import Menu
 from PIL import Image, ImageTk  # Importa il modulo Image da PIL
 
-import prototypepokemonstats.createDB as createDB
+import createDB as createDB
 import sqlite3
 import math
 
 def Reset():
     popola_textbox()
     CalcoloNatura()
+    image_frame.config(bg=RecolorBGImage())
 
 def popola_combobox_pokemon():
     # Connessione al database
@@ -112,42 +113,40 @@ def popola_textbox():
         textbox_type2.delete(0, tk.END)  # Cancella il contenuto precedente
 
     mostra_immagine_pokemon(stats[8])
+    image_frame.config(bg=RecolorBGImage())
 
     # Chiusura del cursore e della connessione
     cursor.close()
     conn.close()
 def mostra_immagine_pokemon(id_pokemon):
-    nome_pokemon = cmb_pokemon.get()
-    #print("Nome del Pokémon selezionato:", nome_pokemon)  # Messaggio di debug
-
     try:
         spritesheet = Image.open("prototypepokemonstats/primagen.png")
-        #print("Spritesheet caricato correttamente.")  # Messaggio di debug
 
-        # Estrapola le dimensioni delle singole immagini nel spritesheet
+        # Dimensioni delle immagini nel spritesheet
         larghezza_immagine = 57
         altezza_immagine = 57
 
-        # Calcola l'indice del Pokémon selezionato
-        indice_pokemon = id_pokemon - 1
+        # Aggiungi 1 all'ID del Pokémon per allineare gli indici
+        id_pokemon -= 1
 
-        # Se l'indice è superiore a 11 (fine della prima riga), aggiungi 12 per passare alla seconda riga
-        if indice_pokemon > 11 :
-            indice_pokemon += 12
+        # Calcola la posizione del Pokémon nel spritesheet
+        riga = id_pokemon // 12  # Calcola la riga
+        colonna = id_pokemon % 12  # Calcola la colonna
 
-        x = (indice_pokemon % 12) * larghezza_immagine
-        y = (indice_pokemon // 13) * altezza_immagine
+        # Calcola la coordinata x e y dell'immagine nel spritesheet
+        x = colonna * larghezza_immagine
+        y = riga * altezza_immagine
 
+        # Ritaglia l'immagine corrispondente
         region = spritesheet.crop((x, y, x + larghezza_immagine, y + altezza_immagine))
         region = region.resize((124, 124), Image.ANTIALIAS)
         photo = ImageTk.PhotoImage(region)
 
         image_frame.config(image=photo)
         image_frame.image = photo
-
-        #print("Immagine mostrata correttamente.")  # Messaggio di debug
     except Exception as e:
-        print("Errore durante il caricamento o il ritaglio dell'immagine:", e)  # Messaggio di debug
+        print("Errore durante il caricamento o il ritaglio dell'immagine:", e)
+
 def popola_combobox_nature():
     # Connessione al database
     conn = sqlite3.connect('prototypepokemonstats/database.db') 
@@ -179,6 +178,7 @@ def avanti():
     
     # Aggiorna le textbox quando si seleziona un nuovo Pokémon
     popola_textbox()
+    image_frame.config(bg=RecolorBGImage())
 
 def indietro():
     # Seleziona il valore precedente nella combobox
@@ -188,6 +188,7 @@ def indietro():
 
     # Aggiorna le textbox quando si seleziona un nuovo Pokémon
     popola_textbox()
+    image_frame.config(bg=RecolorBGImage())
 
 # Formula statistiche
 def calcola_statistica(base, iv, ev, livello):
@@ -207,7 +208,141 @@ def calcola_ps(base, iv, ev, livello):
     ps = ((2 * base + iv + (ev / 4)) / 100 * livello) + livello + 10
     return ps
 
-def CalcoloAll():
+# Formula IVs
+def calcola_iv(statistica, base, ev, livello,isps):
+    """
+    Calcola i valori degli IVs dati il valore della statistica, base, ev e livello.
+    Restituisce il valore degli IVs calcolati.
+    """
+    if (isps == False):
+        iv = (statistica - 5) * (100 / livello) - 2 * base - (ev / 4)
+    else:
+        iv = (statistica - livello - 10) * (100 / livello) - 2 * base - (ev / 4)
+    return iv
+
+def calcola_ev(statistica, base, iv, livello,isps):
+    """
+    Calcola i valori degli EVs dati il valore della statistica, base, iv e livello.
+    Restituisce il valore degli EVs calcolati.
+    """
+    if (isps == False):
+        ev = max(0, min(508, (statistica - 5) * (100 / livello) - 2 * base - iv))
+        ev = max(ev, 252)  # Assicura che nessuna statistica superi 252 EVs
+    else:
+        ev = max(0, min(508, (statistica - livello - 10) * (100 / livello) - 2 * base - iv))
+        ev = max(ev, 252)  # Assicura che nessuna statistica superi 252 EVs
+    return ev
+
+def CalcoloEVFromStats():
+    capmaxevs = 0
+    ps   = int(statstxt[0].get())
+    att  = int(statstxt[1].get())
+    dif  = int(statstxt[2].get())
+    atts = int(statstxt[3].get())
+    defs = int(statstxt[4].get())
+    spd  = int(statstxt[5].get())
+    Reset()
+    #PS
+    newstats = calcola_ev(int(ps),int(statstxt[0].get()),int(ivstxt[0].get()), int(textbox_lvl.get()),True)
+    evstxt[0].delete(0, tk.END)
+    evstxt[0].insert(0, str(int(math.ceil(newstats))))
+    print("EVs PS calcolati:", newstats)
+    
+    capmaxevs += math.ceil(newstats)
+    print(capmaxevs)
+
+    #ATT
+    newstats = calcola_ev(int(att),int(statstxt[1].get()),  int(ivstxt[1].get()), int(textbox_lvl.get()),False)
+    evstxt[1].delete(0, tk.END)
+    evstxt[1].insert(0, str(int(math.ceil(newstats))))
+    print("EVs ATT calcolati:", newstats)
+
+    capmaxevs += math.ceil(newstats)
+    print(capmaxevs)
+
+    #DEF
+    newstats = calcola_ev(int(dif),int(statstxt[2].get()), int(ivstxt[2].get()), int(textbox_lvl.get()),False)
+    evstxt[2].delete(0, tk.END)
+    evstxt[2].insert(0, str(int(math.ceil(newstats))))
+    print("EVs DEF calcolati:", newstats)
+
+    capmaxevs += math.ceil(newstats)
+    print(capmaxevs)
+
+    #ATTS
+    newstats = calcola_ev(int(atts),int(statstxt[3].get()),  int(ivstxt[3].get()), int(textbox_lvl.get()),False)
+    evstxt[3].delete(0, tk.END)
+    evstxt[3].insert(0, str(int(math.ceil(newstats))))
+    print("EVs ATTS calcolati:", newstats)
+
+    capmaxevs += math.ceil(newstats)
+    print(capmaxevs)
+
+    #DEFS
+    newstats = calcola_ev( int(defs),int(statstxt[4].get()), int(ivstxt[4].get()), int(textbox_lvl.get()),False)
+    evstxt[4].delete(0, tk.END)
+    evstxt[4].insert(0, str(int(math.ceil(newstats))))
+    print("EVs DEFS calcolati:", newstats)
+
+    capmaxevs += math.ceil(newstats)
+    print(capmaxevs)
+
+    #SPD
+    newstats = calcola_iv(int(spd),int(statstxt[5].get()),  int(ivstxt[5].get()), int(textbox_lvl.get()),False)
+    evstxt[5].delete(0, tk.END)
+    evstxt[5].insert(0, str(int(math.ceil(newstats))))
+    print("EVs SPD calcolati:", newstats)
+
+    capmaxevs += math.ceil(newstats)
+    print(capmaxevs)
+
+#Calcolo base delle IVs avendo EVs e Stats
+def CalcoloIVFromStats():
+    ps   = int(statstxt[0].get())
+    att  = int(statstxt[1].get())
+    dif  = int(statstxt[2].get())
+    atts = int(statstxt[3].get())
+    defs = int(statstxt[4].get())
+    spd  = int(statstxt[5].get())
+    Reset()
+    #PS
+    newstats = calcola_iv(int(ps),int(statstxt[0].get()),int(evstxt[0].get()), int(textbox_lvl.get()),True)
+    ivstxt[0].delete(0, tk.END)
+    ivstxt[0].insert(0, str(int(math.ceil(newstats))))
+    print("IVs PS calcolati:", newstats)
+
+    #ATT
+    newstats = calcola_iv(int(att),int(statstxt[1].get()),  int(evstxt[1].get()), int(textbox_lvl.get()),False)
+    ivstxt[1].delete(0, tk.END)
+    ivstxt[1].insert(0, str(int(math.ceil(newstats))))
+    print("IVs ATT calcolati:", newstats)
+
+    #DEF
+    newstats = calcola_iv(int(dif),int(statstxt[2].get()), int(evstxt[2].get()), int(textbox_lvl.get()),False)
+    ivstxt[2].delete(0, tk.END)
+    ivstxt[2].insert(0, str(int(math.ceil(newstats))))
+    print("IVs DEF calcolati:", newstats)
+
+    #ATTS
+    newstats = calcola_iv(int(atts),int(statstxt[3].get()),  int(evstxt[3].get()), int(textbox_lvl.get()),False)
+    ivstxt[3].delete(0, tk.END)
+    ivstxt[3].insert(0, str(int(math.ceil(newstats))))
+    print("IVs ATTS calcolati:", newstats)
+
+    #DEFS
+    newstats = calcola_iv( int(defs),int(statstxt[4].get()), int(evstxt[4].get()), int(textbox_lvl.get()),False)
+    ivstxt[4].delete(0, tk.END)
+    ivstxt[4].insert(0, str(int(math.ceil(newstats))))
+    print("IVs DEFS calcolati:", newstats)
+
+    #SPD
+    newstats = calcola_iv(int(spd),int(statstxt[5].get()),  int(evstxt[5].get()), int(textbox_lvl.get()),False)
+    ivstxt[5].delete(0, tk.END)
+    ivstxt[5].insert(0, str(int(math.ceil(newstats))))
+    print("IVs SPD calcolati:", newstats)
+
+#Calcolo base delle Stats avendo EVs e IVs
+def CalcoloStatsNature():
     Reset()
     #PS
     newstats = calcola_ps(int(statstxt[0].get()), int(ivstxt[0].get()), int(evstxt[0].get()), int(textbox_lvl.get()))
@@ -256,6 +391,46 @@ def stampa():
 def about():
     # Codice per la finestra "About"...
     pass
+
+def RecolorBGImage():
+    if textbox_type1.get() == 'Fuoco':
+        return "red"
+    elif textbox_type1.get() == 'Acqua':
+        return "blue"
+    elif textbox_type1.get() == 'Erba':
+        return "green"
+    elif textbox_type1.get() == 'Elettro':
+        return "yellow"
+    elif textbox_type1.get() == 'Ghiaccio':
+        return "cyan"
+    elif textbox_type1.get() == 'Lotta':
+        return "sienna"
+    elif textbox_type1.get() == 'Veleno':
+        return "purple"
+    elif textbox_type1.get() == 'Terra':
+        return "saddlebrown"
+    elif textbox_type1.get() == 'Volante':
+        return "skyblue"
+    elif textbox_type1.get() == 'Psico':
+        return "magenta"
+    elif textbox_type1.get() == 'Coleottero':
+        return "olive"
+    elif textbox_type1.get() == 'Roccia':
+        return "darkgray"
+    elif textbox_type1.get() == 'Spettro':
+        return "indigo"
+    elif textbox_type1.get() == 'Drago':
+        return "darkorange"
+    elif textbox_type1.get() == 'Buio':
+        return "black"
+    elif textbox_type1.get() == 'Acciaio':
+        return "steelblue"
+    elif textbox_type1.get() == 'Folletto':
+        return "pink"
+    elif textbox_type1.get() == 'Normale':
+        return "lightgrey"
+    else:
+        return "white"
 
 # Creazione della finestra principale
 root = tk.Tk()
@@ -363,20 +538,29 @@ cmb_nature.bind("<<ComboboxSelected>>", lambda event: Reset())
 cmb_nature.place(x=250, y=240)
 
 # Pulsante "Calcola"
-avanti_button = tk.Button(root, text="CALCOLA", command=CalcoloAll)
-avanti_button.place(x=0, y=320)
+stats_button = tk.Button(root, text="CALCOLA STATS.", command=CalcoloStatsNature)
+stats_button.place(x=0, y=280)
+
+# Pulsante "Calcola EVs"
+evscal_button = tk.Button(root, text="CALCOLA EVs", command=CalcoloEVFromStats)
+evscal_button.place(x=110, y=280)
+
+# Pulsante "Calcola IVs"
+ivscal_button = tk.Button(root, text="CALCOLA IVs", command=CalcoloIVFromStats)
+ivscal_button.place(x=200, y=280)
+
 
 # Pulsante "Indietro"
-indietro_button = tk.Button(root, text="<", command=indietro)
-indietro_button.place(x=80, y=320)
+indietro_button = tk.Button(root, text="<--", command=indietro)
+indietro_button.place(x=50, y=320)
 
 # Pulsante "Avanti"
-avanti_button = tk.Button(root, text=">", command=avanti)
+avanti_button = tk.Button(root, text="-->", command=avanti)
 avanti_button.place(x=120, y=320)
 
 
 # Riquadro per l'immagine
-image_frame = tk.Label(root, bg="white", width=124, height=124)
+image_frame = tk.Label(root, bg=RecolorBGImage(), width=124, height=124)
 image_frame.place(x=265, y=50)
 
 
