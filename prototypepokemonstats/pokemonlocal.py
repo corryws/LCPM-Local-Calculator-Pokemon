@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter import Menu
 from PIL import Image, ImageTk  # Importa il modulo Image da PIL
 
 import creaDB
@@ -10,10 +11,9 @@ def Reset():
     popola_textbox()
     CalcoloNatura()
 
-
 def popola_combobox_pokemon():
     # Connessione al database
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('prototypepokemonstats/database.db') 
     cursor = conn.cursor()
 
     # Esecuzione della query per recuperare i nomi dei Pokémon e i loro ID
@@ -39,7 +39,7 @@ def popola_combobox_pokemon():
 
 def CalcoloNatura():
     # connessione al database
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('prototypepokemonstats/database.db') 
     cursor = conn.cursor()
 
     # Recupero della natura selezionata
@@ -71,11 +71,9 @@ def CalcoloNatura():
     cursor.close()
     conn.close()
     
-
-
 def popola_textbox():
     # Connessione al database
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('prototypepokemonstats/database.db') 
     cursor = conn.cursor()
 
     # Recupero del nome del Pokémon selezionato
@@ -120,11 +118,11 @@ def popola_textbox():
     conn.close()
 def mostra_immagine_pokemon(id_pokemon):
     nome_pokemon = cmb_pokemon.get()
-    print("Nome del Pokémon selezionato:", nome_pokemon)  # Messaggio di debug
+    #print("Nome del Pokémon selezionato:", nome_pokemon)  # Messaggio di debug
 
     try:
-        spritesheet = Image.open("primagen.png")
-        print("Spritesheet caricato correttamente.")  # Messaggio di debug
+        spritesheet = Image.open("prototypepokemonstats/primagen.png")
+        #print("Spritesheet caricato correttamente.")  # Messaggio di debug
 
         # Estrapola le dimensioni delle singole immagini nel spritesheet
         larghezza_immagine = 57
@@ -147,12 +145,12 @@ def mostra_immagine_pokemon(id_pokemon):
         image_frame.config(image=photo)
         image_frame.image = photo
 
-        print("Immagine mostrata correttamente.")  # Messaggio di debug
+        #print("Immagine mostrata correttamente.")  # Messaggio di debug
     except Exception as e:
         print("Errore durante il caricamento o il ritaglio dell'immagine:", e)  # Messaggio di debug
 def popola_combobox_nature():
     # Connessione al database
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('prototypepokemonstats/database.db') 
     cursor = conn.cursor()
 
     # Esecuzione della query per recuperare i nomi dei Pokémon e i loro ID
@@ -250,6 +248,14 @@ def CalcoloAll():
     #Nature
     #CalcoloNatura()
 
+# Funzione per la stampa
+def stampa():
+    # Codice per la stampa...
+    pass
+# Funzione per la finestra "About"
+def about():
+    # Codice per la finestra "About"...
+    pass
 
 # Creazione della finestra principale
 root = tk.Tk()
@@ -258,29 +264,40 @@ root.title("LCPM - Local Calculator PokettoMonsuta - by Nieft&Manush")
 # Impostazione delle dimensioni della finestra
 root.geometry("500x350")
 
-# creo DB
-creaDB.esegui_script_sql('db_pokemon.sql', 'database.db')
+# Creazione del menu a tendina
+menu_bar = Menu(root)
+root.config(menu=menu_bar)
+root.resizable(False, False)  # Blocca il ridimensionamento sia in larghezza che in altezza
 
-# Label della combobox
-combo_label = tk.Label(root, text="Pokemon")
-combo_label.place(x=0, y=5)
+# Creazione del menu "PokeStars"
+pokestars_menu = Menu(menu_bar, tearoff=0)
+menu_bar.add_cascade(label="PokeStars", menu=pokestars_menu)
+pokestars_menu.add_command(label="Stampa", command=stampa)
+
+# Creazione del menu "?"
+altro_menu = Menu(menu_bar, tearoff=0)
+menu_bar.add_cascade(label="?", menu=altro_menu)
+altro_menu.add_command(label="About", command=about)
+
+# creo DB
+creaDB.esegui_script_sql('prototypepokemonstats/db_pokemon.sql', 'prototypepokemonstats/database.db')
 
 # Creazione della combobox a sinistra
 cmb_pokemon = ttk.Combobox(root)
 cmb_pokemon.bind("<<ComboboxSelected>>", lambda event: popola_textbox())
-cmb_pokemon.place(x=0, y=30)
+cmb_pokemon.place(x=0, y=5)
 
 # Label del Tipo 1
 type1_label = tk.Label(root, text="TIPO 1")
-type1_label.place(x=160, y=30)
+type1_label.place(x=160, y=5)
 textbox_type1 = tk.Entry(root)
-textbox_type1.place(x=200 ,y=30, width=60)
+textbox_type1.place(x=200 ,y=5, width=60)
 
 # Label del Tipo 2
 type2_label = tk.Label(root, text="TIPO 2")
-type2_label.place(x=280, y=30)
+type2_label.place(x=280, y=5)
 textbox_type2 = tk.Entry(root)
-textbox_type2.place(x=320 ,y=30, width=60)
+textbox_type2.place(x=320 ,y=5, width=60)
 
 # Lista delle etichette per le statistiche
 labels = ["PS", "ATT", "DEF", "ATTS", "DEFS", "SPD"]
@@ -290,57 +307,60 @@ statstxt = []
 for i in range(3):
     for j in range(2):
         label = tk.Label(root, text=labels[i*2 + j])
-        label.place(x=0+j*100, y=70+i*25)
+        label.place(x=0+j*100, y=50+i*25)
         
         textbox = tk.Entry(root)
-        textbox.place(x=50+j*100, y=70+i*25, width=40)
+        textbox.place(x=50+j*100, y=50+i*25, width=40)
         textbox.config(bg="white")
         statstxt.append(textbox)
 
 #Totale STATS
 totstats_label = tk.Label(root, text="TOT")
-totstats_label.place(x=0, y=150)
+totstats_label.place(x=0, y=120)
 textbox_totstats = tk.Entry(root)
-textbox_totstats.place(x=50 ,y=150, width=40)
+textbox_totstats.place(x=50 ,y=120, width=40)
 
 #Totale LVL
 lvlstats_label = tk.Label(root, text="LVL")
-lvlstats_label.place(x=100, y=150)
+lvlstats_label.place(x=100, y=120)
 textbox_lvl = tk.Entry(root)
-textbox_lvl.place(x=150 ,y=150, width=40)
-#textbox_lvl.delete(0, tk.END)
+textbox_lvl.place(x=150 ,y=120, width=40)
 textbox_lvl.insert(0, 100)
 
 #EVS
-evs_label = tk.Label(root, text="EVS[PS    ATT       DEF      ATTS    DEFS    SPD]")
-evs_label.place(x=0, y=180)
+evs_label = tk.Label(root, text="EVs:")
+evs_label.place(x=0, y=140)
+evs_label2 = tk.Label(root, text="PS        ATT       DEF       ATTS     DEFS    SPD")
+evs_label2.place(x=0, y=160)
 
 # Creazione delle textbox per EVS 0 to 252
 evstxt = []
 for i in range(6):
     textbox = tk.Entry(root)
-    textbox.place(x=0+i*40, y=200, width=40)
+    textbox.place(x=0+i*40, y=180, width=40)
     textbox.insert(i, 0)
     evstxt.append(textbox)
 
 #IVS
-ivs_label = tk.Label(root, text="IVS[PS    ATT       DEF      ATTS    DEFS    SPD]")
-ivs_label.place(x=0, y=240)
+ivs_label = tk.Label(root, text="IVs:")
+ivs_label.place(x=0, y=200)
+ivs_label2 = tk.Label(root, text="PS        ATT       DEF       ATTS     DEFS    SPD")
+ivs_label2.place(x=0, y=220)
 
 # Creazione delle textbox per IVS 0 to 31
 ivstxt = []
 for i in range(6):
     textbox = tk.Entry(root)
-    textbox.place(x=0+i*40, y=260, width=40)
+    textbox.place(x=0+i*40, y=240, width=40)
     textbox.insert(i, 31)
     ivstxt.append(textbox)
 
 # Creazione della combobox a sinistra
 nature_label = tk.Label(root, text="Nature")
-nature_label.place(x=250, y=240)
+nature_label.place(x=250, y=220)
 cmb_nature = ttk.Combobox(root)
 cmb_nature.bind("<<ComboboxSelected>>", lambda event: Reset())
-cmb_nature.place(x=250, y=260)
+cmb_nature.place(x=250, y=240)
 
 # Pulsante "Calcola"
 avanti_button = tk.Button(root, text="CALCOLA", command=CalcoloAll)
@@ -357,7 +377,7 @@ avanti_button.place(x=120, y=320)
 
 # Riquadro per l'immagine
 image_frame = tk.Label(root, bg="white", width=124, height=124)
-image_frame.place(x=265, y=80)
+image_frame.place(x=265, y=50)
 
 
 # Popolare la combobox con i nomi dei Pokémon
