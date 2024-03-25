@@ -12,6 +12,13 @@ def Reset():
     CalcoloNatura()
     image_frame.config(bg=RecolorBGImage())
 
+def ResetNature():
+    if cmb_nature.get() == "Adamant":
+        statstxt[1].insert(0, str( int(math.ceil(int(statstxt[1].get()) / 0.9)) )) 
+        statstxt[3].insert(0, str( int(math.ceil(int(statstxt[3].get()) / 1.1)) )) 
+
+        
+
 def popola_combobox_pokemon():
     # Connessione al database
     conn = sqlite3.connect('prototypepokemonstats/database.db') 
@@ -298,12 +305,14 @@ def CalcoloEVFromStats():
 
 #Calcolo base delle IVs avendo EVs e Stats
 def CalcoloIVFromStats():
+    ResetNature()
     ps   = int(statstxt[0].get())
     att  = int(statstxt[1].get())
     dif  = int(statstxt[2].get())
     atts = int(statstxt[3].get())
     defs = int(statstxt[4].get())
     spd  = int(statstxt[5].get())
+    print(ps,att,dif,atts,defs,spd)
     Reset()
     #PS
     newstats = calcola_iv(int(ps),int(statstxt[0].get()),int(evstxt[0].get()), int(textbox_lvl.get()),True)
