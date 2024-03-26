@@ -1,4 +1,4 @@
-import tkinter as tk
+
 from tkinter import ttk
 from tkinter import Menu
 from PIL import Image, ImageTk  # Importa il modulo Image da PIL
@@ -6,6 +6,13 @@ from PIL import Image, ImageTk  # Importa il modulo Image da PIL
 import createDB as createDB
 import sqlite3
 import math
+import tkinter as tk
+
+# form fomula import the function formula
+from formula import calcola_statistica
+from formula import calcola_ps
+from formula import calcola_iv
+from formula import calcola_ev
 
 def Reset():
     popola_textbox()
@@ -14,11 +21,9 @@ def Reset():
 
 def ResetNature():
     if cmb_nature.get() == "Adamant":
-        statstxt[1].insert(0, str( int(math.ceil(int(statstxt[1].get()) / 0.9)) )) 
-        statstxt[3].insert(0, str( int(math.ceil(int(statstxt[3].get()) / 1.1)) )) 
-
-        
-
+        statstxt[1].insert(0, str( int(math.ceil(int(statstxt[1].get()) / 1.1)) )) 
+        statstxt[3].insert(0, str( int(math.ceil(int(statstxt[3].get()) / 0.9)) )) 
+      
 def popola_combobox_pokemon():
     # Connessione al database
     conn = sqlite3.connect('prototypepokemonstats/database.db') 
@@ -197,49 +202,6 @@ def indietro():
     popola_textbox()
     image_frame.config(bg=RecolorBGImage())
 
-# Formula statistiche
-def calcola_statistica(base, iv, ev, livello):
-    """
-    Calcola una statistica dati i valori base, iv, ev e livello.
-    Restituisce il valore della statistica calcolata.
-    """
-    statistica = ((2 * base + iv + (ev / 4)) / 100 * livello) + 5
-    return statistica
-
-# Formula PS
-def calcola_ps(base, iv, ev, livello):
-    """
-    Calcola i punti salute (PS) dati i valori base, iv, ev e livello.
-    Restituisce il valore dei PS calcolati.
-    """
-    ps = ((2 * base + iv + (ev / 4)) / 100 * livello) + livello + 10
-    return ps
-
-# Formula IVs
-def calcola_iv(statistica, base, ev, livello,isps):
-    """
-    Calcola i valori degli IVs dati il valore della statistica, base, ev e livello.
-    Restituisce il valore degli IVs calcolati.
-    """
-    if (isps == False):
-        iv = (statistica - 5) * (100 / livello) - 2 * base - (ev / 4)
-    else:
-        iv = (statistica - livello - 10) * (100 / livello) - 2 * base - (ev / 4)
-    return iv
-
-def calcola_ev(statistica, base, iv, livello,isps):
-    """
-    Calcola i valori degli EVs dati il valore della statistica, base, iv e livello.
-    Restituisce il valore degli EVs calcolati.
-    """
-    if (isps == False):
-        ev = max(0, min(508, (statistica - 5) * (100 / livello) - 2 * base - iv))
-        ev = max(ev, 252)  # Assicura che nessuna statistica superi 252 EVs
-    else:
-        ev = max(0, min(508, (statistica - livello - 10) * (100 / livello) - 2 * base - iv))
-        ev = max(ev, 252)  # Assicura che nessuna statistica superi 252 EVs
-    return ev
-
 def CalcoloEVFromStats():
     capmaxevs = 0
     ps   = int(statstxt[0].get())
@@ -392,15 +354,6 @@ def CalcoloStatsNature():
     #Nature
     #CalcoloNatura()
 
-# Funzione per la stampa
-def stampa():
-    # Codice per la stampa...
-    pass
-# Funzione per la finestra "About"
-def about():
-    # Codice per la finestra "About"...
-    pass
-
 def RecolorBGImage():
     if textbox_type1.get() == 'Fuoco':
         return "red"
@@ -455,13 +408,13 @@ root.resizable(False, False)  # Blocca il ridimensionamento sia in larghezza che
 
 # Creazione del menu "PokeStars"
 pokestars_menu = Menu(menu_bar, tearoff=0)
-menu_bar.add_cascade(label="PokeStars", menu=pokestars_menu)
-pokestars_menu.add_command(label="Stampa", command=stampa)
+menu_bar.add_cascade(label="CompetitiveString", menu=pokestars_menu)
+pokestars_menu.add_command(label="Stampa")
 
 # Creazione del menu "?"
 altro_menu = Menu(menu_bar, tearoff=0)
 menu_bar.add_cascade(label="?", menu=altro_menu)
-altro_menu.add_command(label="About", command=about)
+altro_menu.add_command(label="About")
 
 # creo DB
 createDB.esegui_script_sql('prototypepokemonstats/db_pokemon.sql', 'prototypepokemonstats/database.db')
@@ -571,7 +524,6 @@ avanti_button.place(x=120, y=320)
 # Riquadro per l'immagine
 image_frame = tk.Label(root, bg=RecolorBGImage(), width=124, height=124)
 image_frame.place(x=265, y=50)
-
 
 # Popolare la combobox con i nomi dei Pokémon
 popola_combobox_pokemon()
