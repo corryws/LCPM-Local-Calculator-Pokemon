@@ -1,0 +1,3 @@
+BUG LIST
+-Calcolo IVS, non si calcolano le statistiche influenzate dalla natura
+Soluzione: si dovrebbe prima rimuovere la natura aggiunta e poi calcolare la statistica IVs su essi

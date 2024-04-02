@@ -151,7 +151,7 @@ def mostra_immagine_pokemon(id_pokemon):
 
         # Ritaglia l'immagine corrispondente
         region = spritesheet.crop((x, y, x + larghezza_immagine, y + altezza_immagine))
-        region = region.resize((124, 124), Image.ANTIALIAS)
+        region = region.resize((124, 124), Image.LANCZOS) # deprecated Image.ANTIALIAS
         photo = ImageTk.PhotoImage(region)
 
         image_frame.config(image=photo)
