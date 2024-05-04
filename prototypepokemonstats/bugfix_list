@@ -1,7 +1,9 @@
 BUG LIST
 -Calcolo IVS, non si calcolano le statistiche influenzate dalla natura
+
+-Calcolo stats con Nature 
 Seluzione: la selezione della natura "colora solamente" le stats indicate
-e applica le modifiche solo dopo il calcolo delle STATS
+e applica le modifiche solo dopo il calcolo delle STATS RISOLTO
 
 -AGGIUNTE
 -aggiungere immagine nature così da rimuovere le scritte TIPO 1 e TIPO 2 FATTO
