@@ -1,23 +1,28 @@
 
 from tkinter import ttk
 from tkinter import Menu
-from PIL import Image, ImageTk  # Importa il modulo Image da PIL
 
 import createDB as createDB
-import sqlite3
 import math
 import tkinter as tk
+
+from DatabaseCommand import Dbconnection
+from DatabaseCommand import Dbclose
 
 # form fomula import the function formula
 from formula import calcola_statistica
 from formula import calcola_ps
 from formula import calcola_iv
 from formula import calcola_ev
+from formula import GetType
+from formula import RecolorBGImage
+
+# funzioni ui grafiche
+from ui_management import mostra_immagine_tipo_ui
+from ui_management import mostra_immagine_pokemon_ui
 
 def Reset():
-    popola_textbox()
-    CalcoloNatura()
-    image_frame.config(bg=RecolorBGImage())
+    popola_textbox() ; CalcoloNatura()
 
 def ResetNature():
     if cmb_nature.get() == "Adamant":
@@ -26,34 +31,27 @@ def ResetNature():
       
 def popola_combobox_pokemon():
     # Connessione al database
-    conn = sqlite3.connect('prototypepokemonstats/database.db') 
-    cursor = conn.cursor()
+    conn, cursor = Dbconnection()
 
     # Esecuzione della query per recuperare i nomi dei Pokémon e i loro ID
     cursor.execute("SELECT ID, Nome FROM tbPokemon")
 
     # Recupero dei nomi dei Pokémon e dei loro ID
     nomi_pokemon_id = cursor.fetchall()
-    nomi_pokemon = [row[1] for row in nomi_pokemon_id]
+    nomi_pokemon  = [row[1] for row in nomi_pokemon_id]
 
     # Aggiunta dei nomi alla combobox
     cmb_pokemon['values'] = nomi_pokemon
 
     # Imposta il valore iniziale della combobox al primo valore
-    if nomi_pokemon:
-       cmb_pokemon.current(0)
+    if nomi_pokemon: cmb_pokemon.current(0)
 
     # Chiusura del cursore e della connessione
-    cursor.close()
-    conn.close()
-
-    # Chiama la funzione per mostrare l'immagine del Pokémon selezionato
-    mostra_immagine_pokemon(nomi_pokemon_id[0][0])  # Mostra l'immagine del primo Pokémon inizialmente
+    Dbclose(conn,cursor)
 
 def CalcoloNatura():
     # connessione al database
-    conn = sqlite3.connect('prototypepokemonstats/database.db') 
-    cursor = conn.cursor()
+    conn, cursor = Dbconnection()
 
     # Recupero della natura selezionata
     natura_pkmn = cmb_nature.get()
@@ -81,13 +79,11 @@ def CalcoloNatura():
         
 
     # Chiusura del cursore e della connessione
-    cursor.close()
-    conn.close()
+    Dbclose(conn,cursor)
     
 def popola_textbox():
     # Connessione al database
-    conn = sqlite3.connect('prototypepokemonstats/database.db') 
-    cursor = conn.cursor()
+    conn, cursor = Dbconnection()
 
     # Recupero del nome del Pokémon selezionato
     nome_pokemon = cmb_pokemon.get()
@@ -124,45 +120,13 @@ def popola_textbox():
     else:
         textbox_type2.delete(0, tk.END)  # Cancella il contenuto precedente
 
-    mostra_immagine_pokemon(stats[8])
-    image_frame.config(bg=RecolorBGImage())
+    SetImageAndIcon(stats[8],GetType(stats[6]),GetType(stats[7]),stats[6])
 
-    # Chiusura del cursore e della connessione
-    cursor.close()
-    conn.close()
-def mostra_immagine_pokemon(id_pokemon):
-    try:
-        spritesheet = Image.open("prototypepokemonstats/primagen.png")
-
-        # Dimensioni delle immagini nel spritesheet
-        larghezza_immagine = 57
-        altezza_immagine = 57
-
-        # Aggiungi 1 all'ID del Pokémon per allineare gli indici
-        id_pokemon -= 1
-
-        # Calcola la posizione del Pokémon nel spritesheet
-        riga = id_pokemon // 12  # Calcola la riga
-        colonna = id_pokemon % 12  # Calcola la colonna
-
-        # Calcola la coordinata x e y dell'immagine nel spritesheet
-        x = colonna * larghezza_immagine
-        y = riga * altezza_immagine
-
-        # Ritaglia l'immagine corrispondente
-        region = spritesheet.crop((x, y, x + larghezza_immagine, y + altezza_immagine))
-        region = region.resize((124, 124), Image.LANCZOS) # deprecated Image.ANTIALIAS
-        photo = ImageTk.PhotoImage(region)
-
-        image_frame.config(image=photo)
-        image_frame.image = photo
-    except Exception as e:
-        print("Errore durante il caricamento o il ritaglio dell'immagine:", e)
+    Dbclose(conn,cursor)
 
 def popola_combobox_nature():
     # Connessione al database
-    conn = sqlite3.connect('prototypepokemonstats/database.db') 
-    cursor = conn.cursor()
+    conn, cursor = Dbconnection()
 
     # Esecuzione della query per recuperare i nomi dei Pokémon e i loro ID
     cursor.execute("SELECT ID,Nome FROM tbNature")
@@ -179,8 +143,7 @@ def popola_combobox_nature():
        cmb_nature.current(0)
 
     # Chiusura del cursore e della connessione
-    cursor.close()
-    conn.close()
+    Dbclose(conn,cursor)
 
 def avanti():
     # Seleziona il prossimo valore nella combobox
@@ -190,7 +153,6 @@ def avanti():
     
     # Aggiorna le textbox quando si seleziona un nuovo Pokémon
     popola_textbox()
-    image_frame.config(bg=RecolorBGImage())
 
 def indietro():
     # Seleziona il valore precedente nella combobox
@@ -200,8 +162,8 @@ def indietro():
 
     # Aggiorna le textbox quando si seleziona un nuovo Pokémon
     popola_textbox()
-    image_frame.config(bg=RecolorBGImage())
 
+#Calcolo base delle   EVs avendo IVs e Stats
 def CalcoloEVFromStats():
     capmaxevs = 0
     ps   = int(statstxt[0].get())
@@ -265,7 +227,7 @@ def CalcoloEVFromStats():
     capmaxevs += math.ceil(newstats)
     print(capmaxevs)
 
-#Calcolo base delle IVs avendo EVs e Stats
+#Calcolo base delle   IVs avendo EVs e Stats
 def CalcoloIVFromStats():
     ResetNature()
     ps   = int(statstxt[0].get())
@@ -354,45 +316,22 @@ def CalcoloStatsNature():
     #Nature
     #CalcoloNatura()
 
-def RecolorBGImage():
-    if textbox_type1.get() == 'Fuoco':
-        return "red"
-    elif textbox_type1.get() == 'Acqua':
-        return "blue"
-    elif textbox_type1.get() == 'Erba':
-        return "green"
-    elif textbox_type1.get() == 'Elettro':
-        return "yellow"
-    elif textbox_type1.get() == 'Ghiaccio':
-        return "cyan"
-    elif textbox_type1.get() == 'Lotta':
-        return "sienna"
-    elif textbox_type1.get() == 'Veleno':
-        return "purple"
-    elif textbox_type1.get() == 'Terra':
-        return "saddlebrown"
-    elif textbox_type1.get() == 'Volante':
-        return "skyblue"
-    elif textbox_type1.get() == 'Psico':
-        return "magenta"
-    elif textbox_type1.get() == 'Coleottero':
-        return "olive"
-    elif textbox_type1.get() == 'Roccia':
-        return "darkgray"
-    elif textbox_type1.get() == 'Spettro':
-        return "indigo"
-    elif textbox_type1.get() == 'Drago':
-        return "darkorange"
-    elif textbox_type1.get() == 'Buio':
-        return "black"
-    elif textbox_type1.get() == 'Acciaio':
-        return "steelblue"
-    elif textbox_type1.get() == 'Folletto':
-        return "pink"
-    elif textbox_type1.get() == 'Normale':
-        return "lightgrey"
-    else:
-        return "white"
+#funzione che setta le immagini e le icone del pokemon selezionato
+def SetImageAndIcon(id_pokemon,id_type_1,id_type_2,type1string):
+    photopkm = mostra_immagine_pokemon_ui(id_pokemon)
+    image_frame.config(image=photopkm)
+    image_frame.image = photopkm
+    image_frame.config(bg=RecolorBGImage(type1string))
+
+    photo = mostra_immagine_tipo_ui(id_type_1)
+    image_type1_frame.config(image=photo) ; image_type1_frame.image = photo
+
+    if(id_type_2 == None): id_type_2 = 30
+    photo = mostra_immagine_tipo_ui(id_type_2)
+    image_type2_frame.config(image=photo) ; image_type2_frame.image = photo
+
+#MAIN - CODE ------------------------------------------------------------------------------------
+conn = None ; cursor = None
 
 # Creazione della finestra principale
 root = tk.Tk()
@@ -425,16 +364,16 @@ cmb_pokemon.bind("<<ComboboxSelected>>", lambda event: popola_textbox())
 cmb_pokemon.place(x=0, y=5)
 
 # Label del Tipo 1
-type1_label = tk.Label(root, text="TIPO 1")
-type1_label.place(x=160, y=5)
+image_type1_frame = tk.Label(root, width=38, height=38)
+image_type1_frame.place(x=160, y=0)
 textbox_type1 = tk.Entry(root)
-textbox_type1.place(x=200 ,y=5, width=60)
+textbox_type1.place(x=240 ,y=2, width=60)
 
 # Label del Tipo 2
-type2_label = tk.Label(root, text="TIPO 2")
-type2_label.place(x=280, y=5)
+image_type2_frame = tk.Label(root, width=38, height=38)
+image_type2_frame.place(x=200, y=0)
 textbox_type2 = tk.Entry(root)
-textbox_type2.place(x=320 ,y=5, width=60)
+textbox_type2.place(x=240 ,y=23, width=60)
 
 # Lista delle etichette per le statistiche
 labels = ["PS", "ATT", "DEF", "ATTS", "DEFS", "SPD"]
@@ -522,7 +461,7 @@ avanti_button.place(x=120, y=320)
 
 
 # Riquadro per l'immagine
-image_frame = tk.Label(root, bg=RecolorBGImage(), width=124, height=124)
+image_frame = tk.Label(root, bg=RecolorBGImage(""), width=124, height=124)
 image_frame.place(x=265, y=50)
 
 # Popolare la combobox con i nomi dei Pokémon
