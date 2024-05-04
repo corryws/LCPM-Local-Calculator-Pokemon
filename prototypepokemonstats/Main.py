@@ -22,7 +22,7 @@ from ui_management import mostra_immagine_tipo_ui
 from ui_management import mostra_immagine_pokemon_ui
 
 def Reset():
-    popola_textbox() ; CalcoloNatura()
+    popola_textbox() ; CalcoloNatura(False)
 
 def ResetNature():
     if cmb_nature.get() == "Adamant":
@@ -49,7 +49,7 @@ def popola_combobox_pokemon():
     # Chiusura del cursore e della connessione
     Dbclose(conn,cursor)
 
-def CalcoloNatura():
+def CalcoloNatura(calcolo):
     # connessione al database
     conn, cursor = Dbconnection()
 
@@ -65,18 +65,17 @@ def CalcoloNatura():
     for i in range(5):
         statstxt[i+1].config(bg="white")
         if mods[i] == 1.1:
-            newnaturestats = int(statstxt[i+1].get()) * mods[i]
-            statstxt[i+1].delete(0, tk.END)
-            statstxt[i+1].insert(0, str(int(newnaturestats)))
+            if calcolo == True:
+                newnaturestats = int(statstxt[i+1].get()) * mods[i]
+                statstxt[i+1].delete(0, tk.END)
+                statstxt[i+1].insert(0, str(int(newnaturestats)))
             statstxt[i+1].config(bg="green")
-            print(i)
         if mods[i] == 0.9:
-            newnaturestats = int(statstxt[i+1].get()) * mods[i]
-            statstxt[i+1].delete(0, tk.END)
-            statstxt[i+1].insert(0, str(int(newnaturestats)))
+            if calcolo == True:
+                newnaturestats = int(statstxt[i+1].get()) * mods[i]
+                statstxt[i+1].delete(0, tk.END)
+                statstxt[i+1].insert(0, str(int(newnaturestats)))
             statstxt[i+1].config(bg="red")
-            print(i)
-        
 
     # Chiusura del cursore e della connessione
     Dbclose(conn,cursor)
@@ -166,155 +165,47 @@ def indietro():
 #Calcolo base delle   EVs avendo IVs e Stats
 def CalcoloEVFromStats():
     capmaxevs = 0
-    ps   = int(statstxt[0].get())
-    att  = int(statstxt[1].get())
-    dif  = int(statstxt[2].get())
-    atts = int(statstxt[3].get())
-    defs = int(statstxt[4].get())
-    spd  = int(statstxt[5].get())
+    is_ps = True
     Reset()
-    #PS
-    newstats = calcola_ev(int(ps),int(statstxt[0].get()),int(ivstxt[0].get()), int(textbox_lvl.get()),True)
-    evstxt[0].delete(0, tk.END)
-    evstxt[0].insert(0, str(int(math.ceil(newstats))))
-    print("EVs PS calcolati:", newstats)
-    
-    capmaxevs += math.ceil(newstats)
-    print(capmaxevs)
 
-    #ATT
-    newstats = calcola_ev(int(att),int(statstxt[1].get()),  int(ivstxt[1].get()), int(textbox_lvl.get()),False)
-    evstxt[1].delete(0, tk.END)
-    evstxt[1].insert(0, str(int(math.ceil(newstats))))
-    print("EVs ATT calcolati:", newstats)
+    #da 1 a 5 la formula da applicare è la stessa
+    for i in range(0, 6):
+     if i == 0 : is_ps = True
+     else: is_ps = False
+     oldstats = int(statstxt[i].get())
+     newstats = calcola_ev(int(oldstats),int(statstxt[i].get()),  int(ivstxt[i].get()), int(textbox_lvl.get()),is_ps)
+     evstxt[i].delete(0, tk.END)
+     evstxt[i].insert(0, str(int(math.ceil(newstats))))
+     print("calcolati:", newstats)
 
-    capmaxevs += math.ceil(newstats)
-    print(capmaxevs)
-
-    #DEF
-    newstats = calcola_ev(int(dif),int(statstxt[2].get()), int(ivstxt[2].get()), int(textbox_lvl.get()),False)
-    evstxt[2].delete(0, tk.END)
-    evstxt[2].insert(0, str(int(math.ceil(newstats))))
-    print("EVs DEF calcolati:", newstats)
-
-    capmaxevs += math.ceil(newstats)
-    print(capmaxevs)
-
-    #ATTS
-    newstats = calcola_ev(int(atts),int(statstxt[3].get()),  int(ivstxt[3].get()), int(textbox_lvl.get()),False)
-    evstxt[3].delete(0, tk.END)
-    evstxt[3].insert(0, str(int(math.ceil(newstats))))
-    print("EVs ATTS calcolati:", newstats)
-
-    capmaxevs += math.ceil(newstats)
-    print(capmaxevs)
-
-    #DEFS
-    newstats = calcola_ev( int(defs),int(statstxt[4].get()), int(ivstxt[4].get()), int(textbox_lvl.get()),False)
-    evstxt[4].delete(0, tk.END)
-    evstxt[4].insert(0, str(int(math.ceil(newstats))))
-    print("EVs DEFS calcolati:", newstats)
-
-    capmaxevs += math.ceil(newstats)
-    print(capmaxevs)
-
-    #SPD
-    newstats = calcola_iv(int(spd),int(statstxt[5].get()),  int(ivstxt[5].get()), int(textbox_lvl.get()),False)
-    evstxt[5].delete(0, tk.END)
-    evstxt[5].insert(0, str(int(math.ceil(newstats))))
-    print("EVs SPD calcolati:", newstats)
-
-    capmaxevs += math.ceil(newstats)
-    print(capmaxevs)
+     capmaxevs += math.ceil(newstats)
+     print(capmaxevs)
 
 #Calcolo base delle   IVs avendo EVs e Stats
 def CalcoloIVFromStats():
     ResetNature()
-    ps   = int(statstxt[0].get())
-    att  = int(statstxt[1].get())
-    dif  = int(statstxt[2].get())
-    atts = int(statstxt[3].get())
-    defs = int(statstxt[4].get())
-    spd  = int(statstxt[5].get())
-    print(ps,att,dif,atts,defs,spd)
     Reset()
-    #PS
-    newstats = calcola_iv(int(ps),int(statstxt[0].get()),int(evstxt[0].get()), int(textbox_lvl.get()),True)
-    ivstxt[0].delete(0, tk.END)
-    ivstxt[0].insert(0, str(int(math.ceil(newstats))))
-    print("IVs PS calcolati:", newstats)
 
-    #ATT
-    newstats = calcola_iv(int(att),int(statstxt[1].get()),  int(evstxt[1].get()), int(textbox_lvl.get()),False)
-    ivstxt[1].delete(0, tk.END)
-    ivstxt[1].insert(0, str(int(math.ceil(newstats))))
-    print("IVs ATT calcolati:", newstats)
-
-    #DEF
-    newstats = calcola_iv(int(dif),int(statstxt[2].get()), int(evstxt[2].get()), int(textbox_lvl.get()),False)
-    ivstxt[2].delete(0, tk.END)
-    ivstxt[2].insert(0, str(int(math.ceil(newstats))))
-    print("IVs DEF calcolati:", newstats)
-
-    #ATTS
-    newstats = calcola_iv(int(atts),int(statstxt[3].get()),  int(evstxt[3].get()), int(textbox_lvl.get()),False)
-    ivstxt[3].delete(0, tk.END)
-    ivstxt[3].insert(0, str(int(math.ceil(newstats))))
-    print("IVs ATTS calcolati:", newstats)
-
-    #DEFS
-    newstats = calcola_iv( int(defs),int(statstxt[4].get()), int(evstxt[4].get()), int(textbox_lvl.get()),False)
-    ivstxt[4].delete(0, tk.END)
-    ivstxt[4].insert(0, str(int(math.ceil(newstats))))
-    print("IVs DEFS calcolati:", newstats)
-
-    #SPD
-    newstats = calcola_iv(int(spd),int(statstxt[5].get()),  int(evstxt[5].get()), int(textbox_lvl.get()),False)
-    ivstxt[5].delete(0, tk.END)
-    ivstxt[5].insert(0, str(int(math.ceil(newstats))))
-    print("IVs SPD calcolati:", newstats)
+    #da 1 a 5 la formula da applicare è la stessa
+    for i in range(0, 6):
+     if i == 0 : is_ps = True
+     else: is_ps = False
+     oldstats = int(statstxt[i].get())
+     newstats = calcola_iv(int(oldstats),int(statstxt[i].get()),int(evstxt[i].get()), int(textbox_lvl.get()),is_ps)
+     ivstxt[i].delete(0, tk.END)
+     ivstxt[i].insert(0, str(int(math.ceil(newstats))))
+     print("IVs calcolati:", newstats)
 
 #Calcolo base delle Stats avendo EVs e IVs
 def CalcoloStatsNature():
     Reset()
-    #PS
-    newstats = calcola_ps(int(statstxt[0].get()), int(ivstxt[0].get()), int(evstxt[0].get()), int(textbox_lvl.get()))
-    statstxt[0].delete(0, tk.END)
-    statstxt[0].insert(0, str(int(math.ceil(newstats))))
-    print("PS calcolati:", newstats)
-
-    #ATT
-    newstats = calcola_statistica(int(statstxt[1].get()), int(ivstxt[1].get()), int(evstxt[1].get()), int(textbox_lvl.get()))
-    statstxt[1].delete(0, tk.END)
-    statstxt[1].insert(0, str(int(math.ceil(newstats))))
-    print("ATT calcolati:", newstats)
-
-    #DEF
-    newstats = calcola_statistica(int(statstxt[2].get()), int(ivstxt[2].get()), int(evstxt[2].get()), int(textbox_lvl.get()))
-    statstxt[2].delete(0, tk.END)
-    statstxt[2].insert(0, str(int(math.ceil(newstats))))
-    print("DEF calcolati:", newstats)
-
-    #ATTS
-    newstats = calcola_statistica(int(statstxt[3].get()), int(ivstxt[3].get()), int(evstxt[3].get()), int(textbox_lvl.get()))
-    statstxt[3].delete(0, tk.END)
-    statstxt[3].insert(0, str(int(math.ceil(newstats))))
-    print("ATTS calcolati:", newstats)
-
-    #DEFS
-    newstats = calcola_statistica(int(statstxt[4].get()), int(ivstxt[4].get()), int(evstxt[4].get()), int(textbox_lvl.get()))
-    statstxt[4].delete(0, tk.END)
-    statstxt[4].insert(0, str(int(math.ceil(newstats))))
-    print("DEFS calcolati:", newstats)
-
-    #SPD
-    newstats = calcola_statistica(int(statstxt[5].get()), int(ivstxt[5].get()), int(evstxt[5].get()), int(textbox_lvl.get()))
-    statstxt[5].delete(0, tk.END)
-    statstxt[5].insert(0, str(int(math.ceil(newstats))))
-    print("SPD calcolati:", newstats)
-
-    #Nature
-    #CalcoloNatura()
+    for i in range(0, 6):
+     if i == 0 : newstats = calcola_ps(int(statstxt[i].get()), int(ivstxt[i].get()), int(evstxt[i].get()), int(textbox_lvl.get()))
+     else: newstats = calcola_statistica(int(statstxt[i].get()), int(ivstxt[i].get()), int(evstxt[i].get()), int(textbox_lvl.get()))
+     statstxt[i].delete(0, tk.END)
+     statstxt[i].insert(0, str(int(math.ceil(newstats))))
+     print("Statistica Calcolata:", i, newstats)
+    CalcoloNatura(True)
 
 #funzione che setta le immagini e le icone del pokemon selezionato
 def SetImageAndIcon(id_pokemon,id_type_1,id_type_2,type1string):
