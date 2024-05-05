@@ -8,6 +8,7 @@ def calcola_statistica(base, iv, ev, livello):
     Restituisce il valore della statistica calcolata.
     """
     statistica = ((2 * base + iv + (ev / 4)) / 100 * livello) + 5
+    print("statistica da formula 0",statistica)
     return statistica
 
 # Formula PS
@@ -39,11 +40,13 @@ def calcola_ev(statistica, base, iv, livello,isps):
     Restituisce il valore degli EVs calcolati.
     """
     if (isps == False):
-        ev = max(0, min(508, (statistica - 5) * (100 / livello) - 2 * base - iv))
-        ev = max(ev, 252)  # Assicura che nessuna statistica superi 252 EVs
+        ev = 4 * (((statistica - 5) / livello) * 100 - 2 * base - iv)
+        #ev = max(0, min(508, (statistica - 5) * (100 / livello) - 2 * base - iv))
+        #ev = max(ev, 252)  # Assicura che nessuna statistica superi 252 EVs
     else:
-        ev = max(0, min(508, (statistica - livello - 10) * (100 / livello) - 2 * base - iv))
-        ev = max(ev, 252)  # Assicura che nessuna statistica superi 252 EVs
+        ev = 4 * ((100 * (statistica - livello - 10) / livello) - 2 * base - iv)
+        #ev = max(0, min(508, (statistica - livello - 10) * (100 / livello) - 2 * base - iv))
+        #ev = max(ev, 252)  # Assicura che nessuna statistica superi 252 EVs
     return ev
 
 def RecolorBGImage(typename):

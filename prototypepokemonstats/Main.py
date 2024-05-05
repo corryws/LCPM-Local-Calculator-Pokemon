@@ -162,36 +162,52 @@ def indietro():
     # Aggiorna le textbox quando si seleziona un nuovo Pokémon
     popola_textbox()
 
-#Calcolo base delle   EVs avendo IVs e Stats
+#Calcolo base delle EVs avendo IVs e Stats
 def CalcoloEVFromStats():
-    capmaxevs = 0
-    is_ps = True
+    oldstats = []
+    for i in range(0, 6):
+        oldstats.append(float(statstxt[i].get()))
+
     Reset()
 
-    #da 1 a 5 la formula da applicare è la stessa
+    #controllo se oldstat sono uguali alle stat base, se si non applico nulla
+    for i in range(0, 6):
+      if(float(oldstats[i]) == float(statstxt[i].get())):
+          print("statistiche uguali, non posso calcolarne EV/IV")
+          return
+      else: oldstats[i] = StatWithoutRound[i]
+
     for i in range(0, 6):
      if i == 0 : is_ps = True
      else: is_ps = False
-     oldstats = int(statstxt[i].get())
-     newstats = calcola_ev(int(oldstats),int(statstxt[i].get()),  int(ivstxt[i].get()), int(textbox_lvl.get()),is_ps)
+
+     print("4 * (((",float(oldstats[i])," - 5 / ",float(textbox_lvl.get()),")* 100-2 * ",float(statstxt[i].get())," - ",float(ivstxt[i].get()),")")
+     newstats = calcola_ev(float(oldstats[i]),float(statstxt[i].get()),  float(ivstxt[i].get()), int(textbox_lvl.get()),is_ps)
      evstxt[i].delete(0, tk.END)
      evstxt[i].insert(0, str(int(math.ceil(newstats))))
      print("calcolati:", newstats)
 
-     capmaxevs += math.ceil(newstats)
-     print(capmaxevs)
-
-#Calcolo base delle   IVs avendo EVs e Stats
+#Calcolo base delle IVs avendo EVs e Stats
 def CalcoloIVFromStats():
-    ResetNature()
+    oldstats = []
+    for i in range(0, 6):
+        oldstats.append(float(statstxt[i].get()))
+
     Reset()
 
-    #da 1 a 5 la formula da applicare è la stessa
+     #controllo se oldstat sono uguali alle stat base, se si non applico nulla
+    for i in range(0, 6):
+      if(float(oldstats[i]) == float(statstxt[i].get())):
+          print("statistiche uguali, non posso calcolarne EV/IV")
+          return
+      else: oldstats[i] = StatWithoutRound[i]
+
     for i in range(0, 6):
      if i == 0 : is_ps = True
      else: is_ps = False
-     oldstats = int(statstxt[i].get())
-     newstats = calcola_iv(int(oldstats),int(statstxt[i].get()),int(evstxt[i].get()), int(textbox_lvl.get()),is_ps)
+     
+     print("iv=(",oldstats[i],"-5)*(100/",int(textbox_lvl.get()),")-2*",float(statstxt[i].get()),"-(",float(evstxt[i].get()),"/4)")
+     newstats = calcola_iv(float(oldstats[i]),float(statstxt[i].get()),float(evstxt[i].get()), int(textbox_lvl.get()),is_ps)
      ivstxt[i].delete(0, tk.END)
      ivstxt[i].insert(0, str(int(math.ceil(newstats))))
      print("IVs calcolati:", newstats)
@@ -200,8 +216,10 @@ def CalcoloIVFromStats():
 def CalcoloStatsNature():
     Reset()
     for i in range(0, 6):
-     if i == 0 : newstats = calcola_ps(int(statstxt[i].get()), int(ivstxt[i].get()), int(evstxt[i].get()), int(textbox_lvl.get()))
-     else: newstats = calcola_statistica(int(statstxt[i].get()), int(ivstxt[i].get()), int(evstxt[i].get()), int(textbox_lvl.get()))
+     if i == 0 : newstats = calcola_ps(float(statstxt[i].get()), float(ivstxt[i].get()), float(evstxt[i].get()), int(textbox_lvl.get()))
+     else: newstats = calcola_statistica(float(statstxt[i].get()), float(ivstxt[i].get()), float(evstxt[i].get()), int(textbox_lvl.get()))
+     StatWithoutRound[i] = newstats#.append(newstats)
+     print("Statistica senza arrotondamento: ", StatWithoutRound[i])
      statstxt[i].delete(0, tk.END)
      statstxt[i].insert(0, str(int(math.ceil(newstats))))
      print("Statistica Calcolata:", i, newstats)
@@ -222,7 +240,7 @@ def SetImageAndIcon(id_pokemon,id_type_1,id_type_2,type1string):
     image_type2_frame.config(image=photo) ; image_type2_frame.image = photo
 
 #MAIN - CODE ------------------------------------------------------------------------------------
-conn = None ; cursor = None
+conn = None ; cursor = None ; StatWithoutRound = [0,0,0,0,0,0]
 
 # Creazione della finestra principale
 root = tk.Tk()
