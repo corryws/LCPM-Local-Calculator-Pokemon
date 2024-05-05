@@ -20,6 +20,8 @@ from formula import RecolorBGImage
 # funzioni ui grafiche
 from ui_management import mostra_immagine_tipo_ui
 from ui_management import mostra_immagine_pokemon_ui
+from ui_management import mostra_immagine_screen_ui
+from color import ColorRGB
 
 def Reset():
     popola_textbox() ; CalcoloNatura(False)
@@ -63,7 +65,7 @@ def CalcoloNatura(calcolo):
     mods = cursor.fetchone()
 
     for i in range(5):
-        statstxt[i+1].config(bg="white")
+        statstxt[i+1].config(background=ColorRGB(40,170,253))
         if mods[i] == 1.1:
             if calcolo == True:
                 newnaturestats = int(statstxt[i+1].get()) * mods[i]
@@ -248,6 +250,8 @@ root.title("LCPM - Local Calculator PokettoMonsuta - by Nieft&Manush")
 
 # Impostazione delle dimensioni della finestra
 root.geometry("500x350")
+# Convertire i valori RGB in un formato compatibile con Tkinter
+root.configure(bg=ColorRGB(220,10,45))
 
 # Creazione del menu a tendina
 menu_bar = Menu(root)
@@ -272,17 +276,28 @@ cmb_pokemon = ttk.Combobox(root)
 cmb_pokemon.bind("<<ComboboxSelected>>", lambda event: popola_textbox())
 cmb_pokemon.place(x=0, y=5)
 
+#riquadro per l'immagine screen
+image_screen = tk.Label(root, bg=RecolorBGImage(""), width=180, height=180)
+image_screen.place(x=310, y=4)
+photoscreen = mostra_immagine_screen_ui()
+image_screen.config(image=photoscreen)
+image_screen.image = photoscreen
+
+# Riquadro per l'immagine pokemon
+image_frame = tk.Label(root, bg=RecolorBGImage(""), width=146, height=116)
+image_frame.place(x=328, y=26)
+
 # Label del Tipo 1
-image_type1_frame = tk.Label(root, width=38, height=38)
-image_type1_frame.place(x=160, y=0)
-textbox_type1 = tk.Entry(root)
-textbox_type1.place(x=240 ,y=2, width=60)
+image_type1_frame = tk.Label(root, width=38, height=38,background=ColorRGB(40,170,253))
+image_type1_frame.place(x=360, y=190)
+textbox_type1 = tk.Entry(root,background=ColorRGB(40,170,253))
+textbox_type1.place(x=245 ,y=2, width=60)
 
 # Label del Tipo 2
-image_type2_frame = tk.Label(root, width=38, height=38)
-image_type2_frame.place(x=200, y=0)
-textbox_type2 = tk.Entry(root)
-textbox_type2.place(x=240 ,y=23, width=60)
+image_type2_frame = tk.Label(root, width=38, height=38,background=ColorRGB(40,170,253))
+image_type2_frame.place(x=400, y=190)
+textbox_type2 = tk.Entry(root,background=ColorRGB(40,170,253))
+textbox_type2.place(x=245 ,y=23, width=60)
 
 # Lista delle etichette per le statistiche
 labels = ["PS", "ATT", "DEF", "ATTS", "DEFS", "SPD"]
@@ -291,61 +306,61 @@ labels = ["PS", "ATT", "DEF", "ATTS", "DEFS", "SPD"]
 statstxt = []
 for i in range(3):
     for j in range(2):
-        label = tk.Label(root, text=labels[i*2 + j])
+        label = tk.Label(root, text=labels[i*2 + j],background=ColorRGB(40,170,253))
         label.place(x=0+j*100, y=50+i*25)
         
-        textbox = tk.Entry(root)
+        textbox = tk.Entry(root,background=ColorRGB(40,170,253))
         textbox.place(x=50+j*100, y=50+i*25, width=40)
-        textbox.config(bg="white")
+        #textbox.config(bg="white")
         statstxt.append(textbox)
 
 #Totale STATS
-totstats_label = tk.Label(root, text="TOT")
-totstats_label.place(x=0, y=120)
-textbox_totstats = tk.Entry(root)
-textbox_totstats.place(x=50 ,y=120, width=40)
+totstats_label = tk.Label(root, text="TOT",background=ColorRGB(40,170,253))
+totstats_label.place(x=0, y=125)
+textbox_totstats = tk.Entry(root,background=ColorRGB(40,170,253))
+textbox_totstats.place(x=50 ,y=125, width=40)
 
 #Totale LVL
-lvlstats_label = tk.Label(root, text="LVL")
-lvlstats_label.place(x=100, y=120)
-textbox_lvl = tk.Entry(root)
-textbox_lvl.place(x=150 ,y=120, width=40)
+lvlstats_label = tk.Label(root, text="LVL",background=ColorRGB(40,170,253))
+lvlstats_label.place(x=100, y=125)
+textbox_lvl = tk.Entry(root,background=ColorRGB(40,170,253))
+textbox_lvl.place(x=150 ,y=125, width=40)
 textbox_lvl.insert(0, 100)
 
 #EVS
-evs_label = tk.Label(root, text="EVs:")
-evs_label.place(x=0, y=140)
-evs_label2 = tk.Label(root, text="PS        ATT       DEF       ATTS     DEFS    SPD")
-evs_label2.place(x=0, y=160)
+evs_label = tk.Label(root, text="EVs:",background=ColorRGB(40,170,253))
+evs_label.place(x=0, y=145)
+evs_label2 = tk.Label(root, text="PS        ATT       DEF       ATTS     DEFS    SPD",background=ColorRGB(40,170,253))
+evs_label2.place(x=0, y=165)
 
 # Creazione delle textbox per EVS 0 to 252
 evstxt = []
 for i in range(6):
-    textbox = tk.Entry(root)
-    textbox.place(x=0+i*40, y=180, width=40)
+    textbox = tk.Entry(root,background=ColorRGB(40,170,253))
+    textbox.place(x=0+i*40, y=185, width=40)
     textbox.insert(i, 0)
     evstxt.append(textbox)
 
 #IVS
-ivs_label = tk.Label(root, text="IVs:")
-ivs_label.place(x=0, y=200)
-ivs_label2 = tk.Label(root, text="PS        ATT       DEF       ATTS     DEFS    SPD")
-ivs_label2.place(x=0, y=220)
+ivs_label = tk.Label(root, text="IVs:",background=ColorRGB(40,170,253))
+ivs_label.place(x=0, y=210)
+ivs_label2 = tk.Label(root, text="PS        ATT       DEF       ATTS     DEFS    SPD",background=ColorRGB(40,170,253))
+ivs_label2.place(x=0, y=230)
 
 # Creazione delle textbox per IVS 0 to 31
 ivstxt = []
 for i in range(6):
-    textbox = tk.Entry(root)
-    textbox.place(x=0+i*40, y=240, width=40)
+    textbox = tk.Entry(root,background=ColorRGB(40,170,253))
+    textbox.place(x=0+i*40, y=250, width=40)
     textbox.insert(i, 31)
     ivstxt.append(textbox)
 
 # Creazione della combobox a sinistra
-nature_label = tk.Label(root, text="Nature")
-nature_label.place(x=250, y=220)
+nature_label = tk.Label(root, text="Nature",background=ColorRGB(40,170,253))
+nature_label.place(x=250, y=230)
 cmb_nature = ttk.Combobox(root)
 cmb_nature.bind("<<ComboboxSelected>>", lambda event: Reset())
-cmb_nature.place(x=250, y=240)
+cmb_nature.place(x=250, y=250)
 
 # Pulsante "Calcola"
 stats_button = tk.Button(root, text="CALCOLA STATS.", command=CalcoloStatsNature)
@@ -367,11 +382,6 @@ indietro_button.place(x=50, y=320)
 # Pulsante "Avanti"
 avanti_button = tk.Button(root, text="-->", command=avanti)
 avanti_button.place(x=120, y=320)
-
-
-# Riquadro per l'immagine
-image_frame = tk.Label(root, bg=RecolorBGImage(""), width=124, height=124)
-image_frame.place(x=265, y=50)
 
 # Popolare la combobox con i nomi dei Pokémon
 popola_combobox_pokemon()

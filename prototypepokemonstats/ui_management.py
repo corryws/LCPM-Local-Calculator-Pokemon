@@ -31,6 +31,15 @@ def mostra_immagine_pokemon_ui(id_pokemon):
     except Exception as e:
         print("Errore durante il caricamento o il ritaglio dell'immagine:", e)
 
+def mostra_immagine_screen_ui():
+    # Caricare un'immagine
+    image_path = "prototypepokemonstats/screen.png"  # Sostituisci con il percorso del tuo file immagine
+    image = Image.open(image_path)
+    image = image.resize((180, 180),Image.LANCZOS)  # Ridimensiona l'immagine se necessario
+    tk_image = ImageTk.PhotoImage(image)
+
+    return tk_image
+
 # funzione che estrae l'immagine icona del tipo del pokemon
 def mostra_immagine_tipo_ui(id_type):
     #type sarà un intero e in base appunto al "tipo assocerò un id"
