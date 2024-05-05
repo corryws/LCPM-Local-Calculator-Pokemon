@@ -186,7 +186,8 @@ def CalcoloEVFromStats():
      print("4 * (((",float(oldstats[i])," - 5 / ",float(textbox_lvl.get()),")* 100-2 * ",float(statstxt[i].get())," - ",float(ivstxt[i].get()),")")
      newstats = calcola_ev(float(oldstats[i]),float(statstxt[i].get()),  float(ivstxt[i].get()), int(textbox_lvl.get()),is_ps)
      evstxt[i].delete(0, tk.END)
-     evstxt[i].insert(0, str(int(math.ceil(newstats))))
+     #evstxt[i].insert(0, str(int(math.ceil(newstats))))
+     evstxt[i].insert(0, str(int(newstats)))
      print("calcolati:", newstats)
 
 #Calcolo base delle IVs avendo EVs e Stats
@@ -211,7 +212,8 @@ def CalcoloIVFromStats():
      print("iv=(",oldstats[i],"-5)*(100/",int(textbox_lvl.get()),")-2*",float(statstxt[i].get()),"-(",float(evstxt[i].get()),"/4)")
      newstats = calcola_iv(float(oldstats[i]),float(statstxt[i].get()),float(evstxt[i].get()), int(textbox_lvl.get()),is_ps)
      ivstxt[i].delete(0, tk.END)
-     ivstxt[i].insert(0, str(int(math.ceil(newstats))))
+     #ivstxt[i].insert(0, str(int(math.ceil(newstats))))
+     ivstxt[i].insert(0, str(int(newstats)))
      print("IVs calcolati:", newstats)
 
 #Calcolo base delle Stats avendo EVs e IVs
@@ -223,7 +225,7 @@ def CalcoloStatsNature():
      StatWithoutRound[i] = newstats#.append(newstats)
      print("Statistica senza arrotondamento: ", StatWithoutRound[i])
      statstxt[i].delete(0, tk.END)
-     statstxt[i].insert(0, str(int(math.ceil(newstats))))
+     statstxt[i].insert(0, str(int(newstats)))
      print("Statistica Calcolata:", i, newstats)
     CalcoloNatura(True)
 
