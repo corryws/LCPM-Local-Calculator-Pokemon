@@ -243,8 +243,16 @@ def SetImageAndIcon(id_pokemon,id_type_1,id_type_2,type1string):
     photo = mostra_immagine_tipo_ui(id_type_2)
     image_type2_frame.config(image=photo) ; image_type2_frame.image = photo
 
+# Funzione per aggiornare le informazioni del Pokémon in base allo slider
+def update_pokemon_info(value):
+    index = int(round(float(value)))  # Arrotonda il valore float alla parte intera più vicina
+    cmb_pokemon.current(index)
+    popola_textbox()
+
+
+
 #MAIN - CODE ------------------------------------------------------------------------------------
-conn = None ; cursor = None ; StatWithoutRound = [0,0,0,0,0,0]
+conn = None ; cursor = None ; StatWithoutRound = [0,0,0,0,0,0] ; nomi_pokemon = []
 
 # Creazione della finestra principale
 root = tk.Tk()
@@ -384,6 +392,10 @@ indietro_button.place(x=50, y=320)
 # Pulsante "Avanti"
 avanti_button = tk.Button(root, text="-->", command=avanti)
 avanti_button.place(x=120, y=320)
+
+# Aggiungi lo slider per lo scorrimento tra i Pokémon
+pokemon_slider = ttk.Scale(root, from_=0, to=len(nomi_pokemon)-1, orient="horizontal", command=update_pokemon_info)
+pokemon_slider.place(x=0, y=320)
 
 # Popolare la combobox con i nomi dei Pokémon
 popola_combobox_pokemon()
