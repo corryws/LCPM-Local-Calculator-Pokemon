@@ -20,7 +20,6 @@ from formula import RecolorBGImage
 # funzioni ui grafiche
 from ui_management import mostra_immagine_tipo_ui
 from ui_management import mostra_immagine_pokemon_ui
-from ui_management import mostra_immagine_screen_ui
 from color import ColorRGB
 from chartexample import plot_radar
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -65,6 +64,8 @@ def CalcoloNatura(calcolo):
                    "WHERE Nome = ?", (natura_pkmn,))
     
     mods = cursor.fetchone()
+
+    #invertire attsp con speed
 
     for i in range(5):
         statstxt[i+1].config(bg="white")
@@ -242,7 +243,7 @@ conn = None ; cursor = None ; StatWithoutRound = [0,0,0,0,0,0] ; nomi_pokemon = 
 
 # Creazione della finestra principale
 root = tk.Tk()
-root.title("LCPM - Local Calculator PokettoMonsuta - by Nieft&Manush")
+root.title("LCPM - Local Calculator Pokemon")
 
 # Impostazione delle dimensioni della finestra
 root.geometry("800x500")
@@ -278,6 +279,12 @@ red_panel2.place(x=0,y=360)
 red_panel3 = tk.Frame(root, bg="#DE313D", width=400, height=15) #rosso sta sopra
 red_panel3.place(x=0,y=410)
 
+#aggiunta PULSANTI CAMBIO GENERAZIONI POKEMON
+gen_texts = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
+for i in range(9):
+    gen_button = tk.Button(root, text=gen_texts[i],bg="#DE313D")
+    gen_button.place(x=20+i*40, y=15, width=40)
+
 #FINE UI LATO DESTRO DEL FORM-----------------------------------------------------------------------------
 
 # Pulsante "Indietro"
@@ -312,6 +319,15 @@ image_type2_frame.place(x=600, y=300)
 cmb_nature = ttk.Combobox(root)
 cmb_nature.bind("<<ComboboxSelected>>", lambda event: Reset())
 cmb_nature.place(x=550, y=355)
+
+# Pulsante "Indietro"
+indietroNatura_button = tk.Button(root, text="<--")
+indietroNatura_button.place(x=510, y=355)
+
+# Pulsante "Avanti"
+avantiNatura_button = tk.Button(root, text="-->")
+avantiNatura_button.place(x=700, y=355)
+
 #FINE UI LATO DESTRO DEL FORM-----------------------------------------------------------------------------
 
 #INIZIO UI LATO SINISTRO DEL FORM-----------------------------------------------------------------------------
