@@ -393,10 +393,6 @@ indietro_button.place(x=50, y=320)
 avanti_button = tk.Button(root, text="-->", command=avanti)
 avanti_button.place(x=120, y=320)
 
-# Aggiungi lo slider per lo scorrimento tra i Pokémon
-pokemon_slider = ttk.Scale(root, from_=0, to=len(nomi_pokemon)-1, orient="horizontal", command=update_pokemon_info)
-pokemon_slider.place(x=0, y=320)
-
 # Popolare la combobox con i nomi dei Pokémon
 popola_combobox_pokemon()
 popola_combobox_nature()
