@@ -22,6 +22,8 @@ from ui_management import mostra_immagine_tipo_ui
 from ui_management import mostra_immagine_pokemon_ui
 from ui_management import mostra_immagine_screen_ui
 from color import ColorRGB
+from chartexample import plot_radar
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 def Reset():
     popola_textbox() ; CalcoloNatura(False)
@@ -65,7 +67,7 @@ def CalcoloNatura(calcolo):
     mods = cursor.fetchone()
 
     for i in range(5):
-        statstxt[i+1].config(background=ColorRGB(40,170,253))
+        statstxt[i+1].config(bg="white")
         if mods[i] == 1.1:
             if calcolo == True:
                 newnaturestats = int(statstxt[i+1].get()) * mods[i]
@@ -106,20 +108,6 @@ def popola_textbox():
     # Inserimento della somma nella textbox "TOT"
     textbox_totstats.delete(0, tk.END)
     textbox_totstats.insert(0, somma_statistiche)
-
-    # Verifica e inserimento del Tipo 1
-    tipo1 = stats[6]
-    if tipo1 is not None:
-        textbox_type1.delete(0, tk.END)
-        textbox_type1.insert(0, tipo1)
-
-    # Verifica e inserimento del Tipo 2
-    tipo2 = stats[7]
-    if tipo2 is not None:
-        textbox_type2.delete(0, tk.END)
-        textbox_type2.insert(0, tipo2)
-    else:
-        textbox_type2.delete(0, tk.END)  # Cancella il contenuto precedente
 
     SetImageAndIcon(stats[8],GetType(stats[6]),GetType(stats[7]),stats[6])
 
@@ -234,7 +222,6 @@ def SetImageAndIcon(id_pokemon,id_type_1,id_type_2,type1string):
     photopkm = mostra_immagine_pokemon_ui(id_pokemon)
     image_frame.config(image=photopkm)
     image_frame.image = photopkm
-    image_frame.config(bg=RecolorBGImage(type1string))
 
     photo = mostra_immagine_tipo_ui(id_type_1)
     image_type1_frame.config(image=photo) ; image_type1_frame.image = photo
@@ -250,7 +237,6 @@ def update_pokemon_info(value):
     popola_textbox()
 
 
-
 #MAIN - CODE ------------------------------------------------------------------------------------
 conn = None ; cursor = None ; StatWithoutRound = [0,0,0,0,0,0] ; nomi_pokemon = []
 
@@ -259,139 +245,156 @@ root = tk.Tk()
 root.title("LCPM - Local Calculator PokettoMonsuta - by Nieft&Manush")
 
 # Impostazione delle dimensioni della finestra
-root.geometry("500x350")
+root.geometry("800x500")
 # Convertire i valori RGB in un formato compatibile con Tkinter
-root.configure(bg=ColorRGB(220,10,45))
-
-# Creazione del menu a tendina
-menu_bar = Menu(root)
-root.config(menu=menu_bar)
-root.resizable(False, False)  # Blocca il ridimensionamento sia in larghezza che in altezza
-
-# Creazione del menu "PokeStars"
-pokestars_menu = Menu(menu_bar, tearoff=0)
-menu_bar.add_cascade(label="CompetitiveString", menu=pokestars_menu)
-pokestars_menu.add_command(label="Stampa")
-
-# Creazione del menu "?"
-altro_menu = Menu(menu_bar, tearoff=0)
-menu_bar.add_cascade(label="?", menu=altro_menu)
-altro_menu.add_command(label="About")
+root.configure(bg=ColorRGB(224,255,255))
 
 # creo DB
 createDB.esegui_script_sql('prototypepokemonstats/db_pokemon.sql', 'prototypepokemonstats/database.db')
 
-# Creazione della combobox a sinistra
+# Riquadro per l'immagine pokemon
+image_frame = tk.Label(root, bg="#E0FCFD",width=230, height=230)
+image_frame.place(x=500, y=50)
+
+#costruzioni dei panelli
+white_panel = tk.Frame(root, bg="white", width=400, height=500)
+white_panel.place(x=0,y=0)
+
+red_panel = tk.Frame(root, bg="#DE313D", width=400, height=50) #rosso sta sopra
+red_panel.place(x=0,y=0)
+
+black_panel = tk.Frame(root, bg="black", width=350, height=50) #nero sta sopra
+black_panel.place(x=450,y=35)
+
+black_panel2 = tk.Frame(root, bg="black", width=350, height=50) #nero sta sopra
+black_panel2.place(x=450,y=300)
+
+gray_panel = tk.Frame(root, bg="gray", width=350, height=35) #nero sta sopra
+gray_panel.place(x=500,y=350)
+
+red_panel2 = tk.Frame(root, bg="#DE313D", width=400, height=15) #rosso sta sopra
+red_panel2.place(x=0,y=360)
+
+red_panel3 = tk.Frame(root, bg="#DE313D", width=400, height=15) #rosso sta sopra
+red_panel3.place(x=0,y=410)
+
+#FINE UI LATO DESTRO DEL FORM-----------------------------------------------------------------------------
+
+# Pulsante "Indietro"
+indietro_button = tk.Button(root, text="<--", command=indietro)
+indietro_button.place(x=500, y=200)
+
+# Pulsante "Avanti"
+avanti_button = tk.Button(root, text="-->", command=avanti)
+avanti_button.place(x=700, y=200)
+
+# Creazione della combobox nomi pokemon
 cmb_pokemon = ttk.Combobox(root)
 cmb_pokemon.bind("<<ComboboxSelected>>", lambda event: popola_textbox())
-cmb_pokemon.place(x=0, y=5)
+cmb_pokemon.place(x=500, y=50)
 
-#riquadro per l'immagine screen
-image_screen = tk.Label(root, bg=RecolorBGImage(""), width=180, height=180)
-image_screen.place(x=310, y=4)
-photoscreen = mostra_immagine_screen_ui()
-image_screen.config(image=photoscreen)
-image_screen.image = photoscreen
-
-# Riquadro per l'immagine pokemon
-image_frame = tk.Label(root, bg=RecolorBGImage(""), width=146, height=116)
-image_frame.place(x=328, y=26)
+#Totale LVL
+lvlstats_label = tk.Label(root, text="LVL")
+lvlstats_label.place(x=650, y=50)
+textbox_lvl = tk.Entry(root)
+textbox_lvl.place(x=700 ,y=50, width=40)
+textbox_lvl.insert(0, 100)
 
 # Label del Tipo 1
-image_type1_frame = tk.Label(root, width=38, height=38,background=ColorRGB(40,170,253))
-image_type1_frame.place(x=360, y=190)
-textbox_type1 = tk.Entry(root,background=ColorRGB(40,170,253))
-textbox_type1.place(x=245 ,y=2, width=60)
+image_type1_frame = tk.Label(root, width=38, height=38)
+image_type1_frame.place(x=550, y=300)
 
 # Label del Tipo 2
-image_type2_frame = tk.Label(root, width=38, height=38,background=ColorRGB(40,170,253))
-image_type2_frame.place(x=400, y=190)
-textbox_type2 = tk.Entry(root,background=ColorRGB(40,170,253))
-textbox_type2.place(x=245 ,y=23, width=60)
+image_type2_frame = tk.Label(root, width=38, height=38)
+image_type2_frame.place(x=600, y=300)
+
+# Creazione della combobox nature
+cmb_nature = ttk.Combobox(root)
+cmb_nature.bind("<<ComboboxSelected>>", lambda event: Reset())
+cmb_nature.place(x=550, y=355)
+#FINE UI LATO DESTRO DEL FORM-----------------------------------------------------------------------------
+
+#INIZIO UI LATO SINISTRO DEL FORM-----------------------------------------------------------------------------
 
 # Lista delle etichette per le statistiche
 labels = ["PS", "ATT", "DEF", "ATTS", "DEFS", "SPD"]
 
+#Crea un widget Canvas Tkinter per visualizzare il grafico
+# Recupera le statistiche e le categorie per il grafico radar
+stats = [45, 49, 49, 65, 65, 45]  # Esempio di statistiche
+categories = ['HP', 'Attack', 'Defense', 'Speed', 'Sp.Defense', 'Sp.Attack']  # Esempio di categorie
+fig = plot_radar(stats, categories, figsize=(2.9, 2.9))
+canvas = FigureCanvasTkAgg(fig, master=root)
+canvas_widget = canvas.get_tk_widget()
+canvas_widget.place(x=50, y=50)  # Posizione del grafico all'interno della finestra principale
+
 # Creazione delle etichette per le statistiche e delle textbox
 statstxt = []
-for i in range(3):
-    for j in range(2):
-        label = tk.Label(root, text=labels[i*2 + j],background=ColorRGB(40,170,253))
-        label.place(x=0+j*100, y=50+i*25)
+for i in range(6):
+    if i == 0: # hp
+        x = 180 ; y = 70
+    elif i == 1: #att
+        x = 290 ; y = 140
+    elif i == 2: #def
+        x = 290 ; y = 270
+    elif i == 3: #speed
+        x = 180 ; y = 335
+    elif i == 4: #defsp
+        x = 70 ; y = 270
+    elif i == 5:#attsp
+        x = 70 ; y = 140
         
-        textbox = tk.Entry(root,background=ColorRGB(40,170,253))
-        textbox.place(x=50+j*100, y=50+i*25, width=40)
-        #textbox.config(bg="white")
-        statstxt.append(textbox)
+    textbox = tk.Entry(root) #, background=ColorRGB(40, 170, 253)
+    textbox.place(x=x, y=y, width=40)
+    statstxt.append(textbox)
 
 #Totale STATS
 totstats_label = tk.Label(root, text="TOT",background=ColorRGB(40,170,253))
-totstats_label.place(x=0, y=125)
+totstats_label.place(x=480, y=500)
 textbox_totstats = tk.Entry(root,background=ColorRGB(40,170,253))
-textbox_totstats.place(x=50 ,y=125, width=40)
+textbox_totstats.place(x=480 ,y=500, width=40)
 
-#Totale LVL
-lvlstats_label = tk.Label(root, text="LVL",background=ColorRGB(40,170,253))
-lvlstats_label.place(x=100, y=125)
-textbox_lvl = tk.Entry(root,background=ColorRGB(40,170,253))
-textbox_lvl.place(x=150 ,y=125, width=40)
-textbox_lvl.insert(0, 100)
+stat_label = tk.Label(root, text="PS              ATT             DEF             ATTS             DEFS            SPD",bg="#DE313D")
+stat_label.place(x=50, y=355)
 
 #EVS
-evs_label = tk.Label(root, text="EVs:",background=ColorRGB(40,170,253))
-evs_label.place(x=0, y=145)
-evs_label2 = tk.Label(root, text="PS        ATT       DEF       ATTS     DEFS    SPD",background=ColorRGB(40,170,253))
-evs_label2.place(x=0, y=165)
+evs_label = tk.Label(root, text="EVs:")
+evs_label.place(x=0, y=380)
 
 # Creazione delle textbox per EVS 0 to 252
 evstxt = []
 for i in range(6):
-    textbox = tk.Entry(root,background=ColorRGB(40,170,253))
-    textbox.place(x=0+i*40, y=185, width=40)
+    textbox = tk.Entry(root)
+    textbox.place(x=50+i*60, y=380, width=40)
     textbox.insert(i, 0)
     evstxt.append(textbox)
 
 #IVS
-ivs_label = tk.Label(root, text="IVs:",background=ColorRGB(40,170,253))
-ivs_label.place(x=0, y=210)
-ivs_label2 = tk.Label(root, text="PS        ATT       DEF       ATTS     DEFS    SPD",background=ColorRGB(40,170,253))
-ivs_label2.place(x=0, y=230)
+ivs_label = tk.Label(root, text="IVs:")
+ivs_label.place(x=0, y=430)
 
 # Creazione delle textbox per IVS 0 to 31
 ivstxt = []
 for i in range(6):
-    textbox = tk.Entry(root,background=ColorRGB(40,170,253))
-    textbox.place(x=0+i*40, y=250, width=40)
+    textbox = tk.Entry(root)
+    textbox.place(x=50+i*60, y=430, width=40)
     textbox.insert(i, 31)
     ivstxt.append(textbox)
 
-# Creazione della combobox a sinistra
-nature_label = tk.Label(root, text="Nature",background=ColorRGB(40,170,253))
-nature_label.place(x=250, y=230)
-cmb_nature = ttk.Combobox(root)
-cmb_nature.bind("<<ComboboxSelected>>", lambda event: Reset())
-cmb_nature.place(x=250, y=250)
-
 # Pulsante "Calcola"
-stats_button = tk.Button(root, text="CALCOLA STATS.", command=CalcoloStatsNature)
-stats_button.place(x=0, y=280)
+stats_button = tk.Button(root, text="STATS", command=CalcoloStatsNature)
+stats_button.place(x=0, y=460,width=100)
 
 # Pulsante "Calcola EVs"
-evscal_button = tk.Button(root, text="CALCOLA EVs", command=CalcoloEVFromStats)
-evscal_button.place(x=110, y=280)
+evscal_button = tk.Button(root, text="EVs", command=CalcoloEVFromStats)
+evscal_button.place(x=120, y=460,width=100)
 
 # Pulsante "Calcola IVs"
-ivscal_button = tk.Button(root, text="CALCOLA IVs", command=CalcoloIVFromStats)
-ivscal_button.place(x=200, y=280)
+ivscal_button = tk.Button(root, text="IVs", command=CalcoloIVFromStats)
+ivscal_button.place(x=240, y=460,width=100)
 
+#FINE UI LATO SINISTRO DEL FORM-----------------------------------------------------------------------------
 
-# Pulsante "Indietro"
-indietro_button = tk.Button(root, text="<--", command=indietro)
-indietro_button.place(x=50, y=320)
-
-# Pulsante "Avanti"
-avanti_button = tk.Button(root, text="-->", command=avanti)
-avanti_button.place(x=120, y=320)
 
 # Popolare la combobox con i nomi dei Pokémon
 popola_combobox_pokemon()

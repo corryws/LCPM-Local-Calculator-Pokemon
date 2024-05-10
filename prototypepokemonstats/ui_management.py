@@ -4,11 +4,11 @@ from PIL import Image, ImageTk
 #funzione che estrae l'immagine icona del pokemon
 def mostra_immagine_pokemon_ui(id_pokemon):
     try:
-        spritesheet = Image.open("prototypepokemonstats/primagen.png")
+        spritesheet = Image.open("prototypepokemonstats/GenI.png")
 
         # Dimensioni delle immagini nel spritesheet
-        larghezza_immagine = 57
-        altezza_immagine = 57
+        larghezza_immagine = 128
+        altezza_immagine = 128
 
         # Aggiungi 1 all'ID del Pokémon per allineare gli indici
         id_pokemon -= 1
@@ -23,7 +23,7 @@ def mostra_immagine_pokemon_ui(id_pokemon):
 
         # Ritaglia l'immagine corrispondente
         region = spritesheet.crop((x, y, x + larghezza_immagine, y + altezza_immagine))
-        region = region.resize((124, 124), Image.LANCZOS) # deprecated Image.ANTIALIAS
+        region = region.resize((230, 230), Image.LANCZOS) # deprecated Image.ANTIALIAS
         photo = ImageTk.PhotoImage(region)
 
         return photo
