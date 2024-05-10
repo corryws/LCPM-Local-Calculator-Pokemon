@@ -10,5 +10,6 @@ A Pokemon EVs IVs Calculator with a DataBase Locale
 - #Easy to use
 
 ## Program Pic
-![Pic program Example](Screen1.png) 
+![Pic program Example](Screen3.png)
 ![Pic program Example](Screen2.png)
+![Pic program Example](Screen1.png) 
