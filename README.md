@@ -1,4 +1,4 @@
-# PokemonCalculatorEVSIVS_Locale
+# LCPM - Local Calculator Pokemon
 
 PokemonCalculatorEVSIVS_Locale is a sophisticated suite of tools designed for Pokémon enthusiasts and experts alike. This cutting-edge software offers a wide range of features to optimize and maximize the potential of your Pokémon.
 
