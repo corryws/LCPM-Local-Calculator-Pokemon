@@ -1,6 +1,7 @@
 from tkinter import Image
 from PIL import Image, ImageTk
 
+
 #funzione che estrae l'immagine icona del pokemon
 def mostra_immagine_pokemon_ui(id_pokemon):
     try:

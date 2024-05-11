@@ -157,6 +157,53 @@ def indietro():
     # Aggiorna le textbox quando si seleziona un nuovo Pokémon
     popola_textbox()
 
+# Funzione per mostrare le informazioni del programma
+def mostra_informazioni():
+    info_window = tk.Toplevel(root)
+    info_window.title("Informazioni Programma")
+    info_window.geometry("700x700")
+    info_window.resizable(False, False)
+    info_window.iconbitmap('icon.ico')
+
+    # Creazione di una Text widget per visualizzare il testo
+    info_text = tk.Text(info_window, wrap="word", height=30, width=50)
+    info_text.pack(expand=True, fill="both")
+
+    # Creazione di uno Scrollbar per scorrere il testo
+    scrollbar = tk.Scrollbar(info_window, command=info_text.yview)
+    scrollbar.pack(side="left", fill="y")
+
+    info_text.config(yscrollcommand=scrollbar.set)
+
+    # Aggiunta del testo alla Text widget
+    info_text.insert("1.0", """
+    Benvenuto a PokemonCalculatorEVSIVS_Locale!
+                                 
+    v 1.0.0
+                     
+    Features & Bug Fix:
+    - Grafica migliorata
+    - radar char fix
+                     
+    1. Descrizione del software:
+    PokemonCalculatorEVSIVS_Locale è una suite sofisticata di strumenti progettati per
+    gli appassionati e gli esperti di Pokémon. Questo software all'avanguardia offre una
+    vasta gamma di funzionalità per ottimizzare e massimizzare il potenziale dei tuoi Pokémon.
+
+    2. Funzionalità principali:
+    - Calcolatore statistiche Pokémon: calcola le statistiche di qualsiasi Pokémon, tenendo conto di Natura, EVs e IVs.
+    - Calcolatore EVs Pokémon: semplifica il processo di assegnazione dei Valori di Sforzo (EVs) ai tuoi Pokémon.
+    - Calcolatore IVs Pokémon: identifica e migliora i Valori Individuali (IVs) dei tuoi Pokémon.
+    - Grafico radar: rappresenta visivamente le statistiche del tuo Pokémon attraverso un intuitivo grafico radar.
+    - Icone Pokémon: aggiungi un tocco di personalità al tuo software con immagini iconiche dei Pokémon.
+    - Database locale: assicura la sicurezza e la affidabilità dei tuoi dati senza compromessi.
+
+    4. Contatti:
+    Per ulteriori informazioni o per richiedere una demo, contattaci via email a
+    corradotrigilia97@gmail.com | c.trigilia@sisoftsrl.it o visita il nostro sito web su https://corryws.itch.io
+
+    Grazie per aver scelto PokemonCalculatorEVSIVS_Locale!""")
+
 #Aggiorna Grafico
 def update_radar_chart(stats):
     # Calcola i valori necessari per il grafico radar
@@ -273,6 +320,17 @@ root.title("LCPM - Local Calculator Pokemon")
 # Impostazione delle dimensioni della finestra
 root.geometry("800x500")
 root.resizable(False,False)
+root.iconbitmap('icon.ico')
+
+#creazione barra menu
+# Creazione della barra del menu
+menu_bar = tk.Menu(root)
+root.config(menu=menu_bar)
+
+# Creazione del menu "File" con alcune voci
+file_menu = tk.Menu(menu_bar, tearoff=0)
+menu_bar.add_cascade(label="?", menu=file_menu)
+file_menu.add_command(label="Informazioni",command=mostra_informazioni)
 
 # Convertire i valori RGB in un formato compatibile con Tkinter
 root.configure(bg=ColorRGB(224,255,255))
