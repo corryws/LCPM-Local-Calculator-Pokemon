@@ -27,7 +27,7 @@ def plot_radar(stats, categories, figsize):
     ax.set_theta_direction(-1)
 
     # Aggiungi le statistiche
-    ax.fill(angles, stats, color='blue', alpha=0.25)
+    ax.fill(angles, stats, color='#9496E3', alpha=0.25)
     ax.plot(angles, stats, color='blue', linewidth=1)
 
     # Etichette

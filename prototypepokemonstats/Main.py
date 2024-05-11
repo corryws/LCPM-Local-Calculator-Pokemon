@@ -1,6 +1,5 @@
 
 from tkinter import ttk
-from tkinter import Menu
 
 import createDB as createDB
 import math
@@ -15,7 +14,6 @@ from formula import calcola_ps
 from formula import calcola_iv
 from formula import calcola_ev
 from formula import GetType
-from formula import RecolorBGImage
 
 # funzioni ui grafiche
 from ui_management import mostra_immagine_tipo_ui
@@ -350,12 +348,12 @@ cmb_nature.bind("<<ComboboxSelected>>", lambda event: Reset())
 cmb_nature.place(x=550, y=355)
 
 # Pulsante "Indietro"
-indietroNatura_button = tk.Button(root, text="<--")
+""" indietroNatura_button = tk.Button(root, text="<--")
 indietroNatura_button.place(x=510, y=355)
 
 # Pulsante "Avanti"
 avantiNatura_button = tk.Button(root, text="-->")
-avantiNatura_button.place(x=700, y=355)
+avantiNatura_button.place(x=700, y=355) """
 
 #FINE UI LATO DESTRO DEL FORM-----------------------------------------------------------------------------
 
