@@ -13,7 +13,8 @@ def plot_radar(stats, categories, figsize):
     angles = np.linspace(0, 2 * np.pi, num_vars, endpoint=False).tolist()
 
     # Chiudi il loop
-    stats += [stats[0]]
+    stats = list(stats)
+    stats  += [stats[0]]
     angles += [angles[0]]
 
     # Preparazione del grafico
@@ -27,7 +28,7 @@ def plot_radar(stats, categories, figsize):
 
     # Aggiungi le statistiche
     ax.fill(angles, stats, color='blue', alpha=0.25)
-    ax.plot(angles, stats, color='blue', linewidth=0)
+    ax.plot(angles, stats, color='blue', linewidth=1)
 
     # Etichette
     ax.set_yticklabels([])

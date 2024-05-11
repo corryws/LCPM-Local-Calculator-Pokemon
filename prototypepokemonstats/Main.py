@@ -64,8 +64,11 @@ def CalcoloNatura(calcolo):
                    "WHERE Nome = ?", (natura_pkmn,))
     
     mods = cursor.fetchone()
-
-    #invertire attsp con speed
+    print("att"   , mods[0])
+    print("def"   , mods[1])
+    print("atts"  , mods[2])
+    print("defs"  , mods[3])
+    print("speed" , mods[4])
 
     for i in range(5):
         statstxt[i+1].config(bg="white")
@@ -110,9 +113,12 @@ def popola_textbox():
     textbox_totstats.delete(0, tk.END)
     textbox_totstats.insert(0, somma_statistiche)
 
-    SetImageAndIcon(stats[8],GetType(stats[6]),GetType(stats[7]),stats[6])
+    SetImageAndIcon(stats[8],GetType(stats[6]),GetType(stats[7]))
 
     Dbclose(conn,cursor)
+
+    # Aggiorna il grafico radar con le nuove statistiche del Pokémon
+    update_radar_chart(stats[:6])
 
 def popola_combobox_nature():
     # Connessione al database
@@ -153,6 +159,16 @@ def indietro():
     # Aggiorna le textbox quando si seleziona un nuovo Pokémon
     popola_textbox()
 
+#Aggiorna Grafico
+def update_radar_chart(stats):
+    # Calcola i valori necessari per il grafico radar
+    categories = ['HP', 'Attack', 'Defense', 'Sp.Attack', 'Sp.Defense', 'Speed']  # Esempio di categorie
+    fig = plot_radar(stats, categories, figsize=(2.9, 2.9))
+    
+    # Aggiorna il canvas del grafico radar
+    canvas.figure = fig
+    canvas.draw()
+
 #Calcolo base delle EVs avendo IVs e Stats
 def CalcoloEVFromStats():
     oldstats = []
@@ -178,6 +194,9 @@ def CalcoloEVFromStats():
      #evstxt[i].insert(0, str(int(math.ceil(newstats))))
      evstxt[i].insert(0, str(int(newstats)))
      print("calcolati:", newstats)
+
+     # Aggiorna il grafico radar con le nuove statistiche
+     update_radar_chart([float(stat.get()) for stat in statstxt])
 
 #Calcolo base delle IVs avendo EVs e Stats
 def CalcoloIVFromStats():
@@ -205,6 +224,9 @@ def CalcoloIVFromStats():
      ivstxt[i].insert(0, str(int(newstats)))
      print("IVs calcolati:", newstats)
 
+    # Aggiorna il grafico radar con le nuove statistiche
+    update_radar_chart([float(stat.get()) for stat in statstxt])
+
 #Calcolo base delle Stats avendo EVs e IVs
 def CalcoloStatsNature():
     Reset()
@@ -218,11 +240,16 @@ def CalcoloStatsNature():
      print("Statistica Calcolata:", i, newstats)
     CalcoloNatura(True)
 
+    # Aggiorna il grafico radar con le nuove statistiche
+    update_radar_chart([float(stat.get()) for stat in statstxt])
+
 #funzione che setta le immagini e le icone del pokemon selezionato
-def SetImageAndIcon(id_pokemon,id_type_1,id_type_2,type1string):
+def SetImageAndIcon(id_pokemon,id_type_1,id_type_2):
     photopkm = mostra_immagine_pokemon_ui(id_pokemon)
     image_frame.config(image=photopkm)
     image_frame.image = photopkm
+
+    print(id_type_1) ; print(id_type_2)
 
     photo = mostra_immagine_tipo_ui(id_type_1)
     image_type1_frame.config(image=photo) ; image_type1_frame.image = photo
@@ -247,6 +274,8 @@ root.title("LCPM - Local Calculator Pokemon")
 
 # Impostazione delle dimensioni della finestra
 root.geometry("800x500")
+root.resizable(False,False)
+
 # Convertire i valori RGB in un formato compatibile con Tkinter
 root.configure(bg=ColorRGB(224,255,255))
 
@@ -255,7 +284,7 @@ createDB.esegui_script_sql('prototypepokemonstats/db_pokemon.sql', 'prototypepok
 
 # Riquadro per l'immagine pokemon
 image_frame = tk.Label(root, bg="#E0FCFD",width=230, height=230)
-image_frame.place(x=500, y=50)
+image_frame.place(x=500, y=65)
 
 #costruzioni dei panelli
 white_panel = tk.Frame(root, bg="white", width=400, height=500)
@@ -265,7 +294,7 @@ red_panel = tk.Frame(root, bg="#DE313D", width=400, height=50) #rosso sta sopra
 red_panel.place(x=0,y=0)
 
 black_panel = tk.Frame(root, bg="black", width=350, height=50) #nero sta sopra
-black_panel.place(x=450,y=35)
+black_panel.place(x=450,y=20)
 
 black_panel2 = tk.Frame(root, bg="black", width=350, height=50) #nero sta sopra
 black_panel2.place(x=450,y=300)
@@ -289,31 +318,31 @@ for i in range(9):
 
 # Pulsante "Indietro"
 indietro_button = tk.Button(root, text="<--", command=indietro)
-indietro_button.place(x=500, y=200)
+indietro_button.place(x=460, y=200)
 
 # Pulsante "Avanti"
 avanti_button = tk.Button(root, text="-->", command=avanti)
-avanti_button.place(x=700, y=200)
+avanti_button.place(x=740, y=200)
 
 # Creazione della combobox nomi pokemon
 cmb_pokemon = ttk.Combobox(root)
 cmb_pokemon.bind("<<ComboboxSelected>>", lambda event: popola_textbox())
-cmb_pokemon.place(x=500, y=50)
+cmb_pokemon.place(x=500, y=35)
 
 #Totale LVL
 lvlstats_label = tk.Label(root, text="LVL")
-lvlstats_label.place(x=650, y=50)
+lvlstats_label.place(x=650, y=35,width=40)
 textbox_lvl = tk.Entry(root)
-textbox_lvl.place(x=700 ,y=50, width=40)
+textbox_lvl.place(x=690 ,y=36, width=40)
 textbox_lvl.insert(0, 100)
 
 # Label del Tipo 1
-image_type1_frame = tk.Label(root, width=38, height=38)
-image_type1_frame.place(x=550, y=300)
+image_type1_frame = tk.Label(root, width=100, height=22,bg="black")
+image_type1_frame.place(x=500, y=310)
 
 # Label del Tipo 2
-image_type2_frame = tk.Label(root, width=38, height=38)
-image_type2_frame.place(x=600, y=300)
+image_type2_frame = tk.Label(root, width=100, height=22,bg="black")
+image_type2_frame.place(x=620, y=310)
 
 # Creazione della combobox nature
 cmb_nature = ttk.Combobox(root)
@@ -338,7 +367,7 @@ labels = ["PS", "ATT", "DEF", "ATTS", "DEFS", "SPD"]
 #Crea un widget Canvas Tkinter per visualizzare il grafico
 # Recupera le statistiche e le categorie per il grafico radar
 stats = [45, 49, 49, 65, 65, 45]  # Esempio di statistiche
-categories = ['HP', 'Attack', 'Defense', 'Speed', 'Sp.Defense', 'Sp.Attack']  # Esempio di categorie
+categories = ['HP', 'Attack', 'Defense', 'Sp.Attack', 'Sp.Defense', 'Speed']  # Esempio di categorie
 fig = plot_radar(stats, categories, figsize=(2.9, 2.9))
 canvas = FigureCanvasTkAgg(fig, master=root)
 canvas_widget = canvas.get_tk_widget()

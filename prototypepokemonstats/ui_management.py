@@ -42,29 +42,26 @@ def mostra_immagine_screen_ui():
 
 # funzione che estrae l'immagine icona del tipo del pokemon
 def mostra_immagine_tipo_ui(id_type):
-    #type sarà un intero e in base appunto al "tipo assocerò un id"
     try:
-        spritesheet = Image.open("prototypepokemonstats/types_icon.png")
+        spritesheet = Image.open("prototypepokemonstats/types_label.png")
 
         # Dimensioni delle immagini nel spritesheet
-        larghezza_immagine = altezza_immagine   = 38
+        larghezza_immagine = 100
+        altezza_immagine   = 22
 
-        # Aggiungi 1 all'ID del tipo per allineare gli indici
-        id_type -= 1
-
-        # Calcola la posizione del Pokémon nel spritesheet
-        riga    = id_type // 9  # Calcola la riga
-        colonna = id_type % 9  # Calcola la colonna
+        # Calcola la riga e la colonna corrispondenti all'ID
+        colonna = (id_type - 1) % 6  # Calcola la colonna (partendo da 0)
+        riga    = (id_type - 1) // 6  # Calcola la riga (partendo da 0)
 
         # Calcola la coordinata x e y dell'immagine nel spritesheet
-        x = colonna * larghezza_immagine ; y = riga * altezza_immagine
+        x = colonna * larghezza_immagine
+        y = riga * altezza_immagine
 
         # Ritaglia l'immagine corrispondente
         region = spritesheet.crop((x, y, x + larghezza_immagine, y + altezza_immagine))
-        region = region.resize((38, 38), Image.LANCZOS) # deprecated Image.ANTIALIAS
+        region = region.resize((100, 22), Image.LANCZOS)
         photo  = ImageTk.PhotoImage(region)
 
         return photo
-    
     except Exception as e:
-        print("Errore durante il caricamento o il ritaglio dell'immagine:", e)
+        print("Errore:", e)

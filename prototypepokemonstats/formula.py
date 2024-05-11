@@ -68,20 +68,25 @@ def RecolorBGImage(typename):
 
 def GetType(typename):
     if(typename == "Normale")   : return 1
-    if(typename == "Erba")      : return 2
-    if(typename == "Fuoco")     : return 3
-    if(typename == "Acqua")     : return 4
-    if(typename == "Lotta")     : return 5
-    if(typename == "Elettro")   : return 6
-    if(typename == "Volante")   : return 7
-    if(typename == "Coleottero"): return 8
-    if(typename == "Veleno")    : return 9
-    if(typename == "Ghiaccio")  : return 10
-    if(typename == "Roccia")    : return 11
-    if(typename == "Terra")     : return 12
-    if(typename == "Acciaio")   : return 13
+    if(typename == "Lotta")     : return 2
+    if(typename == "Volante")   : return 3
+    
+    if(typename == "Veleno")    : return 4
+
+    if(typename == "Terra")     : return 5
+    if(typename == "Roccia")    : return 6
+    if(typename == "Coleottero"): return 7
+    if(typename == "Spettro")   : return 8
+    if(typename == "Acciaio")   : return 9
+    if(typename == "Fuoco")     : return 10
+    if(typename == "Acqua")     : return 11
+
+    if(typename == "Erba")      : return 12
+
+    if(typename == "Elettro")   : return 13
     if(typename == "Psico")     : return 14
-    if(typename == "Spettro")   : return 15
-    if(typename == "Buio")      : return 16
-    if(typename == "Folletto")  : return 17
-    if(typename == "Drago")     : return 18
+    if(typename == "Ghiaccio")  : return 15
+    if(typename == "Drago")     : return 16
+    if(typename == "Buio")      : return 17
+    if(typename == "Folletto")  : return 18
+    
