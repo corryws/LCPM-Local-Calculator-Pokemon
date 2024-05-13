@@ -2,10 +2,12 @@
 
 -AGGIUNGERE CHART STATS INTERATTIVO ✅
 
+-SISTEMARE LA PARTE SINISTRA DELLA GRAFICA (Tipo Pokemon✅)
+
 -AGGIUNGERE LE ALTRE GENERAZIONI POKEMON 
   -(KANTO : 151) ✅
-  -(JOHTO : )
-  -(HOENN : )
+  -(JOHTO : 100) ✅
+  -(HOENN : 135) ✅
   -(SINNOH: )
   -(UNIMA : )
   -(KALOS : )
@@ -13,4 +15,6 @@
   -(GALAR : )
   -(PALDEA: )
 
--SISTEMARE LA PARTE SINISTRA DELLA GRAFICA (Tipo Pokemon✅, Natura con frecce)
+-https://wiki.pokemoncentral.it/Elenco_Pokémon_per_statistiche_base
+
+

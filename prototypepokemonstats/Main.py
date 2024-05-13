@@ -163,6 +163,8 @@ def GenButton(buttongen):
         cmb_pokemon.current(0)
     elif buttongen == 1:
         cmb_pokemon.current(151)
+    elif buttongen == 2:
+        cmb_pokemon.current(251)
 
     # Aggiorna le textbox quando si seleziona un nuovo Pokémon
     popola_textbox()
@@ -187,30 +189,14 @@ def mostra_informazioni():
 
     # Aggiunta del testo alla Text widget
     info_text.insert("1.0", """
-    Benvenuto a PokemonCalculatorEVSIVS_Locale!
+    Benvenuto a LCPM - Local Calculator Pokemon!
                                  
     v 1.0.0
                      
     Features & Bug Fix:
     - Grafica migliorata
     - radar char fix
-                     
-    1. Descrizione del software:
-    PokemonCalculatorEVSIVS_Locale è una suite sofisticata di strumenti progettati per
-    gli appassionati e gli esperti di Pokémon. Questo software all'avanguardia offre una
-    vasta gamma di funzionalità per ottimizzare e massimizzare il potenziale dei tuoi Pokémon.
-
-    2. Funzionalità principali:
-    - Calcolatore statistiche Pokémon: calcola le statistiche di qualsiasi Pokémon, tenendo conto di Natura, EVs e IVs.
-    - Calcolatore EVs Pokémon: semplifica il processo di assegnazione dei Valori di Sforzo (EVs) ai tuoi Pokémon.
-    - Calcolatore IVs Pokémon: identifica e migliora i Valori Individuali (IVs) dei tuoi Pokémon.
-    - Grafico radar: rappresenta visivamente le statistiche del tuo Pokémon attraverso un intuitivo grafico radar.
-    - Icone Pokémon: aggiungi un tocco di personalità al tuo software con immagini iconiche dei Pokémon.
-    - Database locale: assicura la sicurezza e la affidabilità dei tuoi dati senza compromessi.
-
-    4. Contatti:
-    Per ulteriori informazioni o per richiedere una demo, contattaci via email a
-    corradotrigilia97@gmail.com | c.trigilia@sisoftsrl.it o visita il nostro sito web su https://corryws.itch.io
+    - Aggiunta 2° Gen Pokemon
 
     Grazie per aver scelto PokemonCalculatorEVSIVS_Locale!""")
 

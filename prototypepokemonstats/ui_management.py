@@ -5,21 +5,24 @@ from PIL import Image, ImageTk
 #funzione che estrae l'immagine icona del pokemon
 def mostra_immagine_pokemon_ui(id_pokemon):
     try:
-
+        print(id_pokemon)
         # far partire id_pokemon da 1 nuovamente per le nuove gen
         gen_selection = "I"
         if id_pokemon <= 151 :
             gen_selection = "I"
-        if id_pokemon >= 152 :
+        elif id_pokemon >= 152 and id_pokemon < 252:
             gen_selection = "II"
             id_pokemon -= 151 
+        elif id_pokemon >= 252 :
+            gen_selection = "III"
+            id_pokemon -= 251 
 
         print("prototypepokemonstats/Gen"+gen_selection+".png")
         spritesheet = Image.open("prototypepokemonstats/Gen"+gen_selection+".png")
        
         # Dimensioni delle immagini nel spritesheet
         larghezza_immagine = 128
-        altezza_immagine = 128
+        altezza_immagine   = 128
 
         # Aggiungi 1 all'ID del Pokémon per allineare gli indici
         id_pokemon -= 1
