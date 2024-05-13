@@ -318,7 +318,7 @@ root = tk.Tk()
 root.title("LCPM - Local Calculator Pokemon")
 
 # Impostazione delle dimensioni della finestra
-root.geometry("800x500")
+root.geometry("800x530")
 root.resizable(False,False)
 root.iconbitmap('icon.ico')
 
