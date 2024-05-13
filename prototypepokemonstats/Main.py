@@ -157,6 +157,16 @@ def indietro():
     # Aggiorna le textbox quando si seleziona un nuovo Pokémon
     popola_textbox()
 
+def GenButton(buttongen):
+    print("button gen " , buttongen)
+    if buttongen == 0:
+        cmb_pokemon.current(0)
+    elif buttongen == 1:
+        cmb_pokemon.current(151)
+
+    # Aggiorna le textbox quando si seleziona un nuovo Pokémon
+    popola_textbox()
+
 # Funzione per mostrare le informazioni del programma
 def mostra_informazioni():
     info_window = tk.Toplevel(root)
@@ -318,7 +328,7 @@ root = tk.Tk()
 root.title("LCPM - Local Calculator Pokemon")
 
 # Impostazione delle dimensioni della finestra
-root.geometry("800x530")
+root.geometry("800x515")
 root.resizable(False,False)
 root.iconbitmap('icon.ico')
 
@@ -367,7 +377,7 @@ red_panel3.place(x=0,y=410)
 #aggiunta PULSANTI CAMBIO GENERAZIONI POKEMON
 gen_texts = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
 for i in range(9):
-    gen_button = tk.Button(root, text=gen_texts[i],bg="#DE313D")
+    gen_button = tk.Button(root, text=gen_texts[i],bg="#DE313D",command=lambda index=i: GenButton(index))
     gen_button.place(x=20+i*40, y=15, width=40)
 
 #FINE UI LATO DESTRO DEL FORM-----------------------------------------------------------------------------
@@ -404,14 +414,6 @@ image_type2_frame.place(x=620, y=310)
 cmb_nature = ttk.Combobox(root)
 cmb_nature.bind("<<ComboboxSelected>>", lambda event: Reset())
 cmb_nature.place(x=550, y=355)
-
-# Pulsante "Indietro"
-""" indietroNatura_button = tk.Button(root, text="<--")
-indietroNatura_button.place(x=510, y=355)
-
-# Pulsante "Avanti"
-avantiNatura_button = tk.Button(root, text="-->")
-avantiNatura_button.place(x=700, y=355) """
 
 #FINE UI LATO DESTRO DEL FORM-----------------------------------------------------------------------------
 
