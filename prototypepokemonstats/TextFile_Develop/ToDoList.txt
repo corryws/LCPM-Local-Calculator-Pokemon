@@ -4,7 +4,8 @@
 
 -SISTEMARE LA PARTE SINISTRA DELLA GRAFICA (Tipo Pokemon✅)
 
--AGGIUNGERE LE ALTRE GENERAZIONI POKEMON 
+-AGGIUNGERE LE ALTRE GENERAZIONI POKEMON controlla da qui la correttezza dei dati:
+-https://wiki.pokemoncentral.it/Elenco_Pokémon_per_statistiche_base
   -(KANTO : 151) ✅
   -(JOHTO : 100) ✅
   -(HOENN : 135) ✅
@@ -15,6 +16,6 @@
   -(GALAR : )
   -(PALDEA: )
 
--https://wiki.pokemoncentral.it/Elenco_Pokémon_per_statistiche_base
+
 
 

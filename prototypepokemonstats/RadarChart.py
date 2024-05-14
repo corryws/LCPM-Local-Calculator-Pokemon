@@ -2,8 +2,6 @@ import tkinter as tk
 from tkinter import ttk
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
 
 def plot_radar(stats, categories, figsize):
     # Numero di categorie

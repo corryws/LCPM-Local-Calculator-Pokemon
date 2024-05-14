@@ -1,9 +1,9 @@
 
-from tkinter import ttk
+from   tkinter import ttk
+import tkinter as tk
 
 import createDB as createDB
 import math
-import tkinter as tk
 
 from DatabaseCommand import Dbconnection
 from DatabaseCommand import Dbclose
@@ -19,7 +19,7 @@ from formula import GetType
 from ui_management import mostra_immagine_tipo_ui
 from ui_management import mostra_immagine_pokemon_ui
 from color import ColorRGB
-from chartexample import plot_radar
+from RadarChart import plot_radar
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 def Reset():
@@ -157,6 +157,11 @@ def indietro():
     # Aggiorna le textbox quando si seleziona un nuovo Pokémon
     popola_textbox()
 
+def MegaEvolution():
+    #change sprite with mega-evolution sprite
+    #change base-stats with mega-evolution base-stats
+    print("megaevolution!")
+
 def GenButton(buttongen):
     print("button gen " , buttongen)
     if buttongen == 0:
@@ -197,6 +202,12 @@ def mostra_informazioni():
     - Grafica migliorata
     - radar char fix
     - Aggiunta 2° Gen Pokemon
+                     
+    v 1.0.1
+                     
+    Features & Bug Fix:
+    - Aggiunto pulsante MegaEvoluzione
+    - Aggiunta 3° Gen Pokemon
 
     Grazie per aver scelto PokemonCalculatorEVSIVS_Locale!""")
 
@@ -314,7 +325,7 @@ root = tk.Tk()
 root.title("LCPM - Local Calculator Pokemon")
 
 # Impostazione delle dimensioni della finestra
-root.geometry("800x515")
+root.geometry("800x520")
 root.resizable(False,False)
 root.iconbitmap('icon.ico')
 
@@ -369,11 +380,13 @@ for i in range(9):
 #FINE UI LATO DESTRO DEL FORM-----------------------------------------------------------------------------
 
 # Pulsante "Indietro"
-indietro_button = tk.Button(root, text="<--", command=indietro)
+indietro_img = tk.PhotoImage(file='prototypepokemonstats/Assets/Images/arrow_left.png')
+indietro_button = tk.Button(root, image=indietro_img, command=indietro,background=ColorRGB(224,255,255))
 indietro_button.place(x=460, y=200)
 
 # Pulsante "Avanti"
-avanti_button = tk.Button(root, text="-->", command=avanti)
+avanti_img = tk.PhotoImage(file='prototypepokemonstats/Assets/Images/arrow_right.png')
+avanti_button = tk.Button(root,image=avanti_img,command=avanti,background=ColorRGB(224,255,255))
 avanti_button.place(x=740, y=200)
 
 # Creazione della combobox nomi pokemon
@@ -395,6 +408,11 @@ image_type1_frame.place(x=500, y=310)
 # Label del Tipo 2
 image_type2_frame = tk.Label(root, width=100, height=22,bg="black")
 image_type2_frame.place(x=620, y=310)
+
+# Pulsante "MegaEvolution" - this button will be visible onlfy if the pokemon can megaevolve
+megaevolution_img = tk.PhotoImage(file='prototypepokemonstats/Assets/Images/megaevolution.png')
+megaevolution_button = tk.Button(root,image=megaevolution_img,command=MegaEvolution,background=ColorRGB(0,0,0))
+megaevolution_button.place(x=735, y=305)
 
 # Creazione della combobox nature
 cmb_nature = ttk.Combobox(root)

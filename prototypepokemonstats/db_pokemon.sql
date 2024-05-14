@@ -423,8 +423,6 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Deoxys', 'Psico', NULL);
 
 
-
-
 -- insert Base Stat primi 151 Pokemon
 INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
 (45, 49, 49, 65, 65, 45, 1), -- Bulbasaur
