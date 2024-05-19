@@ -17,6 +17,12 @@ def calcola_ps(base, iv, ev, livello):
     Calcola i punti salute (PS) dati i valori base, iv, ev e livello.
     Restituisce il valore dei PS calcolati.
     """
+
+    #shedinja check
+    if base == 1 : 
+        ps = base
+        return ps
+
     ps = ((2 * base + iv + (ev / 4)) / 100 * livello) + livello + 10
     return ps
 

@@ -10,12 +10,26 @@ def mostra_immagine_pokemon_ui(id_pokemon):
         gen_selection = "I"
         if id_pokemon <= 151 :
             gen_selection = "I"
+
         elif id_pokemon >= 152 and id_pokemon < 252:
             gen_selection = "II"
-            id_pokemon -= 151 
-        elif id_pokemon >= 252 :
+            id_pokemon -= 151
+
+        elif id_pokemon >= 252 and id_pokemon < 387:
             gen_selection = "III"
-            id_pokemon -= 251 
+            id_pokemon -= 251
+
+        elif id_pokemon >= 387 and id_pokemon < 494:
+            gen_selection = "IV"
+            id_pokemon -= 386
+
+        elif id_pokemon >= 494 and id_pokemon < 650: 
+            gen_selection = "V"
+            id_pokemon -= 493
+        
+        elif id_pokemon >= 650: 
+            gen_selection = "VI"
+            id_pokemon -= 649
 
         print("prototypepokemonstats/Assets/PokemonGen/Gen"+gen_selection+".png")
         spritesheet = Image.open("prototypepokemonstats/Assets/PokemonGen/Gen"+gen_selection+".png")

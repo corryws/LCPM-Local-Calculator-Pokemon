@@ -420,7 +420,345 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Groudon', 'Terra', NULL),
 ('Rayquaza', 'Drago', 'Volante'),
 ('Jirachi', 'Acciaio', 'Psico'),
-('Deoxys', 'Psico', NULL);
+('Deoxys', 'Psico', NULL),
+-- INSERT POKEMON DI SINNOH - tbPokemon
+('Turtwig', 'Erba', NULL),
+('Grotle', 'Erba', NULL),
+('Torterra', 'Erba', 'Terra'),
+('Chimchar', 'Fuoco', NULL),
+('Monferno', 'Fuoco', 'Lotta'),
+('Infernape', 'Fuoco', 'Lotta'),
+('Piplup', 'Acqua', NULL),
+('Prinplup', 'Acqua', NULL),
+('Empoleon', 'Acqua', 'Acciaio'),
+('Starly', 'Normale', 'Volante'),
+('Staravia', 'Normale', 'Volante'),
+('Staraptor', 'Normale', 'Volante'),
+('Bidoof', 'Normale', NULL),
+('Bibarel', 'Normale', 'Acqua'),
+('Kricketot', 'Coleottero', NULL),
+('Kricketune', 'Coleottero', NULL),
+('Shinx', 'Elettro', NULL),
+('Luxio', 'Elettro', NULL),
+('Luxray', 'Elettro', NULL),
+('Budew', 'Erba', 'Veleno'),
+('Roserade', 'Erba', 'Veleno'),
+('Cranidos', 'Roccia', NULL),
+('Rampardos', 'Roccia', NULL),
+('Shieldon', 'Roccia', 'Acciaio'),
+('Bastiodon', 'Roccia', 'Acciaio'),
+('Burmy', 'Coleottero', NULL),
+('Wormadam', 'Coleottero', 'Erba'),
+('Mothim', 'Coleottero', 'Volante'),
+('Combee', 'Coleottero', 'Volante'),
+('Vespiquen', 'Coleottero', 'Volante'),
+('Pachirisu', 'Elettro', NULL),
+('Buizel', 'Acqua', NULL),
+('Floatzel', 'Acqua', NULL),
+('Cherubi', 'Erba', NULL),
+('Cherrim', 'Erba', NULL),
+('Shellos', 'Acqua', NULL),
+('Gastrodon', 'Acqua', 'Terra'),
+('Ambipom', 'Normale', NULL),
+('Drifloon', 'Spettro', 'Volante'),
+('Drifblim', 'Spettro', 'Volante'),
+('Buneary', 'Normale', NULL),
+('Lopunny', 'Normale', NULL),
+('Mismagius', 'Spettro', NULL),
+('Honchkrow', 'Buio', 'Volante'),
+('Glameow', 'Normale', NULL),
+('Purugly', 'Normale', NULL),
+('Chingling', 'Psico', NULL),
+('Stunky', 'Veleno', 'Buio'),
+('Skuntank', 'Veleno', 'Buio'),
+('Bronzor', 'Acciaio', 'Psico'),
+('Bronzong', 'Acciaio', 'Psico'),
+('Bonsly', 'Roccia', NULL),
+('Mime Jr.', 'Psico', 'Folletto'),
+('Happiny', 'Normale', NULL),
+('Chatot', 'Normale', 'Volante'),
+('Spiritomb', 'Spettro', 'Buio'),
+('Gible', 'Drago', 'Terra'),
+('Gabite', 'Drago', 'Terra'),
+('Garchomp', 'Drago', 'Terra'),
+('Munchlax', 'Normale', NULL),
+('Riolu', 'Lotta', NULL),
+('Lucario', 'Lotta', 'Acciaio'),
+('Hippopotas', 'Terra', NULL),
+('Hippowdon', 'Terra', NULL),
+('Skorupi', 'Veleno', 'Coleottero'),
+('Drapion', 'Veleno', 'Buio'),
+('Croagunk', 'Veleno', 'Lotta'),
+('Toxicroak', 'Veleno', 'Lotta'),
+('Carnivine', 'Erba', NULL),
+('Finneon', 'Acqua', NULL),
+('Lumineon', 'Acqua', NULL),
+('Mantyke', 'Acqua', 'Volante'),
+('Snover', 'Erba', 'Ghiaccio'),
+('Abomasnow', 'Erba', 'Ghiaccio'),
+('Weavile', 'Buio', 'Ghiaccio'),
+('Magnezone', 'Elettro', 'Acciaio'),
+('Lickilicky', 'Normale', NULL),
+('Rhyperior', 'Terra', 'Roccia'),
+('Tangrowth', 'Erba', NULL),
+('Electivire', 'Elettro', NULL),
+('Magmortar', 'Fuoco', NULL),
+('Togekiss', 'Normale', 'Volante'),
+('Yanmega', 'Coleottero', 'Volante'),
+('Leafeon', 'Erba', NULL),
+('Glaceon', 'Ghiaccio', NULL),
+('Gliscor', 'Terra', 'Volante'),
+('Mamoswine', 'Ghiaccio', 'Terra'),
+('Porygon-Z', 'Normale', NULL),
+('Gallade', 'Psico', 'Lotta'),
+('Probopass', 'Roccia', 'Acciaio'),
+('Dusknoir', 'Spettro', NULL),
+('Froslass', 'Ghiaccio', 'Spettro'),
+('Rotom', 'Elettro', 'Spettro'),
+('Uxie', 'Psico', NULL),
+('Mesprit', 'Psico', NULL),
+('Azelf', 'Psico', NULL),
+('Dialga', 'Acciaio', 'Drago'),
+('Palkia', 'Acqua', 'Drago'),
+('Heatran', 'Fuoco', 'Acciaio'),
+('Regigigas', 'Normale', NULL),
+('Giratina', 'Spettro', 'Drago'),
+('Cresselia', 'Psico', NULL),
+('Phione', 'Acqua', NULL),
+('Manaphy', 'Acqua', NULL),
+('Darkrai', 'Buio', NULL),
+('Shaymin', 'Erba', NULL),
+('Arceus', 'Normale', NULL),
+-- INSERT POKEMON DI UNIMA - tbPokemon
+('Victini', 'Psico', 'Fuoco'),
+('Snivy', 'Erba', NULL),
+('Servine', 'Erba', NULL),
+('Serperior', 'Erba', NULL),
+('Tepig', 'Fuoco', NULL),
+('Pignite', 'Fuoco', 'Lotta'),
+('Emboar', 'Fuoco', 'Lotta'),
+('Oshawott', 'Acqua', NULL),
+('Dewott', 'Acqua', NULL),
+('Samurott', 'Acqua', NULL),
+('Patrat', 'Normale', NULL),
+('Watchog', 'Normale', NULL),
+('Lillipup', 'Normale', NULL),
+('Herdier', 'Normale', NULL),
+('Stoutland', 'Normale', NULL),
+('Purrloin', 'Buio', NULL),
+('Liepard', 'Buio', NULL),
+('Pansage', 'Erba', NULL),
+('Simisage', 'Erba', NULL),
+('Pansear', 'Fuoco', NULL),
+('Simisear', 'Fuoco', NULL),
+('Panpour', 'Acqua', NULL),
+('Simipour', 'Acqua', NULL),
+('Munna', 'Psico', NULL),
+('Musharna', 'Psico', NULL),
+('Pidove', 'Normale', 'Volante'),
+('Tranquill', 'Normale', 'Volante'),
+('Unfezant', 'Normale', 'Volante'),
+('Blitzle', 'Elettro', NULL),
+('Zebstrika', 'Elettro', NULL),
+('Roggenrola', 'Roccia', NULL),
+('Boldore', 'Roccia', NULL),
+('Gigalith', 'Roccia', NULL),
+('Woobat', 'Psico', 'Volante'),
+('Swoobat', 'Psico', 'Volante'),
+('Drilbur', 'Terra', NULL),
+('Excadrill', 'Terra', 'Acciaio'),
+('Audino', 'Normale', NULL),
+('Timburr', 'Lotta', NULL),
+('Gurdurr', 'Lotta', NULL),
+('Conkeldurr', 'Lotta', NULL),
+('Tympole', 'Acqua', NULL),
+('Palpitoad', 'Acqua', 'Terra'),
+('Seismitoad', 'Acqua', 'Terra'),
+('Throh', 'Lotta', NULL),
+('Sawk', 'Lotta', NULL),
+('Sewaddle', 'Coleottero', 'Erba'),
+('Swadloon', 'Coleottero', 'Erba'),
+('Leavanny', 'Coleottero', 'Erba'),
+('Venipede', 'Coleottero', 'Veleno'),
+('Whirlipede', 'Coleottero', 'Veleno'),
+('Scolipede', 'Coleottero', 'Veleno'),
+('Cottonee', 'Erba', 'Folletto'),
+('Whimsicott', 'Erba', 'Folletto'),
+('Petilil', 'Erba', NULL),
+('Lilligant', 'Erba', NULL),
+('Basculin', 'Acqua', NULL),
+('Sandile', 'Terra', 'Buio'),
+('Krokorok', 'Terra', 'Buio'),
+('Krookodile', 'Terra', 'Buio'),
+('Darumaka', 'Fuoco', NULL),
+('Darmanitan', 'Fuoco', NULL),
+('Maractus', 'Erba', NULL),
+('Dwebble', 'Roccia', 'Coleottero'),
+('Crustle', 'Roccia', 'Coleottero'),
+('Scraggy', 'Buio', 'Lotta'),
+('Scrafty', 'Buio', 'Lotta'),
+('Sigilyph', 'Psico', 'Volante'),
+('Yamask', 'Spettro', NULL),
+('Cofagrigus', 'Spettro', NULL),
+('Tirtouga', 'Acqua', 'Roccia'),
+('Carracosta', 'Acqua', 'Roccia'),
+('Archen', 'Roccia', 'Volante'),
+('Archeops', 'Roccia', 'Volante'),
+('Trubbish', 'Veleno', NULL),
+('Garbodor', 'Veleno', NULL),
+('Zorua', 'Buio', NULL),
+('Zoroark', 'Buio', NULL),
+('Minccino', 'Normale', NULL),
+('Cinccino', 'Normale', NULL),
+('Gothita', 'Psico', NULL),
+('Gothorita', 'Psico', NULL),
+('Gothitelle', 'Psico', NULL),
+('Solosis', 'Psico', NULL),
+('Duosion', 'Psico', NULL),
+('Reuniclus', 'Psico', NULL),
+('Ducklett', 'Acqua', 'Volante'),
+('Swanna', 'Acqua', 'Volante'),
+('Vanillite', 'Ghiaccio', NULL),
+('Vanillish', 'Ghiaccio', NULL),
+('Vanilluxe', 'Ghiaccio', NULL),
+('Deerling', 'Normale', 'Erba'),
+('Sawsbuck', 'Normale', 'Erba'),
+('Emolga', 'Elettro', 'Volante'),
+('Karrablast', 'Coleottero', NULL),
+('Escavalier', 'Coleottero', 'Acciaio'),
+('Foongus', 'Erba', 'Veleno'),
+('Amoonguss', 'Erba', 'Veleno'),
+('Frillish', 'Acqua', 'Spettro'),
+('Jellicent', 'Acqua', 'Spettro'),
+('Alomomola', 'Acqua', NULL),
+('Joltik', 'Coleottero', 'Elettro'),
+('Galvantula', 'Coleottero', 'Elettro'),
+('Ferroseed', 'Erba', 'Acciaio'),
+('Ferrothorn', 'Erba', 'Acciaio'),
+('Klink', 'Acciaio', NULL),
+('Klang', 'Acciaio', NULL),
+('Klinklang', 'Acciaio', NULL),
+('Tynamo', 'Elettro', NULL),
+('Eelektrik', 'Elettro', NULL),
+('Eelektross', 'Elettro', NULL),
+('Elgyem', 'Psico', NULL),
+('Beheeyem', 'Psico', NULL),
+('Litwick', 'Spettro', 'Fuoco'),
+('Lampent', 'Spettro', 'Fuoco'),
+('Chandelure', 'Spettro', 'Fuoco'),
+('Axew', 'Drago', NULL),
+('Fraxure', 'Drago', NULL),
+('Haxorus', 'Drago', NULL),
+('Cubchoo', 'Ghiaccio', NULL),
+('Beartic', 'Ghiaccio', NULL),
+('Cryogonal', 'Ghiaccio', NULL),
+('Shelmet', 'Coleottero', NULL),
+('Accelgor', 'Coleottero', NULL),
+('Stunfisk', 'Terra', 'Elettro'),
+('Mienfoo', 'Lotta', NULL),
+('Mienshao', 'Lotta', NULL),
+('Druddigon', 'Drago', NULL),
+('Golett', 'Terra', 'Spettro'),
+('Golurk', 'Terra', 'Spettro'),
+('Pawniard', 'Buio', 'Acciaio'),
+('Bisharp', 'Buio', 'Acciaio'),
+('Bouffalant', 'Normale', NULL),
+('Rufflet', 'Normale', 'Volante'),
+('Braviary', 'Normale', 'Volante'),
+('Vullaby', 'Buio', 'Volante'),
+('Mandibuzz', 'Buio', 'Volante'),
+('Heatmor', 'Fuoco', NULL),
+('Durant', 'Coleottero', 'Acciaio'),
+('Deino', 'Buio', 'Drago'),
+('Zweilous', 'Buio', 'Drago'),
+('Hydreigon', 'Buio', 'Drago'),
+('Larvesta', 'Coleottero', 'Fuoco'),
+('Volcarona', 'Coleottero', 'Fuoco'),
+('Cobalion', 'Acciaio', 'Lotta'),
+('Terrakion', 'Roccia', 'Lotta'),
+('Virizion', 'Erba', 'Lotta'),
+('Tornadus', 'Volante', NULL),
+('Thundurus', 'Elettro', 'Volante'),
+('Reshiram', 'Drago', 'Fuoco'),
+('Zekrom', 'Drago', 'Elettro'),
+('Landorus', 'Terra', 'Volante'),
+('Kyurem', 'Drago', 'Ghiaccio'),
+('Keldeo', 'Acqua', 'Lotta'),
+('Meloetta', 'Normale', 'Psico'),
+('Genesect', 'Coleottero', 'Acciaio'),
+-- INSERT POKEMON DI KALOS - tbPokemon
+('Chespin', 'Erba', NULL),
+('Quilladin', 'Erba', NULL),
+('Chesnaught', 'Erba', 'Lotta'),
+('Fennekin', 'Fuoco', NULL),
+('Braixen', 'Fuoco', NULL),
+('Delphox', 'Fuoco', 'Psico'),
+('Froakie', 'Acqua', NULL),
+('Frogadier', 'Acqua', NULL),
+('Greninja', 'Acqua', 'Buio'),
+('Bunnelby', 'Normale', NULL),
+('Diggersby', 'Normale', 'Terra'),
+('Fletchling', 'Normale', 'Volante'),
+('Fletchinder', 'Fuoco', 'Volante'),
+('Talonflame', 'Fuoco', 'Volante'),
+('Scatterbug', 'Coleottero', NULL),
+('Spewpa', 'Coleottero', NULL),
+('Vivillon', 'Coleottero', 'Volante'),
+('Litleo', 'Fuoco', 'Normale'),
+('Pyroar', 'Fuoco', 'Normale'),
+('Flabébé', 'Folletto', NULL),
+('Floette', 'Folletto', NULL),
+('Florges', 'Folletto', NULL),
+('Skiddo', 'Erba', NULL),
+('Gogoat', 'Erba', NULL),
+('Pancham', 'Lotta', NULL),
+('Pangoro', 'Lotta', 'Buio'),
+('Furfrou', 'Normale', NULL),
+('Espurr', 'Psico', NULL),
+('Meowstic', 'Psico', NULL),
+('Honedge', 'Acciaio', 'Spettro'),
+('Doublade', 'Acciaio', 'Spettro'),
+('Aegislash', 'Acciaio', 'Spettro'),
+('Spritzee', 'Folletto', NULL),
+('Aromatisse', 'Folletto', NULL),
+('Swirlix', 'Folletto', NULL),
+('Slurpuff', 'Folletto', NULL),
+('Inkay', 'Buio', 'Psico'),
+('Malamar', 'Buio', 'Psico'),
+('Binacle', 'Roccia', 'Acqua'),
+('Barbaracle', 'Roccia', 'Acqua'),
+('Skrelp', 'Veleno', 'Acqua'),
+('Dragalge', 'Veleno', 'Drago'),
+('Clauncher', 'Acqua', NULL),
+('Clawitzer', 'Acqua', NULL),
+('Helioptile', 'Elettro', 'Normale'),
+('Heliolisk', 'Elettro', 'Normale'),
+('Tyrunt', 'Roccia', 'Drago'),
+('Tyrantrum', 'Roccia', 'Drago'),
+('Amaura', 'Roccia', 'Ghiaccio'),
+('Aurorus', 'Roccia', 'Ghiaccio'),
+('Sylveon', 'Folletto', NULL),
+('Hawlucha', 'Lotta', 'Volante'),
+('Dedenne', 'Elettro', 'Folletto'),
+('Carbink', 'Roccia', 'Folletto'),
+('Goomy', 'Drago', NULL),
+('Sliggoo', 'Drago', NULL),
+('Goodra', 'Drago', NULL),
+('Klefki', 'Acciaio', 'Folletto'),
+('Phantump', 'Spettro', 'Erba'),
+('Trevenant', 'Spettro', 'Erba'),
+('Pumpkaboo', 'Spettro', 'Erba'),
+('Gourgeist', 'Spettro', 'Erba'),
+('Bergmite', 'Ghiaccio', NULL),
+('Avalugg', 'Ghiaccio', NULL),
+('Noibat', 'Volante', 'Drago'),
+('Noivern', 'Volante', 'Drago'),
+('Xerneas', 'Folletto', NULL),
+('Yveltal', 'Buio', 'Volante'),
+('Zygarde', 'Drago', 'Terra'),
+('Diancie', 'Roccia', 'Folletto'),
+('Hoopa', 'Psico', 'Spettro'),
+('Volcanion', 'Fuoco', 'Acqua');
 
 
 -- insert Base Stat primi 151 Pokemon
@@ -718,7 +1056,7 @@ INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
 (100, 160, 100, 95, 110, 65, 289), -- Slaking
 (35, 55, 35, 30, 30, 35, 290), -- Nincada
 (45, 90, 45, 30, 30, 40, 291), -- Ninjask
-(20, 40, 90, 30, 90, 40, 292), -- Shedinja
+(1, 40, 90, 30, 90, 40, 292), -- Shedinja
 (99, 58, 58, 76, 76, 67, 293), -- Whismur
 (99, 68, 83, 72, 87, 51, 294), -- Loudred
 (99, 98, 63, 98, 63, 45, 295), -- Exploud
@@ -812,7 +1150,352 @@ INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
 (100, 150, 140, 100, 90, 90, 383), -- Groudon
 (105, 150, 90, 150, 90, 95, 384), -- Rayquaza
 (100, 100, 100, 100, 100, 100, 385), -- Jirachi
-(50, 150, 50, 150, 50, 150, 386); -- Deoxys
+(50, 150, 50, 150, 50, 150, 386), -- Deoxys
+-- insert Base Stat Pokemon di Sinnoh
+(55, 68, 64, 45, 55, 31, 387), -- Turtwig
+(75, 89, 85, 55, 65, 36, 388), -- Grotle
+(95, 109, 105, 75, 85, 56, 389), -- Torterra
+(44, 58, 44, 58, 44, 61, 390), -- Chimchar
+(64, 78, 52, 78, 52, 81, 391), -- Monferno
+(76, 104, 71, 104, 71, 108, 392), -- Infernape
+(53, 51, 53, 61, 56, 40, 393), -- Piplup
+(64, 66, 68, 81, 76, 50, 394), -- Prinplup
+(84, 86, 88, 111, 101, 60, 395), -- Empoleon
+(40, 55, 30, 30, 30, 60, 396), -- Starly
+(55, 75, 50, 40, 40, 80, 397), -- Staravia
+(85, 120, 70, 50, 60, 100, 398), -- Staraptor
+(59, 45, 40, 35, 40, 31, 399), -- Bidoof
+(79, 85, 60, 55, 60, 71, 400), -- Bibarel
+(37, 25, 41, 25, 41, 25, 401), -- Kricketot
+(77, 85, 51, 55, 51, 65, 402), -- Kricketune
+(45, 65, 34, 40, 34, 45, 403), -- Shinx
+(60, 85, 49, 60, 49, 60, 404), -- Luxio
+(80, 120, 79, 95, 79, 70, 405), -- Luxray
+(40, 30, 35, 50, 70, 55, 406), -- Budew
+(60, 70, 65, 125, 105, 90, 407), -- Roserade
+(67, 125, 40, 30, 30, 58, 408), -- Cranidos
+(97, 165, 60, 65, 50, 58, 409), -- Rampardos
+(30, 42, 118, 42, 88, 30, 410), -- Shieldon
+(60, 52, 168, 47, 138, 30, 411), -- Bastiodon
+(40, 29, 45, 29, 45, 36, 412), -- Burmy
+(60, 59, 85, 79, 105, 36, 413), -- Wormadam
+(70, 94, 50, 94, 50, 66, 414), -- Mothim
+(30, 30, 42, 30, 42, 70, 415), -- Combee
+(70, 80, 102, 80, 102, 40, 416), -- Vespiquen
+(60, 45, 70, 45, 90, 95, 417), -- Pachirisu
+(55, 65, 35, 60, 30, 85, 418), -- Buizel
+(85, 105, 55, 85, 50, 115, 419), -- Floatzel
+(45, 35, 45, 62, 53, 35, 420), -- Cherubi
+(70, 60, 70, 87, 78, 85, 421), -- Cherrim
+(76, 48, 48, 57, 62, 34, 422), -- Shellos
+(111, 83, 68, 92, 82, 39, 423), -- Gastrodon
+(75, 100, 66, 60, 66, 115, 424), -- Ambipom
+(90, 50, 34, 60, 44, 70, 425), -- Drifloon
+(150, 80, 44, 90, 54, 80, 426), -- Drifblim
+(55, 66, 44, 44, 56, 85, 427), -- Buneary
+(65, 76, 84, 54, 96, 105, 428), -- Lopunny
+(60, 60, 60, 105, 105, 105, 429), -- Mismagius
+(100, 125, 52, 105, 52, 71, 430), -- Honchkrow
+(49, 55, 42, 42, 37, 85, 431), -- Glameow
+(71, 82, 64, 64, 59, 112, 432), -- Purugly
+(45, 30, 50, 65, 50, 45, 433), -- Chingling
+(63, 63, 47, 41, 41, 74, 434), -- Stunky
+(103, 93, 67, 71, 61, 84, 435), -- Skuntank
+(57, 24, 86, 24, 86, 23, 436), -- Bronzor
+(67, 89, 116, 79, 116, 33, 437), -- Bronzong
+(50, 80, 95, 10, 45, 10, 438), -- Bonsly
+(20, 25, 45, 70, 90, 60, 439), -- Mime Jr.
+(100, 5, 5, 15, 65, 30, 440), -- Happiny
+(76, 65, 45, 92, 42, 91, 441), -- Chatot
+(50, 92, 108, 92, 108, 35, 442), -- Spiritomb
+(68, 90, 65, 50, 55, 82, 443), -- Gible
+(108, 130, 95, 80, 85, 102, 444), -- Gabite
+(108, 170, 115, 120, 95, 92, 445), -- Garchomp
+(135, 85, 40, 40, 85, 5, 446), -- Munchlax
+(40, 70, 40, 35, 40, 60, 447), -- Riolu
+(70, 110, 70, 115, 70, 90, 448), -- Lucario
+(68, 72, 78, 38, 42, 32, 449), -- Hippopotas
+(108, 112, 118, 68, 72, 47, 450), -- Hippowdon
+(51, 82, 53, 62, 54, 71, 451), -- Skorupi
+(91, 132, 95, 62, 105, 61, 452), -- Drapion
+(48, 61, 40, 61, 40, 50, 453), -- Croagunk
+(83, 106, 65, 86, 65, 85, 454), -- Toxicroak
+(74, 100, 72, 90, 72, 46, 455), -- Carnivine
+(49, 49, 56, 49, 61, 66, 456), -- Finneon
+(69, 69, 76, 69, 86, 91, 457), -- Lumineon
+(45, 20, 50, 60, 50, 50, 458), -- Mantyke
+(60, 62, 50, 62, 60, 40, 459), -- Snover
+(90, 92, 75, 92, 85, 60, 460), -- Abomasnow
+(70, 120, 65, 45, 85, 125, 461), -- Weavile
+(70, 70, 115, 130, 90, 60, 462), -- Magnezone
+(110, 85, 95, 80, 95, 50, 463), -- Lickilicky
+(115, 140, 130, 55, 55, 40, 464), -- Rhyperior
+(100, 100, 125, 110, 50, 50, 465), -- Tangrowth
+(75, 123, 67, 95, 85, 95, 466), -- Electivire
+(75, 95, 67, 125, 95, 83, 467), -- Magmortar
+(85, 50, 95, 120, 115, 80, 468), -- Togekiss
+(86, 76, 86, 116, 56, 95, 469), -- Yanmega
+(65, 110, 130, 60, 65, 95, 470), -- Leafeon
+(65, 60, 110, 130, 95, 65, 471), -- Glaceon
+(75, 95, 125, 45, 75, 95, 472), -- Gliscor
+(110, 130, 80, 70, 60, 80, 473), -- Mamoswine
+(85, 80, 70, 135, 75, 90, 474), -- Porygon-Z
+(68, 125, 65, 65, 115, 80, 475), -- Gallade
+(60, 55, 145, 75, 150, 40, 476), -- Probopass
+(45, 100, 135, 65, 135, 45, 477), -- Dusknoir
+(70, 80, 70, 80, 70, 110, 478), -- Froslass
+(50, 50, 77, 95, 77, 91, 479), -- Rotom
+(75, 75, 130, 75, 130, 95, 480), -- Uxie
+(80, 105, 105, 105, 105, 80, 481), -- Mesprit
+(75, 125, 70, 125, 70, 115, 482), -- Azelf
+(100, 120, 120, 150, 100, 90, 483), -- Dialga
+(90, 120, 100, 150, 120, 100, 484), -- Palkia
+(91, 90, 106, 130, 106, 77, 485), -- Heatran
+(110, 160, 110, 80, 110, 100, 486), -- Regigigas
+(150, 100, 120, 100, 120, 90, 487), -- Giratina
+(120, 70, 120, 75, 130, 85, 488), -- Cresselia
+(80, 80, 80, 80, 80, 80, 489), -- Phione
+(100, 100, 100, 100, 100, 100, 490), -- Manaphy
+(70, 90, 90, 135, 90, 125, 491), -- Darkrai
+(100, 100, 100, 100, 100, 100, 492), -- Shaymin
+(120, 120, 120, 120, 120, 120, 493), -- Arceus
+-- insert Base Stat Pokemon di Unima
+(100, 100, 100, 100, 100, 100, 494), -- Victini
+(45, 45, 55, 45, 55, 63, 495), -- Snivy
+(60, 60, 75, 60, 75, 83, 496), -- Servine
+(75, 75, 95, 75, 95, 113, 497), -- Serperior
+(65, 63, 45, 45, 45, 45, 498), -- Tepig
+(90, 93, 55, 70, 55, 55, 499), -- Pignite
+(110, 123, 65, 100, 65, 65, 500), -- Emboar
+(55, 56, 55, 39, 50, 64, 501), -- Oshawott
+(75, 75, 60, 60, 60, 60, 502), -- Dewott
+(95, 100, 85, 108, 70, 70, 503), -- Samurott
+(45, 85, 50, 55, 50, 65, 504), -- Patrat
+(60, 110, 60, 60, 60, 88, 505), -- Watchog
+(45, 60, 45, 25, 45, 55, 506), -- Lillipup
+(65, 80, 65, 35, 65, 60, 507), -- Herdier
+(85, 110, 90, 45, 90, 80, 508), -- Stoutland
+(55, 70, 40, 60, 40, 69, 509), -- Purrloin
+(64, 88, 50, 88, 50, 106, 510), -- Liepard
+(50, 75, 45, 40, 45, 60, 511), -- Pansage
+(75, 98, 63, 98, 63, 101, 512), -- Simisage
+(50, 53, 48, 53, 48, 64, 513), -- Pansear
+(75, 98, 63, 98, 63, 101, 514), -- Simisear
+(50, 53, 48, 53, 48, 64, 515), -- Panpour
+(75, 98, 63, 98, 63, 101, 516), -- Simipour
+(75, 80, 55, 25, 35, 35, 517), -- Munna
+(116, 55, 85, 107, 95, 29, 518), -- Musharna
+(45, 85, 70, 40, 40, 60, 519), -- Pidove
+(62, 77, 62, 50, 42, 65, 520), -- Tranquill
+(80, 115, 80, 65, 55, 93, 521), -- Unfezant
+(50, 50, 40, 30, 30, 60, 522), -- Blitzle
+(75, 100, 63, 80, 63, 116, 523), -- Zebstrika
+(60, 85, 40, 30, 45, 68, 524), -- Roggenrola
+(70, 105, 105, 50, 40, 20, 525), -- Boldore
+(85, 135, 130, 60, 80, 25, 526), -- Gigalith
+(55, 85, 55, 50, 55, 60, 527), -- Woobat
+(67, 57, 55, 77, 55, 114, 528), -- Swoobat
+(60, 60, 40, 65, 45, 35, 529), -- Drilbur
+(110, 135, 60, 50, 65, 88, 530), -- Excadrill
+(60, 85, 40, 30, 45, 68, 531), -- Audino
+(103, 60, 86, 60, 86, 50, 532), -- Timburr
+(85, 105, 85, 40, 50, 40, 533), -- Gurdurr
+(105, 140, 95, 55, 65, 45, 534), -- Conkeldurr
+(75, 80, 55, 25, 35, 35, 535), -- Tympole
+(65, 95, 65, 50, 55, 70, 536), -- Palpitoad
+(105, 85, 75, 70, 75, 74, 537), -- Seismitoad
+(50, 60, 45, 100, 80, 65, 538), -- Throh
+(60, 100, 85, 30, 85, 50, 539), -- Sawk
+(45, 85, 55, 65, 55, 65, 540), -- Sewaddle
+(55, 63, 90, 50, 80, 42, 541), -- Swadloon
+(75, 103, 80, 70, 80, 92, 542), -- Leavanny
+(30, 45, 59, 30, 39, 57, 543), -- Venipede
+(40, 55, 99, 40, 79, 47, 544), -- Whirlipede
+(60, 100, 89, 55, 69, 112, 545), -- Scolipede
+(45, 30, 50, 65, 50, 45, 546), -- Cottonee
+(60, 67, 85, 77, 75, 116, 547), -- Whimsicott
+(55, 50, 40, 40, 40, 75, 548), -- Petilil
+(70, 60, 75, 110, 75, 90, 549), -- Lilligant
+(60, 60, 60, 60, 60, 60, 550), -- Basculin
+(50, 65, 85, 35, 35, 55, 551), -- Sandile
+(60, 82, 45, 45, 45, 74, 552), -- Krokorok
+(95, 117, 80, 65, 70, 92, 553), -- Krookodile
+(70, 83, 50, 37, 50, 60, 554), -- Darumaka
+(105, 140, 55, 30, 55, 95, 555), -- Darmanitan
+(50, 50, 62, 40, 62, 65, 556), -- Maractus
+(85, 97, 66, 105, 66, 65, 557), -- Dwebble
+(70, 105, 125, 65, 75, 45, 558), -- Crustle
+(50, 65, 85, 35, 35, 55, 559), -- Scraggy
+(65, 90, 115, 45, 115, 58, 560), -- Scrafty
+(60, 85, 40, 30, 45, 68, 561), -- Sigilyph
+(80, 105, 65, 60, 75, 130, 562), -- Yamask
+(38, 30, 85, 55, 65, 30, 563), -- Cofagrigus
+(40, 55, 70, 45, 60, 45, 564), -- Tirtouga
+(74, 108, 133, 83, 65, 32, 565), -- Carracosta
+(54, 78, 103, 53, 45, 22, 566), -- Archen
+(75, 140, 65, 112, 65, 110, 567), -- Archeops
+(45, 85, 50, 55, 50, 65, 568), -- Trubbish
+(80, 95, 82, 60, 82, 75, 569), -- Garbodor
+(60, 80, 40, 60, 40, 60, 570), -- Zorua
+(60, 105, 60, 120, 60, 105, 571), -- Zoroark
+(45, 85, 70, 40, 40, 60, 572), -- Minccino
+(75, 95, 60, 65, 60, 115, 573), -- Cinccino
+(55, 50, 45, 40, 45, 60, 574), -- Gothita
+(70, 65, 55, 125, 85, 95, 575), -- Gothorita
+(95, 55, 95, 95, 110, 65, 576), -- Gothitelle
+(45, 30, 50, 55, 65, 45, 577), -- Solosis
+(65, 40, 50, 125, 60, 30, 578), -- Duosion
+(110, 65, 75, 125, 85, 30, 579), -- Reuniclus
+(55, 55, 45, 85, 45, 75, 580), -- Ducklett
+(75, 87, 63, 87, 63, 98, 581), -- Swanna
+(70, 100, 70, 105, 75, 40, 582), -- Vanillite
+(80, 110, 80, 135, 95, 50, 583), -- Vanillish
+(110, 135, 85, 110, 95, 79, 584), -- Vanilluxe
+(55, 40, 50, 65, 85, 40, 585), -- Deerling
+(70, 60, 75, 60, 75, 95, 586), -- Sawsbuck
+(40, 55, 99, 40, 79, 47, 587), -- Emolga
+(50, 75, 85, 20, 30, 40, 588), -- Karrablast
+(75, 95, 125, 65, 75, 85, 589), -- Escavalier
+(50, 75, 45, 40, 45, 60, 590), -- Foongus
+(114, 85, 70, 85, 80, 30, 591), -- Amoonguss
+(50, 47, 50, 57, 50, 65, 592), -- Frillish
+(100, 60, 70, 85, 105, 60, 593), -- Jellicent
+(75, 80, 55, 25, 35, 35, 594), -- Alomomola
+(45, 45, 55, 45, 55, 63, 595), -- Joltik
+(70, 77, 60, 97, 60, 108, 596), -- Galvantula
+(50, 40, 85, 40, 65, 25, 597), -- Ferroseed
+(74, 94, 131, 54, 116, 20, 598), -- Ferrothorn
+(50, 65, 85, 35, 35, 55, 599), -- Klink
+(60, 80, 95, 70, 85, 50, 600), -- Klang
+(60, 100, 115, 70, 85, 90, 601), -- Klinklang
+(60, 85, 40, 30, 45, 68, 602), -- Tynamo
+(65, 85, 70, 75, 70, 40, 603), -- Eelektrik
+(85, 115, 80, 105, 80, 50, 604), -- Eelektross
+(55, 75, 85, 25, 25, 15, 605), -- Elgyem
+(75, 75, 95, 125, 95, 40, 606), -- Beheeyem
+(109, 66, 84, 81, 99, 32, 607), -- Litwick
+(60, 40, 60, 40, 60, 35, 608), -- Lampent
+(60, 55, 145, 70, 150, 70, 609), -- Chandelure
+(40, 65, 40, 40, 40, 69, 610), -- Axew
+(66, 117, 70, 40, 50, 67, 611), -- Fraxure
+(76, 147, 90, 60, 70, 97, 612), -- Haxorus
+(70, 55, 55, 80, 55, 60, 613), -- Cubchoo
+(95, 130, 80, 70, 80, 50, 614), -- Beartic
+(55, 50, 40, 40, 40, 75, 615), -- Cryogonal
+(80, 95, 85, 110, 95, 79, 616), -- Shelmet
+(80, 95, 100, 65, 60, 45, 617), -- Accelgor
+(69, 55, 145, 60, 55, 55, 618), -- Stunfisk
+(105, 95, 75, 85, 75, 74, 619), -- Mienfoo
+(65, 65, 65, 95, 65, 65, 620), -- Mienshao
+(60, 85, 40, 30, 45, 68, 621), -- Druddigon
+(77, 120, 90, 60, 90, 48, 622), -- Golett
+(89, 124, 80, 55, 80, 55, 623), -- Golurk
+(59, 74, 50, 35, 50, 35, 624), -- Pawniard
+(65, 125, 100, 60, 70, 70, 625), -- Bisharp
+(90, 85, 75, 115, 75, 55, 626), -- Bouffalant
+(85, 97, 66, 105, 66, 65, 627), -- Rufflet
+(70, 83, 50, 37, 50, 60, 628), -- Braviary
+(110, 123, 75, 57, 75, 80, 629), -- Vullaby
+(80, 105, 65, 60, 75, 130, 630), -- Mandibuzz
+(85, 65, 85, 35, 65, 35, 631), -- Heatmor
+(100, 60, 70, 85, 105, 60, 632), -- Durant
+(70, 105, 90, 80, 90, 105, 633), -- Deino
+(80, 115, 70, 125, 80, 98, 634), -- Zweilous
+(92, 105, 90, 125, 90, 98, 635), -- Hydreigon
+(85, 75, 110, 100, 105, 65, 636), -- Larvesta
+(55, 55, 85, 50, 55, 30, 637), -- Volcarona
+(75, 85, 100, 65, 90, 100, 638), -- Cobalion
+(115, 129, 90, 72, 90, 108, 639), -- Terrakion
+(60, 72, 60, 72, 60, 72, 640), -- Virizion
+(75, 125, 100, 55, 75, 85, 641), -- Tornadus
+(80, 100, 123, 80, 100, 123, 642), -- Thundurus
+(79, 115, 70, 125, 80, 111, 643), -- Reshiram
+(91, 90, 106, 130, 106, 77, 644), -- Zekrom
+(108, 60, 70, 105, 70, 80, 645), -- Landorus
+(108, 130, 95, 80, 85, 102, 646), -- Kyurem
+(110, 160, 110, 80, 110, 100, 647), -- Keldeo
+(79, 105, 70, 145, 85, 130, 648), -- Meloetta
+(91, 95, 75, 130, 75, 99, 649), -- Genesect
+-- insert Base Stat Pokemon di Kalos
+(56, 61, 65, 48, 45, 38, 650), -- Chespin
+(61, 78, 95, 56, 58, 57, 651), -- Quilladin
+(88, 107, 122, 74, 75, 64, 652), -- Chesnaught
+(40, 45, 40, 62, 60, 60, 653), -- Fennekin
+(59, 59, 58, 90, 70, 73, 654), -- Braixen
+(75, 69, 72, 114, 100, 104, 655), -- Delphox
+(41, 56, 40, 62, 44, 71, 656), -- Froakie
+(54, 63, 52, 83, 56, 97, 657), -- Frogadier
+(72, 95, 67, 103, 71, 122, 658), -- Greninja
+(38, 36, 38, 32, 36, 57, 659), -- Bunnelby
+(85, 56, 77, 50, 77, 78, 660), -- Diggersby
+(45, 50, 43, 40, 38, 62, 661), -- Fletchling
+(62, 73, 55, 56, 52, 84, 662), -- Fletchinder
+(78, 81, 71, 74, 69, 126, 663), -- Talonflame
+(38, 35, 40, 27, 25, 35, 664), -- Scatterbug
+(45, 22, 60, 27, 30, 29, 665), -- Spewpa
+(80, 52, 50, 90, 50, 89, 666), -- Vivillon
+(62, 50, 58, 73, 54, 72, 667), -- Litleo
+(86, 68, 72, 109, 66, 106, 668), -- Pyroar
+(44, 38, 39, 61, 79, 42, 669), -- Flabébé
+(54, 45, 47, 75, 98, 52, 670), -- Floette
+(78, 65, 68, 112, 154, 75, 671), -- Florges
+(66, 65, 48, 62, 57, 52, 672), -- Skiddo
+(123, 100, 62, 97, 81, 68, 673), -- Gogoat
+(67, 82, 62, 46, 48, 43, 674), -- Pancham
+(95, 124, 78, 69, 71, 58, 675), -- Pangoro
+(75, 80, 60, 65, 90, 102, 676), -- Furfrou
+(62, 48, 54, 63, 60, 68, 677), -- Espurr
+(74, 48, 76, 83, 81, 104, 678), -- Meowstic
+(45, 80, 100, 35, 37, 28, 679), -- Honedge
+(59, 110, 150, 45, 49, 35, 680), -- Doublade
+(60, 50, 140, 50, 140, 60, 681), -- Aegislash (Scudo)
+-- (60, 140, 50, 140, 50, 60, 681), -- Aegislash (Spada)
+(78, 52, 60, 63, 65, 23, 682), -- Spritzee
+(101, 72, 72, 99, 89, 29, 683), -- Aromatisse
+(62, 48, 66, 59, 57, 49, 684), -- Swirlix
+(82, 80, 86, 85, 75, 72, 685), -- Slurpuff
+(53, 54, 53, 37, 46, 45, 686), -- Inkay
+(86, 92, 88, 68, 75, 73, 687), -- Malamar
+(42, 52, 67, 39, 56, 50, 688), -- Binacle
+(72, 105, 115, 54, 86, 68, 689), -- Barbaracle
+(50, 60, 60, 60, 60, 30, 690), -- Skrelp
+(65, 75, 90, 97, 123, 44, 691), -- Dragalge
+(50, 53, 62, 58, 63, 44, 692), -- Clauncher
+(71, 73, 88, 120, 89, 59, 693), -- Clawitzer
+(44, 38, 33, 61, 43, 70, 694), -- Helioptile
+(62, 55, 52, 109, 94, 109, 695), -- Heliolisk
+(58, 89, 77, 45, 45, 48, 696), -- Tyrunt
+(82, 121, 119, 69, 59, 71, 697), -- Tyrantrum
+(77, 59, 50, 67, 63, 46, 698), -- Amaura
+(123, 77, 72, 99, 92, 58, 699), -- Aurorus
+(95, 65, 65, 110, 130, 60, 700), -- Sylveon
+(78, 92, 75, 74, 63, 118, 701), -- Hawlucha
+(67, 58, 57, 81, 67, 101, 702), -- Dedenne
+(50, 50, 150, 50, 150, 50, 703), -- Carbink
+(45, 50, 35, 55, 75, 55, 704), -- Goomy
+(68, 75, 53, 83, 113, 60, 705), -- Sliggoo
+(90, 100, 70, 110, 150, 80, 706), -- Goodra
+(57, 80, 91, 80, 87, 75, 707), -- Klefki
+(43, 70, 48, 50, 60, 38, 708), -- Phantump
+(85, 110, 76, 65, 82, 56, 709), -- Trevenant
+(49, 66, 70, 44, 55, 51, 710), -- Pumpkaboo
+(65, 90, 122, 58, 75, 54, 711), -- Gourgeist
+(55, 69, 85, 32, 35, 28, 712), -- Bergmite
+(95, 117, 184, 44, 46, 28, 713), -- Avalugg
+(40, 30, 35, 45, 40, 55, 714), -- Noibat
+(85, 70, 80, 97, 80, 123, 715), -- Noivern
+(126, 131, 95, 131, 98, 99, 716), -- Xerneas
+(126, 131, 95, 131, 98, 99, 717), -- Yveltal
+(108, 100, 121, 81, 95, 95, 718), -- Zygarde
+(50, 100, 150, 100, 150, 50, 719), -- Diancie
+(80, 110, 60, 150, 130, 70, 720), -- Hoopa (Vincolato)
+-- (80, 160, 60, 170, 130, 80, 720), -- Hoopa (Libero)
+(80, 110, 120, 130, 90, 70, 721); -- Volcanion
+
+
+
+
+
 
 
 

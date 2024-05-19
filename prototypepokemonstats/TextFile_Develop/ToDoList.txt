@@ -9,8 +9,8 @@
   -(KANTO : 151) ✅
   -(JOHTO : 100) ✅
   -(HOENN : 135) ✅
-  -(SINNOH: )
-  -(UNIMA : )
+  -(SINNOH: 107) ✅
+  -(UNIMA : 156) ✅
   -(KALOS : )
   -(ALOLA : )
   -(GALAR : )

@@ -170,6 +170,12 @@ def GenButton(buttongen):
         cmb_pokemon.current(151)
     elif buttongen == 2:
         cmb_pokemon.current(251)
+    elif buttongen == 3:
+        cmb_pokemon.current(386)
+    elif buttongen == 4:
+        cmb_pokemon.current(493)
+    elif buttongen == 5:
+        cmb_pokemon.current(649)
 
     # Aggiorna le textbox quando si seleziona un nuovo Pokémon
     popola_textbox()
