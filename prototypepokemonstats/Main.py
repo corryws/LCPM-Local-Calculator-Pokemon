@@ -214,6 +214,11 @@ def mostra_informazioni():
     Features & Bug Fix:
     - Aggiunto pulsante MegaEvoluzione
     - Aggiunta 3° Gen Pokemon
+                     
+    v 1.0.2
+                     
+    Features & Bug Fix:
+    - Aggiunta 4-5-6° Gen Pokemon
 
     Grazie per aver scelto PokemonCalculatorEVSIVS_Locale!""")
 
