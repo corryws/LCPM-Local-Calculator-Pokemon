@@ -952,7 +952,7 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Basculegion', 'Acqua', 'Spettro'),
 ('Sneasler', 'Lotta', 'Veleno'),
 ('Overqwil', 'Buio', 'Veleno'),
-('Enamorus', 'Folletto', 'Volante');
+('Enamorus', 'Folletto', 'Volante'),
 -- INSERT PALDEA REGION POKEMON - tbPokemon
 ('Sprigatito','Erba',Null),
 ('Floragato','Erba',Null),
@@ -1045,7 +1045,7 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Iron Thorns', 'Roccia', 'Elettro'),
 ('Frigibax', 'Drago', 'Ghiaccio'),
 ('Arctibax', 'Drago', 'Ghiaccio'),
-('Baxcalibur', 'Drago', 'Ghiaccio');
+('Baxcalibur', 'Drago', 'Ghiaccio'),
 ('Gimmighoul', 'Spettro', Null),
 ('Gimmighoul', 'Acciaio', 'Spettro'),
 ('Wo-Chien', 'Buio', 'Erba'),
@@ -1975,8 +1975,6 @@ INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
 (80, 130, 60, 40, 80, 120, 903), -- Sneasler
 (85, 115, 95, 65, 65, 85, 904), -- Overqwil
 (74, 115, 70, 135, 80, 106, 905); -- Enamorus
-
-
 
 
 -- Inserimento dei dati per la tabella tbNature
