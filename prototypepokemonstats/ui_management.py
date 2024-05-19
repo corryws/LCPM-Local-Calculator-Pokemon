@@ -35,9 +35,13 @@ def mostra_immagine_pokemon_ui(id_pokemon):
             gen_selection = "VII"
             id_pokemon -= 721
         
-        elif id_pokemon >= 810:  
+        elif id_pokemon >= 810 and id_pokemon < 906:  
             gen_selection = "VIII"
             id_pokemon -= 809
+
+        elif id_pokemon >= 906:  
+            gen_selection = "IX"
+            id_pokemon -= 905
 
         print("prototypepokemonstats/Assets/PokemonGen/Gen"+gen_selection+".png")
         spritesheet = Image.open("prototypepokemonstats/Assets/PokemonGen/Gen"+gen_selection+".png")

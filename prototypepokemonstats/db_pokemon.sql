@@ -184,7 +184,8 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Dragonite', 'Drago', 'Volante'),
 ('Mewtwo', 'Psico', NULL),
 ('Mew', 'Psico', NULL),
--- pokemon di Johto 100
+
+
 -- INSERT POKEMON DI JOHTO - tbPokemon
 ('Chikorita', 'Erba', NULL),
 ('Bayleef', 'Erba', NULL),
@@ -422,6 +423,8 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Rayquaza', 'Drago', 'Volante'),
 ('Jirachi', 'Acciaio', 'Psico'),
 ('Deoxys', 'Psico', NULL),
+
+
 -- INSERT POKEMON DI SINNOH - tbPokemon
 ('Turtwig', 'Erba', NULL),
 ('Grotle', 'Erba', NULL),
@@ -530,6 +533,8 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Darkrai', 'Buio', NULL),
 ('Shaymin', 'Erba', NULL),
 ('Arceus', 'Normale', NULL),
+
+
 -- INSERT POKEMON DI UNIMA - tbPokemon
 ('Victini', 'Psico', 'Fuoco'),
 ('Snivy', 'Erba', NULL),
@@ -687,6 +692,8 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Keldeo', 'Acqua', 'Lotta'),
 ('Meloetta', 'Normale', 'Psico'),
 ('Genesect', 'Coleottero', 'Acciaio'),
+
+
 -- INSERT POKEMON DI KALOS - tbPokemon
 ('Chespin', 'Erba', NULL),
 ('Quilladin', 'Erba', NULL),
@@ -945,6 +952,8 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Glastrier', 'Ghiaccio', NULL),
 ('Spectrier', 'Spettro', NULL),
 ('Calyrex', 'Psico', 'Erba'),
+
+
 -- INSERT HISUI REGION POKEMON - tbPokemon
 ('Wyrdeer', 'Normale', 'Psico'),
 ('Kleavor', 'Coleottero', 'Roccia'),
@@ -953,6 +962,8 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Sneasler', 'Lotta', 'Veleno'),
 ('Overqwil', 'Buio', 'Veleno'),
 ('Enamorus', 'Folletto', 'Volante'),
+
+
 -- INSERT PALDEA REGION POKEMON - tbPokemon
 ('Sprigatito','Erba',Null),
 ('Floragato','Erba',Null),
@@ -1051,8 +1062,28 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Wo-Chien', 'Buio', 'Erba'),
 ('Chien-Pao', 'Buio', 'Ghiaccio'),
 ('Ting-Lu', 'Buio', 'Terra'),
-('Chi-Yu', 'Buio', 'Fuoco');
---continuare da qui
+('Chi-Yu', 'Buio', 'Fuoco'),
+('Roaring Moon', 'Drago', 'Buio'),
+('Iron Valiant', 'Folletto', 'Lotta'),
+('Koraidon', 'Lotta', 'Drago'),
+('Miraidon', 'Elettro', 'Drago'),
+('Walking Wake', 'Acqua', 'Drago'),
+('Iron Leaves', 'Erba', 'Psico'),
+('Dipplin', 'Erba', 'Drago'),
+('Poltchageist', 'Erba', 'Spettro'),
+('Sinistcha', 'Elettro', 'Spettro'),
+('Okidogi', 'Veleno', 'Lotta'),
+('Munkidori', 'Veleno', 'Folletto'),
+('Fezandipiti', 'Veleno', 'Folletto'),
+('Ogerpon', 'Erba', Null),
+('Archaludon', 'Acciaio', 'Drago'),
+('Hydrapple', 'Erba', 'Drago'),
+('Gouging Fire', 'Fire', 'Drago'),
+('Raging Bolt', 'Elettro', 'Drago'),
+('Iron Boulder', 'Roccia', 'Psico'),
+('Iron Crown', 'Acciaio', 'Psico'),
+('Terapagos', 'Normal', Null),
+('Pecharunt', 'Veleno', 'Spettro');
 
 -- insert Base Stat primi 151 Pokemon
 INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
