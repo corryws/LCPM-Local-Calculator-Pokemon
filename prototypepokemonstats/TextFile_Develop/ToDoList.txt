@@ -11,10 +11,28 @@
   -(HOENN : 135) ✅
   -(SINNOH: 107) ✅
   -(UNIMA : 156) ✅
-  -(KALOS : )
-  -(ALOLA : )
-  -(GALAR : )
-  -(PALDEA: )
+  -(KALOS : 72)  ✅
+  -(ALOLA : 86)  ✅
+  -(GALAR : 96 | HISUI: 7) ✅
+  -(PALDEA: 120)
+  
+
+- AGGIUNGERE LE MEGAEVOLUZIONI
+  -KANTO
+  (Venusaur, Charizard XY, Blastoise, Beedrill, Pidgeot, Alakazam, Slowbro, Gengar,Kangaskhan, Pinsir,Gyarados,Aerodactyl,Mewtwo XY)
+  -JOHTO
+  (Ampharos,Steelix,Scizor,Heracross,Houndoom,Tyranitar)
+  -HOENN
+  (Sceptile,Blaziken,Swampert,Gardevoir,Sableye,Mawile,Aggron,Medicham,Manectric,Sharpedo,Camerupt,Altaria,Banette,Absol,Glalie,Salamence
+  Metagross,Latias,Latios,Rayquaza,Kyogre,Groudon)
+  -SINNOH
+  (Lopunny,Garchomp,Lucario,Abomasnow,Gallade)
+  -UNIMA
+  (Audino)
+  -KALOS
+  (Diancie)
+
+- AGGIUNGERE FORME ALTERNATIVE (QUELLE CHE ALTERANO LE BASE STATS)
 
 
 

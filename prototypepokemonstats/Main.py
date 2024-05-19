@@ -176,6 +176,10 @@ def GenButton(buttongen):
         cmb_pokemon.current(493)
     elif buttongen == 5:
         cmb_pokemon.current(649)
+    elif buttongen == 6:
+        cmb_pokemon.current(721)
+    elif buttongen == 7:
+        cmb_pokemon.current(809)
 
     # Aggiorna le textbox quando si seleziona un nuovo Pokémon
     popola_textbox()
@@ -202,23 +206,24 @@ def mostra_informazioni():
     info_text.insert("1.0", """
     Benvenuto a LCPM - Local Calculator Pokemon!
                                  
-    v 1.0.0
-                     
+    v 1.0.0         
     Features & Bug Fix:
     - Grafica migliorata
     - radar char fix
     - Aggiunta 2° Gen Pokemon
                      
-    v 1.0.1
-                     
+    v 1.0.1          
     Features & Bug Fix:
     - Aggiunto pulsante MegaEvoluzione
     - Aggiunta 3° Gen Pokemon
                      
-    v 1.0.2
-                     
+    v 1.0.2          
     Features & Bug Fix:
     - Aggiunta 4-5-6° Gen Pokemon
+                     
+    v 1.0.3
+    Features & Bug Fix:
+    - Aggiunta 7-8° Gen Pokemon
 
     Grazie per aver scelto PokemonCalculatorEVSIVS_Locale!""")
 
