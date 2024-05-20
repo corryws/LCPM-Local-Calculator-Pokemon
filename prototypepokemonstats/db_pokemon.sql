@@ -1086,6 +1086,33 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Terapagos', 'Normal', Null),
 ('Pecharunt', 'Veleno', 'Spettro');
 
+-- Base Stat Megaevoluzioni
+
+-- kanto mega
+/* (80,100,123,122,120,80,3) --Mega Venusaur
+(78,130,111,130,85,100,6) -- Mega Charizard X
+(78,104,78,159,115,100,6) -- Mega Charizard Y
+(79,103,120,135,115,78,9) --Mega Blastoise
+(65,150,40,15,80,145,15) -- Mega Beedril
+(83,80,80,135,80,121,18) -- Mega Pidgeot
+(55,50,65,175,105,150,65) --Mega Alakazam
+(95,75,180,130,80,30,80) -- Mega Slowbro
+(60,65,80,170,95,130,94) -- Mega Gengar
+(105,125,100,60,100,100,115) --Mega Kangaskhan
+(65,155,120,65,90,105,127) -- Mega Pinsir
+(95,155,109,70,130,81,130) -- Mega Gyarados
+(80,135,85,70,95,150,142) -- Mega Aerodactyl
+(106,190,100,154,100,130,150) -- Mega Mewtwo X
+(106,150,70,194,120,140,150) -- Mega Mewtwo Y
+
+-- johto mega
+(90,95,105,165,110,45,181) -- Mega Ampharos
+(75,125,230,55,95,30,208) -- Mega Steelix
+(70,150,140,65,100,75,212) -- Mega Scizor
+(80,185,115,40,105,75,214) -- Mega Heracross
+(75,90,90,140,90,115,229) -- Mega Houndoom
+(100,164,150,95,120,71,248) -- Mega Scizor */
+
 -- insert Base Stat primi 151 Pokemon
 INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
 (45, 49, 49, 65, 65, 45, 1), -- Bulbasaur
@@ -1239,6 +1266,8 @@ INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
 (91, 134, 95, 100, 100, 80, 149), -- Dragonite
 (106, 110, 90, 154, 90, 130, 150), -- Mewtwo
 (100, 100, 100, 100, 100, 100, 151), -- Mew
+
+
 -- insert Base Stat 100 Pokemon johto
 (45, 49, 65, 49, 65, 45, 152), -- Chikorita
 (60, 62, 80, 63, 80, 60, 153), -- Bayleef
@@ -1340,6 +1369,8 @@ INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
 (106, 90, 130, 90, 154, 110, 249), -- Lugia
 (106, 130, 90, 110, 154, 90, 250), -- Ho-oh
 (100, 100, 100, 100, 100, 100, 251), -- Celebi
+
+
 -- insert Base Stat Pokemon di Hoenn
 (40, 45, 35, 65, 55, 70, 252), -- Treecko
 (50, 65, 45, 85, 65, 95, 253), -- Grovyle
@@ -1476,6 +1507,8 @@ INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
 (105, 150, 90, 150, 90, 95, 384), -- Rayquaza
 (100, 100, 100, 100, 100, 100, 385), -- Jirachi
 (50, 150, 50, 150, 50, 150, 386), -- Deoxys
+
+
 -- insert Base Stat Pokemon di Sinnoh
 (55, 68, 64, 45, 55, 31, 387), -- Turtwig
 (75, 89, 85, 55, 65, 36, 388), -- Grotle
@@ -1584,6 +1617,8 @@ INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
 (70, 90, 90, 135, 90, 125, 491), -- Darkrai
 (100, 100, 100, 100, 100, 100, 492), -- Shaymin
 (120, 120, 120, 120, 120, 120, 493), -- Arceus
+
+
 -- insert Base Stat Pokemon di Unima
 (100, 100, 100, 100, 100, 100, 494), -- Victini
 (45, 45, 55, 45, 55, 63, 495), -- Snivy
@@ -1816,6 +1851,8 @@ INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
 (80, 110, 60, 150, 130, 70, 720), -- Hoopa (Vincolato)
 -- (80, 160, 60, 170, 130, 80, 720), -- Hoopa (Libero)
 (80, 110, 120, 130, 90, 70, 721), -- Volcanion
+
+
 -- insert Base Stat Pokemon di Alola
 (68, 55, 55, 50, 50, 42, 722), -- Rowlet
 (78, 75, 75, 70, 70, 52, 723), -- Dartrix
@@ -1908,6 +1945,7 @@ INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
 (88, 112, 75, 102, 80, 143, 807), -- Zeraora
 (46, 65, 65, 55, 35, 34, 808), -- Meltan
 (135, 143, 143, 80, 65, 34, 809), -- Melmetal
+
 -- insert Base Stat Pokemon di Galar
 (50, 65, 50, 40, 40, 65, 810), -- Grookey
 (70, 85, 70, 55, 60, 80, 811), -- Thwackey

@@ -14,7 +14,7 @@
   -(KALOS : 72)  ✅
   -(ALOLA : 86)  ✅
   -(GALAR : 96 | HISUI: 7) ✅
-  -(PALDEA: 120)
+  -(PALDEA: 120) ✅
   
 
 - AGGIUNGERE LE MEGAEVOLUZIONI
