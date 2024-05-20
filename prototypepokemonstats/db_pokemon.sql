@@ -979,12 +979,14 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Tarountula','Coleottero',Null),
 ('Spidops','Coleottero',Null),
 ('Nymble','Coleottero',Null),
+('Lokix','Coleottero','Buio'),
 ('Pawmi','Elettro',Null),
 ('Pawmo','Elettro','Lotta'),
 ('Pawmot','Elettro','Lotta'),
 ('Tandemaus','Normale',Null),
 ('Maushold','Normale',Null),
 ('Fidough','Folletto',Null),
+('Dachsbun','Folletto',Null),
 ('Smoliv','Erba','Normale'),
 ('Doliv','Erba','Normale'),
 ('Arboliva','Erba','Normale'),
@@ -1041,34 +1043,33 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Farigiraf','Normale','Psico'),
 ('Dudunsparce','Normale',Null),
 ('Kingambit','Buio','Acciaio'),
-('Tatsugiri','Drago','Acqua'),
-('Great Tusk', 'Terra', 'Lotta'),
-('Scream Tail', 'Folletto', 'Psico'),
-('Brute Bonnet', 'Erba', 'Buio'),
-('Flutter Mane', 'Spettro', 'Folletto'),
-('Slither Wing', 'Coleottero', 'Lotta'),
-('Sandy Shocks', 'Elettro', 'Terra'),
-('Iron Treads', 'Terra', 'Acciaio'),
-('Iron Bundle', 'Ghiaccio', 'Acqua'),
-('Iron Hands', 'Lotta', 'Elettro'),
-('Iron Jugulis', 'Buio', 'Volante'),
-('Iron Moth', 'Fuoco', 'Veleno'),
-('Iron Thorns', 'Roccia', 'Elettro'),
+('Grandizanne', 'Terra', 'Lotta'),
+('Codaurlante', 'Folletto', 'Psico'),
+('Fungofurioso', 'Erba', 'Buio'),
+('Crinealato', 'Spettro', 'Folletto'),
+('Alirasenti', 'Coleottero', 'Lotta'),
+('Peldisabbia', 'Elettro', 'Terra'),
+('Solcoferreo', 'Terra', 'Acciaio'),
+('Saccoferreo', 'Ghiaccio', 'Acqua'),
+('Manoferrea', 'Lotta', 'Elettro'),
+('Colloferreo', 'Buio', 'Volante'),
+('Falenaferrea', 'Fuoco', 'Veleno'),
+('Spineferree', 'Roccia', 'Elettro'),
 ('Frigibax', 'Drago', 'Ghiaccio'),
 ('Arctibax', 'Drago', 'Ghiaccio'),
 ('Baxcalibur', 'Drago', 'Ghiaccio'),
 ('Gimmighoul', 'Spettro', Null),
-('Gimmighoul', 'Acciaio', 'Spettro'),
+('Gholdengo', 'Acciaio', 'Spettro'),
 ('Wo-Chien', 'Buio', 'Erba'),
 ('Chien-Pao', 'Buio', 'Ghiaccio'),
 ('Ting-Lu', 'Buio', 'Terra'),
 ('Chi-Yu', 'Buio', 'Fuoco'),
-('Roaring Moon', 'Drago', 'Buio'),
-('Iron Valiant', 'Folletto', 'Lotta'),
+('Lunaruggente', 'Drago', 'Buio'),
+('Eroeferreo', 'Folletto', 'Lotta'),
 ('Koraidon', 'Lotta', 'Drago'),
 ('Miraidon', 'Elettro', 'Drago'),
-('Walking Wake', 'Acqua', 'Drago'),
-('Iron Leaves', 'Erba', 'Psico'),
+('Acquecrespe', 'Acqua', 'Drago'),
+('Fogliaferrea', 'Erba', 'Psico'),
 ('Dipplin', 'Erba', 'Drago'),
 ('Poltchageist', 'Erba', 'Spettro'),
 ('Sinistcha', 'Elettro', 'Spettro'),
@@ -1078,10 +1079,10 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Ogerpon', 'Erba', Null),
 ('Archaludon', 'Acciaio', 'Drago'),
 ('Hydrapple', 'Erba', 'Drago'),
-('Gouging Fire', 'Fire', 'Drago'),
-('Raging Bolt', 'Elettro', 'Drago'),
-('Iron Boulder', 'Roccia', 'Psico'),
-('Iron Crown', 'Acciaio', 'Psico'),
+('Vampeaguzze', 'Fire', 'Drago'),
+('Furiatonante', 'Elettro', 'Drago'),
+('Massoferreo', 'Roccia', 'Psico'),
+('Capoferreo', 'Acciaio', 'Psico'),
 ('Terapagos', 'Normal', Null),
 ('Pecharunt', 'Veleno', 'Spettro');
 
@@ -1997,6 +1998,7 @@ INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
 (100, 145, 130, 65, 110, 30, 896), -- Glastrier
 (100, 65, 60, 145, 80, 130, 897), -- Spectrier
 (100, 80, 80, 80, 80, 80, 898), -- Calyrex
+
 -- INSERT BASE STATS FOR HISUI REGION POKEMON 
 (103, 105, 72, 105, 75, 65, 899), -- Wyrdeer
 (70, 135, 95, 45, 70, 85, 900), -- Kleavor
@@ -2007,6 +2009,7 @@ INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
 (85, 115, 95, 65, 65, 85, 904), -- Overqwil
 (74, 115, 70, 135, 80, 106, 905), -- Enamorus
 
+-- INSERT BASE STATS FOR PALDEA REGION POKEMON 
 (40, 61, 54, 45, 45, 65, 906), -- Sprigatito 
 (61, 80, 63, 60, 63, 83, 907), -- Floragato
 (76, 110, 70, 81, 70, 123, 908), -- Meowscarada
@@ -2058,7 +2061,6 @@ INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
 (75, 50, 85, 105, 115, 45, 954), -- Rabsca 
 (30, 35, 30, 40, 55, 75, 955), -- Flittle
 (95, 60, 60, 40, 101, 105, 956), -- Espathra
-
 (50, 45, 45, 35, 64, 58, 957), -- Tinkatink
 (65, 55, 55, 45, 82, 78, 958), -- Tinkatuff
 (85, 75, 77, 70, 105, 94, 959), -- Tinkaton
@@ -2074,7 +2076,64 @@ INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon) VALUES
 (70, 85, 145, 60, 55, 65, 968), -- Orthworm
 (48, 35, 42, 105, 60, 60, 969), -- Glimmet
 (83, 55, 90, 130, 81, 86, 970), -- Glimmora
-
+(50, 61, 60, 30, 55, 34, 971), -- Greavard
+(72, 101, 100, 50, 97, 68, 972), -- Houndstone
+(82, 115, 74, 75, 64, 90, 973), -- Flamigo
+(108, 68, 45, 30, 40, 43, 974), -- Cetoddle
+(170, 113, 65, 45, 40, 73, 975), -- Cetitan
+(90, 102, 73, 78, 55, 70, 976), -- Veluza
+(150, 100, 115, 65, 65, 35, 977), -- Dondozo
+(68, 50, 60, 120, 95, 82, 978), -- Tatsugiri
+(110, 115, 80, 50, 90, 90, 979), -- Annihilape
+(130, 75, 60, 45, 100, 20, 980), -- Clodsire
+(120, 90, 70, 110, 70, 60, 981), -- Farigiraf
+(125, 100, 80, 85, 75, 55, 982), -- Dudunsparce
+(100, 135, 120, 60, 85, 50, 983), -- Kingambit
+(115, 131, 131, 53, 53, 87, 984), -- Grandizanne
+(115, 65, 99, 65, 115, 111, 985), -- Codaurlante
+(111, 127, 99, 79, 99, 55, 986), -- Fungofurioso
+(55, 55, 55, 135, 135, 135, 987), -- Crinealato
+(85, 135, 79, 85, 105, 81, 988), -- Alirasenti
+(85, 81, 97, 121, 85, 101, 989), -- Peldisabbia
+(90, 112, 120, 72, 70, 106, 990), -- Solcoferreo
+(56, 80, 114, 124, 60, 136, 991), -- Saccoferreo
+(154, 140, 108, 45, 50, 73, 992), -- Manoferrea
+(94, 80, 86, 122, 80, 108, 993), -- Colloferreo
+(80, 70, 60, 140, 110, 110, 994), -- Falenaferrea
+(100, 134, 110, 70, 84, 72, 995), -- Spineferree
+(65, 75, 45, 35, 45, 55, 996), -- Frigibax
+(90, 95, 66, 45, 65, 62, 997), -- Arctibax
+(115, 145, 92, 75, 86, 87, 998), -- Baxcalibur
+(45, 30, 70, 75, 70, 10, 999), -- Gimmighoul Forma Scrigno
+-- (45, 30, 25, 75, 45, 80, 999), -- Gimmighoul Forma Ambulante
+(87, 60, 95, 133, 91, 84, 1000), -- Gholdengo
+(85, 85, 100, 95, 135, 70, 1001), -- Wo-Chien
+(80, 120, 80, 90, 65, 135, 1002), -- Chien-Pao
+(155, 110, 125, 55, 80, 45, 1003), -- Ting-Lu
+(55, 80, 80, 135, 120, 100, 1004), -- Chi-Yu
+(105, 139, 71, 55, 101, 119, 1005), -- Lunaruggente
+(74, 139, 86, 71, 80, 108, 1006), -- Eroeferreo
+(100, 130, 86, 90, 80, 108, 1007), -- Koraidon
+(100, 85, 100, 135, 115, 135, 1008), -- Miraidon
+(99, 83, 91, 125, 83, 109, 1009), -- Acquecrespe
+(90, 130, 88, 70, 108, 104, 1010), -- Fogliaferrea fine img
+(80, 80, 110, 95, 80, 40, 1011), -- Dipplin
+(40, 45, 45, 74, 54, 50, 1012), -- Poltchageist
+(71, 60, 106, 121, 80, 70, 1013), -- Sinistcha
+(88, 128, 115, 58, 86, 80, 1014), -- Okidogi
+(88, 75, 66, 130, 90, 106, 1015), -- Munkidori
+(88, 91, 82, 70, 125, 99, 1016), -- Fezandipiti
+(80, 120, 84, 60, 96, 110, 1017), -- Ogerpon
+(90, 105, 130, 125, 65, 85, 1018), -- Archaludon
+(106, 80, 110, 120, 80, 44, 1019), -- Hydrapple
+(105, 115, 121, 65, 93, 91, 1020), -- Vampeaguzze
+(125, 73, 91, 137, 89, 75, 1021), -- Furiatonante
+(90, 120, 80, 68, 108, 124, 1022), -- Massoferreo
+(90, 72, 100, 122, 108, 98, 1023), -- Capoferreo
+(90, 65, 85, 65, 85, 60, 1024), -- terapagos Forma Normale
+-- (95, 95, 110, 105, 110, 85, 1024), -- terapagos Forma teracristal
+-- (160, 105, 110, 130, 110, 85, 1024), -- terapagos Forma astrale
+(88, 88, 160, 88, 88, 88, 1025); -- Pecharunt
 
 
 -- Inserimento dei dati per la tabella tbNature
