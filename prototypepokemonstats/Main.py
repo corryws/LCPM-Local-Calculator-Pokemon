@@ -161,6 +161,9 @@ def MegaEvolution():
     #change sprite with mega-evolution sprite
     #change base-stats with mega-evolution base-stats
     print("megaevolution!")
+    current_index = cmb_pokemon.current()
+    print("megaevolution of index ", current_index)
+    #mostra_immagine_pokemon_ui()
 
 def GenButton(buttongen):
     print("button gen " , buttongen)
