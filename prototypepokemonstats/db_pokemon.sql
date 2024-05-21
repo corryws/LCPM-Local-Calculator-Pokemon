@@ -10,14 +10,14 @@ CREATE TABLE IF NOT EXISTS tbPokemon (
 -- Creazione della tabella tbStatsBase
 CREATE TABLE IF NOT EXISTS tbStatsBase (
     ID INTEGER PRIMARY KEY,
-    Ps, INTEGER,
+    Ps INTEGER,
     Att INTEGER,
     Def INTEGER,
     AttS INTEGER,
     DefS INTEGER,
     Spd INTEGER,
     id_pokemon INTEGER,
-    Forma TEXT DEFAULT 'Normale',
+    Forma TEXT,
     FOREIGN KEY (id_pokemon) REFERENCES tbPokemon(ID)
 );
 
@@ -715,7 +715,7 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Vivillon', 'Coleottero', 'Volante'),
 ('Litleo', 'Fuoco', 'Normale'),
 ('Pyroar', 'Fuoco', 'Normale'),
-('Flabebe', 'Folletto', NULL,'Normale'), -- Flabébé è errato nel DB
+('Flabebe', 'Folletto', NULL), -- Flabébé è errato nel DB
 ('Floette', 'Folletto', NULL),
 ('Florges', 'Folletto', NULL),
 ('Skiddo', 'Erba', NULL),
@@ -788,16 +788,16 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Vikavolt', 'Coleottero', 'Elettro'),
 ('Crabrawler', 'Lotta', NULL),
 ('Crabominable', 'Lotta', 'Ghiaccio'),
-('Oricorio', 'Volante', 'Fuoco','Normale'), -- Pa'u Style
-/* ('Oricorio', 'Volante', 'Elettro','Normale'), -- Pom-Pom Style
-('Oricorio', 'Volante', 'Spettro','Normale'), -- Sensu Style
-('Oricorio', 'Volante', 'Psico','Normale'), -- Baile Style */
+('Oricorio', 'Volante', 'Fuoco'), -- Pa'u Style
+/* ('Oricorio', 'Volante', 'Elettro'), -- Pom-Pom Style
+('Oricorio', 'Volante', 'Spettro'), -- Sensu Style
+('Oricorio', 'Volante', 'Psico'), -- Baile Style */
 ('Cutiefly', 'Coleottero', 'Folletto'),
 ('Ribombee', 'Coleottero', 'Folletto'),
 ('Rockruff', 'Roccia', NULL),
-('Lycanroc', 'Roccia', NULL,'Normale'), -- Midday Form
-/* ('Lycanroc', 'Roccia', NULL,'Normale'), -- Midnight Form
-('Lycanroc', 'Roccia', NULL,'Normale'), -- Dusk Form */
+('Lycanroc', 'Roccia', NULL), -- Midday Form
+/* ('Lycanroc', 'Roccia', NULL), -- Midnight Form
+('Lycanroc', 'Roccia', NULL), -- Dusk Form */
 ('Wishiwashi', 'Acqua', NULL),
 ('Mareanie', 'Acqua', 'Veleno'),
 ('Toxapex', 'Acqua', 'Veleno'),
@@ -945,8 +945,8 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Zamazenta', 'Lotta', NULL),
 ('Eternatus', 'Veleno', 'Drago'),
 ('Kubfu', 'Lotta', NULL),
-('Urshifu', 'Lotta', 'Buio','Normale'), -- Single Strike Style
---('Urshifu', 'Lotta', 'Acqua','Normale'), -- Rapid Strike Style
+('Urshifu', 'Lotta', 'Buio'), -- Single Strike Style
+--('Urshifu', 'Lotta', 'Acqua'), -- Rapid Strike Style
 ('Zarude', 'Erba', 'Buio'),
 ('Regieleki', 'Elettro', NULL),
 ('Regidrago', 'Drago', NULL),
@@ -1084,42 +1084,17 @@ INSERT INTO tbPokemon (Nome, Tipo1, Tipo2) VALUES
 ('Furiatonante', 'Elettro', 'Drago'),
 ('Massoferreo', 'Roccia', 'Psico'),
 ('Capoferreo', 'Acciaio', 'Psico'),
-('Terapagos', 'Normal', Null),
+('Terapagos', 'Normale', Null),
 ('Pecharunt', 'Veleno', 'Spettro');
 
 -- Base Stat Megaevoluzioni
 
--- kanto mega
-/* (80,100,123,122,120,80,3) -- Mega Venusaur
-(78,130,111,130,85,100,6) -- Mega Charizard X
-(78,104,78,159,115,100,6) -- Mega Charizard Y
-(79,103,120,135,115,78,9) --Mega Blastoise
-(65,150,40,15,80,145,15) -- Mega Beedril
-(83,80,80,135,80,121,18) -- Mega Pidgeot
-(55,50,65,175,105,150,65) --Mega Alakazam
-(95,75,180,130,80,30,80) -- Mega Slowbro
-(60,65,80,170,95,130,94) -- Mega Gengar
-(105,125,100,60,100,100,115) --Mega Kangaskhan
-(65,155,120,65,90,105,127) -- Mega Pinsir
-(95,155,109,70,130,81,130) -- Mega Gyarados
-(80,135,85,70,95,150,142) -- Mega Aerodactyl
-(106,190,100,154,100,130,150) -- Mega Mewtwo X
-(106,150,70,194,120,140,150) -- Mega Mewtwo Y
-
--- johto mega
-(90,95,105,165,110,45,181) -- Mega Ampharos
-(75,125,230,55,95,30,208) -- Mega Steelix
-(70,150,140,65,100,75,212) -- Mega Scizor
-(80,185,115,40,105,75,214) -- Mega Heracross
-(75,90,90,140,90,115,229) -- Mega Houndoom
-(100,164,150,95,120,71,248) -- Mega Scizor */
-
 -- insert Base Stat primi 151 Pokemon
 INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon, Forma) VALUES
-(45, 49, 49, 65, 65, 45, 1, 'Normale'), -- Bulbasaur
-(60, 62, 63, 80, 80, 60, 2, 'Normale'), -- Ivysaur
-(80, 82, 83, 100, 100, 80, 3, 'Normale'), -- Venusaur
-(39, 52, 43, 60, 50, 65, 4, 'Normale'), -- Charmander
+(45, 49, 49, 65, 65, 45, 1,'Normale'), -- Bulbasaur
+(60, 62, 63, 80, 80, 60, 2,'Normale'), -- Ivysaur
+(80, 82, 83, 100, 100, 80, 3,'Normale'), -- Venusaur
+(39, 52, 43, 60, 50, 65, 4,'Normale'), -- Charmander
 (58, 64, 58, 80, 65, 80, 5,'Normale'), -- Charmeleon
 (78, 84, 78, 109, 85, 100, 6,'Normale'), -- Charizard
 (44, 48, 65, 50, 64, 43, 7,'Normale'), -- Squirtle
@@ -2169,9 +2144,8 @@ INSERT INTO tbStatsBase (Ps, Att, Def, AttS, DefS, Spd, id_pokemon, Forma) VALUE
 (125, 73, 91, 137, 89, 75, 1021,'Normale'), -- Furiatonante
 (90, 120, 80, 68, 108, 124, 1022,'Normale'), -- Massoferreo
 (90, 72, 100, 122, 108, 98, 1023,'Normale'), -- Capoferreo
-(90, 65, 85, 65, 85, 60, 1024,'Normale'), -- terapagos Forma Normale
+(90, 65, 85, 65, 85, 60, 1024,'Normale'), -- Terapagos Forma Normale
 (88, 88, 160, 88, 88, 88, 1025,'Normale'); -- Pecharunt
-
 
 -- Inserimento dei dati per la tabella tbNature
 INSERT INTO tbNature (Nome, ModAtt, ModDef, ModAttS, ModDefS, ModSpd) VALUES
