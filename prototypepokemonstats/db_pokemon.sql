@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS tbStatsBase (
 );
 
 -- Creazione della tabella tbNature
-CREATE TABLE IF NOT EXISTS tbNature (
+CREATE TABLE IF NOT EXISTS tbNature ( 
     ID INTEGER PRIMARY KEY,
     Nome VARCHAR(50),
     ModAtt FLOAT,
