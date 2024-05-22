@@ -34,6 +34,7 @@ PokemonCalculatorEVSIVS_Locale is a sophisticated suite of tools designed for Po
 
 ## Download
 
+- **Download of LCPM:**  you just can download the software with this follow Link
 [LCPM.exe](https://www.mediafire.com/file/g0219jr54nn1t3n/LCPM_Executable.rar/file)
 
 ## Contact
