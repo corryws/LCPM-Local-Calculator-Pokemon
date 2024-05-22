@@ -195,7 +195,7 @@ def mostra_informazioni():
     info_window.title("Informazioni Programma")
     info_window.geometry("700x700")
     info_window.resizable(False, False)
-    #info_window.iconbitmap('prototypepokemonstats/Assets/Images/icon.ico')
+    info_window.iconbitmap('prototypepokemonstats/Assets/Images/icon.ico')
 
     # Creazione di una Text widget per visualizzare il testo
     info_text = tk.Text(info_window, wrap="word", height=30, width=50)
@@ -348,7 +348,7 @@ root.title("LCPM - Local Calculator Pokemon")
 # Impostazione delle dimensioni della finestra
 root.geometry("800x520")
 root.resizable(False,False)
-#root.iconbitmap('prototypepokemonstats/Assets/Images/icon.ico')
+root.iconbitmap('prototypepokemonstats/Assets/Images/icon.ico')
 
 #creazione barra menu
 # Creazione della barra del menu
