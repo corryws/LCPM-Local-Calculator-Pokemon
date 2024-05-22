@@ -3,13 +3,11 @@ BUG LIST
 
 -Calcolo stats con Nature 
 Seluzione: la selezione della natura "colora solamente" le stats indicate
-e applica le modifiche solo dopo il calcolo delle STATS RISOLTO ✅ 
+e applica le modifiche solo dopo il calcolo delle STATS RISOLTO ✅
 
--AGGIUNTE
+-SE MODIFICO LE STATS MANUALMENTE HO PROBLEMI NEL CALCOLARE EVs ED IVs
+
+
+AGGIUNTE
 -aggiungere immagine nature così da rimuovere le scritte TIPO 1 e TIPO 2 ✅ 
 
-Traceback(most recent call last):
-File "Main.py", line 351 in <module>
-file "tkinter\__init__.py", line 2109, in wm_iconbitmap
-_tkinter.TclError: bitmap "icon.ico" not defiend
-[396] Failed to execute script 'Main' due to unchandled exception
