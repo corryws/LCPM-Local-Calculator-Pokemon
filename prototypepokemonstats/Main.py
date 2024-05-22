@@ -195,7 +195,7 @@ def mostra_informazioni():
     info_window.title("Informazioni Programma")
     info_window.geometry("700x700")
     info_window.resizable(False, False)
-    info_window.iconbitmap('icon.ico')
+    info_window.iconbitmap('prototypepokemonstats/Assets/Images/icon.ico')
 
     # Creazione di una Text widget per visualizzare il testo
     info_text = tk.Text(info_window, wrap="word", height=30, width=50)
