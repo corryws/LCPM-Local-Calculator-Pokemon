@@ -1,4 +1,5 @@
 
+import os
 from   tkinter import ttk
 import tkinter as tk
 
@@ -105,11 +106,11 @@ def popola_textbox():
         statstxt[i].insert(0, value)   # Inserisce il nuovo valore
 
     # Calcolo della somma delle statistiche
-    somma_statistiche = sum(stats[:6])
+    #somma_statistiche = sum(stats[:6])
 
     # Inserimento della somma nella textbox "TOT"
-    textbox_totstats.delete(0, tk.END)
-    textbox_totstats.insert(0, somma_statistiche)
+    #textbox_totstats.delete(0, tk.END)
+    #textbox_totstats.insert(0, somma_statistiche)
 
     SetImageAndIcon(stats[8],GetType(stats[6]),GetType(stats[7]))
 
@@ -193,9 +194,10 @@ def GenButton(buttongen):
 def mostra_informazioni():
     info_window = tk.Toplevel(root)
     info_window.title("Informazioni Programma")
-    info_window.geometry("700x700")
+    info_window.geometry("550x700")
     info_window.resizable(False, False)
-    info_window.iconbitmap('prototypepokemonstats/Assets/Images/icon.ico')
+    path_to_image_icon= os.path.join(os.path.dirname(__file__), 'Assets', 'Images', 'icon.ico')
+    info_window.iconbitmap(path_to_image_icon)
 
     # Creazione di una Text widget per visualizzare il testo
     info_text = tk.Text(info_window, wrap="word", height=30, width=50)
@@ -348,7 +350,8 @@ root.title("LCPM - Local Calculator Pokemon")
 # Impostazione delle dimensioni della finestra
 root.geometry("800x520")
 root.resizable(False,False)
-root.iconbitmap('prototypepokemonstats/Assets/Images/icon.ico')
+path_to_image_icon= os.path.join(os.path.dirname(__file__), 'Assets', 'Images', 'icon.ico')
+root.iconbitmap(path_to_image_icon)
 
 #creazione barra menu
 # Creazione della barra del menu
@@ -364,7 +367,7 @@ file_menu.add_command(label="Informazioni",command=mostra_informazioni)
 root.configure(bg=ColorRGB(224,255,255))
 
 # creo DB
-createDB.esegui_script_sql('prototypepokemonstats/db_pokemon.sql', 'prototypepokemonstats/database.db')
+createDB.esegui_script_sql('db_pokemon.sql', 'database.db')
 
 # Riquadro per l'immagine pokemon
 image_frame = tk.Label(root, bg="#E0FCFD",width=230, height=230)
@@ -383,7 +386,7 @@ black_panel.place(x=450,y=20)
 black_panel2 = tk.Frame(root, bg="black", width=350, height=50) #nero sta sopra
 black_panel2.place(x=450,y=300)
 
-gray_panel = tk.Frame(root, bg="gray", width=350, height=35) #nero sta sopra
+gray_panel = tk.Frame(root, bg="gray", width=350, height=35) #grigio sta sopra
 gray_panel.place(x=500,y=350)
 
 red_panel2 = tk.Frame(root, bg="#DE313D", width=400, height=15) #rosso sta sopra
@@ -400,13 +403,15 @@ for i in range(9):
 
 #FINE UI LATO DESTRO DEL FORM-----------------------------------------------------------------------------
 
-# Pulsante "Indietro"
-indietro_img = tk.PhotoImage(file='prototypepokemonstats/Assets/Images/arrow_left.png')
+# Pulsante "Indietro" 
+path_to_image_left = os.path.join(os.path.dirname(__file__), 'Assets', 'Images', 'arrow_left.png')
+indietro_img = tk.PhotoImage(file=path_to_image_left)
 indietro_button = tk.Button(root, image=indietro_img, command=indietro,background=ColorRGB(224,255,255))
 indietro_button.place(x=460, y=200)
 
 # Pulsante "Avanti"
-avanti_img = tk.PhotoImage(file='prototypepokemonstats/Assets/Images/arrow_right.png')
+path_to_image_right = os.path.join(os.path.dirname(__file__), 'Assets', 'Images', 'arrow_right.png')
+avanti_img = tk.PhotoImage(file=path_to_image_right)
 avanti_button = tk.Button(root,image=avanti_img,command=avanti,background=ColorRGB(224,255,255))
 avanti_button.place(x=740, y=200)
 
@@ -431,7 +436,8 @@ image_type2_frame = tk.Label(root, width=100, height=22,bg="black")
 image_type2_frame.place(x=620, y=310)
 
 # Pulsante "MegaEvolution" - this button will be visible onlfy if the pokemon can megaevolve
-megaevolution_img = tk.PhotoImage(file='prototypepokemonstats/Assets/Images/megaevolution.png')
+path_to_image_megaevolution= os.path.join(os.path.dirname(__file__), 'Assets', 'Images', 'megaevolution.png')
+megaevolution_img = tk.PhotoImage(file=path_to_image_megaevolution)
 megaevolution_button = tk.Button(root,image=megaevolution_img,command=MegaEvolution,background=ColorRGB(0,0,0))
 megaevolution_button.place(x=735, y=305)
 
@@ -477,10 +483,10 @@ for i in range(6):
     statstxt.append(textbox)
 
 #Totale STATS
-totstats_label = tk.Label(root, text="TOT",background=ColorRGB(40,170,253))
-totstats_label.place(x=480, y=500)
-textbox_totstats = tk.Entry(root,background=ColorRGB(40,170,253))
-textbox_totstats.place(x=480 ,y=500, width=40)
+#totstats_label = tk.Label(root, text="TOT",background=ColorRGB(40,170,253))
+#totstats_label.place(x=480, y=500)
+#textbox_totstats = tk.Entry(root,background=ColorRGB(40,170,253))
+#textbox_totstats.place(x=480 ,y=500, width=40)
 
 stat_label = tk.Label(root, text="PS              ATT             DEF             ATTS             DEFS            SPD",bg="#DE313D")
 stat_label.place(x=50, y=355)
