@@ -1,6 +1,6 @@
 name: Build with PyInstaller
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -91,3 +91,9 @@ jobs:
 
     - name: Build executable
       run: pyinstaller my_spec_file.spec
+
+    - name: Archive output
+      uses: actions/upload-artifact@v2
+      with:
+        name: executable
+        path: dist/
