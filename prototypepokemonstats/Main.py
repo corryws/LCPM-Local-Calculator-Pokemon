@@ -348,7 +348,7 @@ root.title("LCPM - Local Calculator Pokemon")
 # Impostazione delle dimensioni della finestra
 root.geometry("800x520")
 root.resizable(False,False)
-root.iconbitmap('icon.ico')
+root.iconbitmap('prototypepokemonstats/Assets/Images/icon.ico')
 
 #creazione barra menu
 # Creazione della barra del menu
