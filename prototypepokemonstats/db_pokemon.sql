@@ -2153,7 +2153,7 @@ INSERT INTO tbNature (Nome, ModAtt, ModDef, ModAttS, ModDefS, ModSpd) VALUES
 ('Bashful', 1.0, 1.0, 1.0, 1.0, 1.0),
 ('Bold', 0.9, 1.1, 1.0, 1.0, 1.0),
 ('Brave', 1.1, 1.0, 1.0, 1.0, 0.9),
-('Calm', 1.0, 0.9, 1.0, 1.1, 1.0),
+('Calm', 0.9, 1.0, 1.0, 1.1, 1.0),
 ('Careful', 1.0, 1.0, 0.9, 1.1, 1.0),
 ('Docile', 1.0, 1.0, 1.0, 1.0, 1.0),
 ('Gentle', 1.0, 0.9, 1.0, 1.1, 1.0),

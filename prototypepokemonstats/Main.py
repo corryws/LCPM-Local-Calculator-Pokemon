@@ -14,6 +14,7 @@ from formula import calcola_statistica
 from formula import calcola_ps
 from formula import calcola_iv
 from formula import calcola_ev
+from formula import RicalibroStatistiche
 from formula import GetType
 
 # funzioni ui grafiche
@@ -25,11 +26,6 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 def Reset():
     popola_textbox() ; CalcoloNatura(False)
-
-def ResetNature():
-    if cmb_nature.get() == "Adamant":
-        statstxt[1].insert(0, str( int(math.ceil(int(statstxt[1].get()) / 1.1)) )) 
-        statstxt[3].insert(0, str( int(math.ceil(int(statstxt[3].get()) / 0.9)) )) 
       
 def popola_combobox_pokemon():
     # Connessione al database
@@ -247,10 +243,14 @@ def update_radar_chart(stats):
 #Calcolo base delle EVs avendo IVs e Stats
 def CalcoloEVFromStats():
     oldstats = []
+
     for i in range(0, 6):
         oldstats.append(float(statstxt[i].get()))
 
     Reset()
+
+    #Richiamare funzione calibro Natura
+    oldstats = RicalibroStatistiche(cmb_nature.get(),oldstats)
 
     #controllo se oldstat sono uguali alle stat base, se si non applico nulla
     for i in range(0, 6):
@@ -259,56 +259,43 @@ def CalcoloEVFromStats():
           return
       else:
           print(oldstats[i])
+          #print(StatWithoutRound[i])
           if(StatWithoutRound[i] != 0.0):
               oldstats[i] = StatWithoutRound[i]
 
     for i in range(0, 6):
      if i == 0 : is_ps = True
      else: is_ps = False
-     
-     #EVS =  4 * ((( 294.0  - 5 /  100.0 )* 100-2 *  45.0  -  31.0 )
-     #EVS = 4 * ((( 0.0  - 5 /  100.0 )* 100-2 *  45.0  -  31.0 )
-     #calcolati: -924.0
 
+     """
+     Sballa con le statistiche affette dalla natura
 
-     """ EVS = 4 * ((( 294.0  - 5 /  100.0 )* 100-2 *  45.0  -  31.0 )
-     calcolati: 252.0
-     EVS = 4 * ((( 103.0  - 5 /  100.0 )* 100-2 *  49.0  -  0.0 )
-     calcolati: 0.0
-     EVS = 4 * ((( 103.0  - 5 /  100.0 )* 100-2 *  49.0  -  0.0 )
-     calcolati: 0.0
-     EVS = 4 * ((( 135.0  - 5 /  100.0 )* 100-2 *  65.0  -  0.0 )
-     calcolati: 0.0
-     EVS = 4 * ((( 135.0  - 5 /  100.0 )* 100-2 *  65.0  -  0.0 )
-     calcolati: 0.0
-     EVS = 4 * ((( 95.0  - 5 /  100.0 )* 100-2 *  45.0  -  0.0 )
-     calcolati: 0.0 
-     
-     EVS = 4 * ((( 294.0  - 5 /  100.0 )* 100-2 *  45.0  -  31.0 )
-     calcolati: 252.0
-     EVS = 4 * ((( 113.0  - 5 /  100.0 )* 100-2 *  49.0  -  0.0 )
-     calcolati: 40.0
-     EVS = 4 * ((( 103.0  - 5 /  100.0 )* 100-2 *  49.0  -  0.0 )
-     calcolati: 0.0
-     EVS = 4 * ((( 121.0  - 5 /  100.0 )* 100-2 *  65.0  -  0.0 )
-     calcolati: -56.00000000000006
-     EVS = 4 * ((( 135.0  - 5 /  100.0 )* 100-2 *  65.0  -  0.0 )
-     calcolati: 0.0
-     EVS = 4 * ((( 95.0  - 5 /  100.0 )* 100-2 *  45.0  -  0.0 )
-     calcolati: 0.0
-
-     
+     EVS = 4 * ((( 220.0  - 5 /  74.0 )* 100-2 *  77.0  -  31.0 )
+    calcolati: -4.864864864864899
+    EVS = 4 * ((( 131.0  - 5 /  74.0 )* 100-2 *  70.0  -  31.0 )
+    calcolati: -2.918918918918962
+    EVS = 4 * ((( 157.0  - 5 /  74.0 )* 100-2 *  90.0  -  26.0 )
+    calcolati: -2.378378378378443
+    EVS = 4 * ((( 227.0  - 5 /  74.0 )* 100-2 *  145.0  -  11.0 )
+    calcolati: -4.0
+    EVS = 4 * ((( 132.0  - 5 /  74.0 )* 100-2 *  75.0  -  22.0 )
+    calcolati: -1.5135135135135442
+    EVS = 4 * ((( 91.0  - 5 /  74.0 )* 100-2 *  43.0  -  31.0 )
+    calcolati: -3.135135135135158
      """
 
      """ test rapidly
      bulbasaur lvl 100 
      stats base -> 294 113 103 121 135 95 
-     (ps) ivs 31(ps)  """
+     (ps) ivs 31(ps) 
      
-     #give -> evs 252 
+     give -> evs 252 
+     """
 
      print("EVS = 4 * (((",float(oldstats[i])," - 5 / ",float(textbox_lvl.get()),")* 100-2 * ",float(statstxt[i].get())," - ",float(ivstxt[i].get()),")")
      newstats = calcola_ev(float(oldstats[i]),float(statstxt[i].get()),  float(ivstxt[i].get()), int(textbox_lvl.get()),is_ps)
+     if newstats <= 0:
+         newstats = 0
      evstxt[i].delete(0, tk.END)
      #evstxt[i].insert(0, str(int(math.ceil(newstats))))
      evstxt[i].insert(0, str(int(newstats)))
@@ -325,12 +312,18 @@ def CalcoloIVFromStats():
 
     Reset()
 
+    #Richiamare funzione calibro Natura
+    oldstats = RicalibroStatistiche(cmb_nature.get(),oldstats)
+
      #controllo se oldstat sono uguali alle stat base, se si non applico nulla
     for i in range(0, 6):
       if(float(oldstats[i]) == float(statstxt[i].get())):
           print("statistiche uguali, non posso calcolarne EV/IV")
           return
-      else: oldstats[i] = StatWithoutRound[i]
+      else:
+          print(oldstats[i])
+          if(StatWithoutRound[i] != 0.0):
+              oldstats[i] = StatWithoutRound[i]
 
     for i in range(0, 6):
      if i == 0 : is_ps = True

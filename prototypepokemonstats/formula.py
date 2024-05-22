@@ -2,6 +2,9 @@
 #STATS EVS IVS NATURE
 
 # Formula statistiche
+import math
+
+
 def calcola_statistica(base, iv, ev, livello):
     """
     Calcola una statistica dati i valori base, iv, ev e livello.
@@ -50,6 +53,91 @@ def calcola_ev(statistica, base, iv, livello,isps):
     else:
         ev = 4 * ((100 * (statistica - livello - 10) / livello) - 2 * base - iv)
     return ev
+
+def RicalibroStatistiche(nature,oldstats):
+    print("oldstats = " ,oldstats)
+    print("nature = ", nature)
+    #  ps     att    def    atts   defs   spd
+    #[231.0, 134.0, 134.0, 166.0, 166.0, 126.0]
+    #deve ritornare solo una coppia di valori in base alla natura
+    if nature == 'Adamant':
+        #+att -atts
+        oldstats[1]  = int(math.ceil(oldstats[1] / 1.1))
+        oldstats[3]  = int(math.ceil(oldstats[3] / 0.9))
+    elif nature == 'Bold':
+        #+def -att
+        oldstats[2]  = int(math.ceil(oldstats[2] / 1.1))
+        oldstats[1]  = int(math.ceil(oldstats[1] / 0.9))
+    elif nature == 'Brave':
+        #+att -spd
+        oldstats[1]  = int(math.ceil(oldstats[1] / 1.1))
+        oldstats[5]  = int(math.ceil(oldstats[5] / 0.9))
+    elif nature == 'Calm':
+        #+defs -att
+        oldstats[4]  = int(math.ceil(oldstats[4] / 1.1))
+        oldstats[1]  = int(math.ceil(oldstats[1] / 0.9))
+    elif nature == 'Careful':
+        #+defs -atts
+        oldstats[4]  = int(math.ceil(oldstats[4] / 1.1))
+        oldstats[3]  = int(math.ceil(oldstats[3] / 0.9))
+    elif nature == 'Gentle':
+        #+defs -def
+        oldstats[4]  = int(math.ceil(oldstats[4] / 1.1))
+        oldstats[2]  = int(math.ceil(oldstats[2] / 0.9))
+    elif nature == 'Hasty':
+        #+spd -def
+        oldstats[5]  = int(math.ceil(oldstats[5] / 1.1))
+        oldstats[2]  = int(math.ceil(oldstats[2] / 0.9))
+    elif nature == 'Impish':
+        #+def -atts
+        oldstats[2]  = int(math.ceil(oldstats[2] / 1.1))
+        oldstats[3]  = int(math.ceil(oldstats[3] / 0.9))
+    elif nature == 'Jolly':
+        #+spd -atts
+        oldstats[5]  = int(math.ceil(oldstats[5] / 1.1))
+        oldstats[3]  = int(math.ceil(oldstats[3] / 0.9))
+    elif nature == 'Lax':
+        #+def -defs
+        oldstats[2]  = int(math.ceil(oldstats[2] / 1.1))
+        oldstats[4]  = int(math.ceil(oldstats[4] / 0.9))
+    elif nature == 'Lonely':
+        #+att -def
+        oldstats[1]  = int(math.ceil(oldstats[1] / 1.1))
+        oldstats[2]  = int(math.ceil(oldstats[2] / 0.9))
+    elif nature == 'Mild':
+        #+atts -def
+        oldstats[3]  = int(math.ceil(oldstats[3] / 1.1))
+        oldstats[2]  = int(math.ceil(oldstats[2] / 0.9))   
+    elif nature == 'Modest':
+        #+atts -att
+        oldstats[3]  = int(math.ceil(oldstats[3] / 1.1))
+        oldstats[1]  = int(math.ceil(oldstats[1] / 0.9))
+    elif nature == 'Naive':
+        #+spd -defs
+        oldstats[5]  = int(math.ceil(oldstats[5] / 1.1))
+        oldstats[4]  = int(math.ceil(oldstats[4] / 0.9))    
+    elif nature == 'Quiet':
+        #+atts -spd
+        oldstats[3]  = int(math.ceil(oldstats[3] / 1.1))
+        oldstats[5]  = int(math.ceil(oldstats[5] / 0.9)) 
+    elif nature == 'Rash':
+        #+atts -defs
+        oldstats[3]  = int(math.ceil(oldstats[3] / 1.1))
+        oldstats[4]  = int(math.ceil(oldstats[4] / 0.9))  
+    elif nature == 'Relaxed':
+        #+def -spd
+        oldstats[2]  = int(math.ceil(oldstats[2] / 1.1))
+        oldstats[5]  = int(math.ceil(oldstats[5] / 0.9))     
+    elif nature == 'Sassy':
+        #+defs -spd
+        oldstats[4]  = int(math.ceil(oldstats[4] / 1.1))
+        oldstats[5]  = int(math.ceil(oldstats[5] / 0.9))     
+    elif nature == 'Timid':
+        #+spd -att
+        oldstats[5]  = int(math.ceil(oldstats[5] / 1.1))
+        oldstats[1]  = int(math.ceil(oldstats[1] / 0.9))     
+
+    return oldstats
 
 def RecolorBGImage(typename):
     if typename == 'Fuoco'        : return "red"
