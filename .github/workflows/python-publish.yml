@@ -30,6 +30,7 @@ jobs:
             pathex=['/path/to/PokemonCalculatorEVSIVS_Locale'],
             binaries=[],
             datas=[
+                ('prototypepokemonstats/Assets/Images/icon.ico', 'prototypepokemonstats/Assets/Images'),
                 ('prototypepokemonstats/Assets/Images/arrow_down.png', 'prototypepokemonstats/Assets/Images'),
                 ('prototypepokemonstats/Assets/Images/arrow_left.png', 'prototypepokemonstats/Assets/Images'),
                 ('prototypepokemonstats/Assets/Images/arrow_right.png', 'prototypepokemonstats/Assets/Images'),
