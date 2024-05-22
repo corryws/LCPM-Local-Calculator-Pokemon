@@ -17,6 +17,8 @@
   -(PALDEA: 120) ✅
   
 
+- AGGIUNGERE DEBOLEZZE DEI TIPI PER I POKEMON
+
 - AGGIUNGERE LE MEGAEVOLUZIONI
   -KANTO
   (Venusaur, Charizard XY, Blastoise, Beedrill, Pidgeot, Alakazam, Slowbro, Gengar,Kangaskhan, Pinsir,Gyarados,Aerodactyl,Mewtwo XY)
@@ -60,6 +62,9 @@
 (80,185,115,40,105,75,214) -- Mega Heracross
 (75,90,90,140,90,115,229) -- Mega Houndoom
 (100,164,150,95,120,71,248) -- Mega Scizor */
+
+
+pyinstaller --onefile --icon=icon.ico prototypepokemonstats/Main.py
 
 
 
