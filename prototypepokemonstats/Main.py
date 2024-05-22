@@ -257,13 +257,57 @@ def CalcoloEVFromStats():
       if(float(oldstats[i]) == float(statstxt[i].get())):
           print("statistiche uguali, non posso calcolarne EV/IV")
           return
-      else: oldstats[i] = StatWithoutRound[i]
+      else:
+          print(oldstats[i])
+          if(StatWithoutRound[i] != 0.0):
+              oldstats[i] = StatWithoutRound[i]
 
     for i in range(0, 6):
      if i == 0 : is_ps = True
      else: is_ps = False
+     
+     #EVS =  4 * ((( 294.0  - 5 /  100.0 )* 100-2 *  45.0  -  31.0 )
+     #EVS = 4 * ((( 0.0  - 5 /  100.0 )* 100-2 *  45.0  -  31.0 )
+     #calcolati: -924.0
 
-     print("4 * (((",float(oldstats[i])," - 5 / ",float(textbox_lvl.get()),")* 100-2 * ",float(statstxt[i].get())," - ",float(ivstxt[i].get()),")")
+
+     """ EVS = 4 * ((( 294.0  - 5 /  100.0 )* 100-2 *  45.0  -  31.0 )
+     calcolati: 252.0
+     EVS = 4 * ((( 103.0  - 5 /  100.0 )* 100-2 *  49.0  -  0.0 )
+     calcolati: 0.0
+     EVS = 4 * ((( 103.0  - 5 /  100.0 )* 100-2 *  49.0  -  0.0 )
+     calcolati: 0.0
+     EVS = 4 * ((( 135.0  - 5 /  100.0 )* 100-2 *  65.0  -  0.0 )
+     calcolati: 0.0
+     EVS = 4 * ((( 135.0  - 5 /  100.0 )* 100-2 *  65.0  -  0.0 )
+     calcolati: 0.0
+     EVS = 4 * ((( 95.0  - 5 /  100.0 )* 100-2 *  45.0  -  0.0 )
+     calcolati: 0.0 
+     
+     EVS = 4 * ((( 294.0  - 5 /  100.0 )* 100-2 *  45.0  -  31.0 )
+     calcolati: 252.0
+     EVS = 4 * ((( 113.0  - 5 /  100.0 )* 100-2 *  49.0  -  0.0 )
+     calcolati: 40.0
+     EVS = 4 * ((( 103.0  - 5 /  100.0 )* 100-2 *  49.0  -  0.0 )
+     calcolati: 0.0
+     EVS = 4 * ((( 121.0  - 5 /  100.0 )* 100-2 *  65.0  -  0.0 )
+     calcolati: -56.00000000000006
+     EVS = 4 * ((( 135.0  - 5 /  100.0 )* 100-2 *  65.0  -  0.0 )
+     calcolati: 0.0
+     EVS = 4 * ((( 95.0  - 5 /  100.0 )* 100-2 *  45.0  -  0.0 )
+     calcolati: 0.0
+
+     
+     """
+
+     """ test rapidly
+     bulbasaur lvl 100 
+     stats base -> 294 113 103 121 135 95 
+     (ps) ivs 31(ps)  """
+     
+     #give -> evs 252 
+
+     print("EVS = 4 * (((",float(oldstats[i])," - 5 / ",float(textbox_lvl.get()),")* 100-2 * ",float(statstxt[i].get())," - ",float(ivstxt[i].get()),")")
      newstats = calcola_ev(float(oldstats[i]),float(statstxt[i].get()),  float(ivstxt[i].get()), int(textbox_lvl.get()),is_ps)
      evstxt[i].delete(0, tk.END)
      #evstxt[i].insert(0, str(int(math.ceil(newstats))))
@@ -292,10 +336,10 @@ def CalcoloIVFromStats():
      if i == 0 : is_ps = True
      else: is_ps = False
      
+     
      print("iv=(",oldstats[i],"-5)*(100/",int(textbox_lvl.get()),")-2*",float(statstxt[i].get()),"-(",float(evstxt[i].get()),"/4)")
      newstats = calcola_iv(float(oldstats[i]),float(statstxt[i].get()),float(evstxt[i].get()), int(textbox_lvl.get()),is_ps)
      ivstxt[i].delete(0, tk.END)
-     #ivstxt[i].insert(0, str(int(math.ceil(newstats))))
      ivstxt[i].insert(0, str(int(newstats)))
      print("IVs calcolati:", newstats)
 
