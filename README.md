@@ -31,6 +31,11 @@ PokemonCalculatorEVSIVS_Locale is a sophisticated suite of tools designed for Po
 ![Screenshot 2](Screen2.png)
 ![Screenshot 3](Screen1.png)
 
+
+## Download
+
+[LCPM.exe](LCPM_Executable)
+
 ## Contact
 
 For more information or to request a demo, please contact us at corradotrigilia97@gmail.com | c.trigilia@sisoftsrl.it or visit our website at https://corryws.itch.io
