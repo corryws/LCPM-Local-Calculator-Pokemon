@@ -62,80 +62,80 @@ def RicalibroStatistiche(nature,oldstats):
     #deve ritornare solo una coppia di valori in base alla natura
     if nature == 'Adamant':
         #+att -atts
-        oldstats[1]  = int(math.ceil(oldstats[1] / 1.1))
-        oldstats[3]  = int(math.ceil(oldstats[3] / 0.9))
+        oldstats[1]  = float(oldstats[1] / 1.1)
+        oldstats[3]  = float(oldstats[3] / 0.9)
     elif nature == 'Bold':
         #+def -att
-        oldstats[2]  = int(math.ceil(oldstats[2] / 1.1))
-        oldstats[1]  = int(math.ceil(oldstats[1] / 0.9))
+        oldstats[2]  = float(oldstats[2] / 1.1)
+        oldstats[1]  = float(oldstats[1] / 0.9)
     elif nature == 'Brave':
         #+att -spd
-        oldstats[1]  = int(math.ceil(oldstats[1] / 1.1))
-        oldstats[5]  = int(math.ceil(oldstats[5] / 0.9))
+        oldstats[1]  = float(oldstats[1] / 1.1)
+        oldstats[5]  = float(oldstats[5] / 0.9)
     elif nature == 'Calm':
         #+defs -att
-        oldstats[4]  = int(math.ceil(oldstats[4] / 1.1))
-        oldstats[1]  = int(math.ceil(oldstats[1] / 0.9))
+        oldstats[4]  = float(oldstats[4] / 1.1)
+        oldstats[1]  = float(oldstats[1] / 0.9)
     elif nature == 'Careful':
         #+defs -atts
-        oldstats[4]  = int(math.ceil(oldstats[4] / 1.1))
-        oldstats[3]  = int(math.ceil(oldstats[3] / 0.9))
+        oldstats[4]  = float(oldstats[4] / 1.1)
+        oldstats[3]  = float(oldstats[3] / 0.9)
     elif nature == 'Gentle':
         #+defs -def
-        oldstats[4]  = int(math.ceil(oldstats[4] / 1.1))
-        oldstats[2]  = int(math.ceil(oldstats[2] / 0.9))
+        oldstats[4]  = float(oldstats[4] / 1.1)
+        oldstats[2]  = float(oldstats[2] / 0.9)
     elif nature == 'Hasty':
         #+spd -def
-        oldstats[5]  = int(math.ceil(oldstats[5] / 1.1))
-        oldstats[2]  = int(math.ceil(oldstats[2] / 0.9))
+        oldstats[5]  = float(oldstats[5] / 1.1)
+        oldstats[2]  = float(oldstats[2] / 0.9)
     elif nature == 'Impish':
         #+def -atts
-        oldstats[2]  = int(math.ceil(oldstats[2] / 1.1))
-        oldstats[3]  = int(math.ceil(oldstats[3] / 0.9))
+        oldstats[2]  = float(oldstats[2] / 1.1)
+        oldstats[3]  = float(oldstats[3] / 0.9)
     elif nature == 'Jolly':
         #+spd -atts
-        oldstats[5]  = int(math.ceil(oldstats[5] / 1.1))
-        oldstats[3]  = int(math.ceil(oldstats[3] / 0.9))
+        oldstats[5]  = float(oldstats[5] / 1.1)
+        oldstats[3]  = float(oldstats[3] / 0.9)
     elif nature == 'Lax':
         #+def -defs
-        oldstats[2]  = int(math.ceil(oldstats[2] / 1.1))
-        oldstats[4]  = int(math.ceil(oldstats[4] / 0.9))
+        oldstats[2]  = float(oldstats[2] / 1.1)
+        oldstats[4]  = float(oldstats[4] / 0.9)
     elif nature == 'Lonely':
         #+att -def
-        oldstats[1]  = int(math.ceil(oldstats[1] / 1.1))
-        oldstats[2]  = int(math.ceil(oldstats[2] / 0.9))
+        oldstats[1]  = float(oldstats[1] / 1.1)
+        oldstats[2]  = float(oldstats[2] / 0.9)
     elif nature == 'Mild':
         #+atts -def
-        oldstats[3]  = int(math.ceil(oldstats[3] / 1.1))
-        oldstats[2]  = int(math.ceil(oldstats[2] / 0.9))   
+        oldstats[3]  = float(oldstats[3] / 1.1)
+        oldstats[2]  = float(oldstats[2] / 0.9)   
     elif nature == 'Modest':
         #+atts -att
-        oldstats[3]  = int(math.ceil(oldstats[3] / 1.1))
-        oldstats[1]  = int(math.ceil(oldstats[1] / 0.9))
+        oldstats[3]  = float(oldstats[3] / 1.1)
+        oldstats[1]  = float(oldstats[1] / 0.9)
     elif nature == 'Naive':
         #+spd -defs
-        oldstats[5]  = int(math.ceil(oldstats[5] / 1.1))
-        oldstats[4]  = int(math.ceil(oldstats[4] / 0.9))    
+        oldstats[5]  = float(oldstats[5] / 1.1)
+        oldstats[4]  = float(oldstats[4] / 0.9)    
     elif nature == 'Quiet':
         #+atts -spd
-        oldstats[3]  = int(math.ceil(oldstats[3] / 1.1))
-        oldstats[5]  = int(math.ceil(oldstats[5] / 0.9)) 
+        oldstats[3]  = float(oldstats[3] / 1.1)
+        oldstats[5]  = float(oldstats[5] / 0.9) 
     elif nature == 'Rash':
         #+atts -defs
-        oldstats[3]  = int(math.ceil(oldstats[3] / 1.1))
-        oldstats[4]  = int(math.ceil(oldstats[4] / 0.9))  
+        oldstats[3]  = float(oldstats[3] / 1.1)
+        oldstats[4]  = float(oldstats[4] / 0.9)  
     elif nature == 'Relaxed':
         #+def -spd
-        oldstats[2]  = int(math.ceil(oldstats[2] / 1.1))
-        oldstats[5]  = int(math.ceil(oldstats[5] / 0.9))     
+        oldstats[2]  = float(oldstats[2] / 1.1)
+        oldstats[5]  = float(oldstats[5] / 0.9)     
     elif nature == 'Sassy':
         #+defs -spd
-        oldstats[4]  = int(math.ceil(oldstats[4] / 1.1))
-        oldstats[5]  = int(math.ceil(oldstats[5] / 0.9))     
+        oldstats[4]  = float(oldstats[4] / 1.1)
+        oldstats[5]  = float(oldstats[5] / 0.9)     
     elif nature == 'Timid':
         #+spd -att
-        oldstats[5]  = int(math.ceil(oldstats[5] / 1.1))
-        oldstats[1]  = int(math.ceil(oldstats[1] / 0.9))     
+        oldstats[5]  = float(oldstats[5] / 1.1)
+        oldstats[1]  = float(oldstats[1] / 0.9)     
 
     return oldstats
 

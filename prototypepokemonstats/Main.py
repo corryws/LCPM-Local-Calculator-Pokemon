@@ -259,7 +259,6 @@ def CalcoloEVFromStats():
           return
       else:
           print(oldstats[i])
-          #print(StatWithoutRound[i])
           if(StatWithoutRound[i] != 0.0):
               oldstats[i] = StatWithoutRound[i]
 
@@ -267,37 +266,16 @@ def CalcoloEVFromStats():
      if i == 0 : is_ps = True
      else: is_ps = False
 
-     """
-     Sballa con le statistiche affette dalla natura
-
-     EVS = 4 * ((( 220.0  - 5 /  74.0 )* 100-2 *  77.0  -  31.0 )
-    calcolati: -4.864864864864899
-    EVS = 4 * ((( 131.0  - 5 /  74.0 )* 100-2 *  70.0  -  31.0 )
-    calcolati: -2.918918918918962
-    EVS = 4 * ((( 157.0  - 5 /  74.0 )* 100-2 *  90.0  -  26.0 )
-    calcolati: -2.378378378378443
-    EVS = 4 * ((( 227.0  - 5 /  74.0 )* 100-2 *  145.0  -  11.0 )
-    calcolati: -4.0
-    EVS = 4 * ((( 132.0  - 5 /  74.0 )* 100-2 *  75.0  -  22.0 )
-    calcolati: -1.5135135135135442
-    EVS = 4 * ((( 91.0  - 5 /  74.0 )* 100-2 *  43.0  -  31.0 )
-    calcolati: -3.135135135135158
-     """
-
-     """ test rapidly
-     bulbasaur lvl 100 
-     stats base -> 294 113 103 121 135 95 
-     (ps) ivs 31(ps) 
-     
-     give -> evs 252 
-     """
-
      print("EVS = 4 * (((",float(oldstats[i])," - 5 / ",float(textbox_lvl.get()),")* 100-2 * ",float(statstxt[i].get())," - ",float(ivstxt[i].get()),")")
      newstats = calcola_ev(float(oldstats[i]),float(statstxt[i].get()),  float(ivstxt[i].get()), int(textbox_lvl.get()),is_ps)
+     
+     if newstats != int(newstats):
+         newstats = math.ceil(newstats)
+
      if newstats <= 0:
          newstats = 0
+
      evstxt[i].delete(0, tk.END)
-     #evstxt[i].insert(0, str(int(math.ceil(newstats))))
      evstxt[i].insert(0, str(int(newstats)))
      print("calcolati:", newstats)
 
@@ -329,9 +307,19 @@ def CalcoloIVFromStats():
      if i == 0 : is_ps = True
      else: is_ps = False
      
-     
      print("iv=(",oldstats[i],"-5)*(100/",int(textbox_lvl.get()),")-2*",float(statstxt[i].get()),"-(",float(evstxt[i].get()),"/4)")
      newstats = calcola_iv(float(oldstats[i]),float(statstxt[i].get()),float(evstxt[i].get()), int(textbox_lvl.get()),is_ps)
+
+    # Arrotonda per eccesso se ci sono decimali diversi da 0
+     if newstats != int(newstats):
+         newstats = math.ceil(newstats)
+
+     if newstats >= 31: 
+         newstats = 31
+     
+     if newstats <= 0:
+         newstats = 0
+     
      ivstxt[i].delete(0, tk.END)
      ivstxt[i].insert(0, str(int(newstats)))
      print("IVs calcolati:", newstats)
@@ -345,10 +333,10 @@ def CalcoloStatsNature():
     for i in range(0, 6):
      if i == 0 : newstats = calcola_ps(float(statstxt[i].get()), float(ivstxt[i].get()), float(evstxt[i].get()), int(textbox_lvl.get()))
      else: newstats = calcola_statistica(float(statstxt[i].get()), float(ivstxt[i].get()), float(evstxt[i].get()), int(textbox_lvl.get()))
-     StatWithoutRound[i] = newstats#.append(newstats)
+     StatWithoutRound[i] = math.ceil(newstats) #newstats#.append(newstats)
      print("Statistica senza arrotondamento: ", StatWithoutRound[i])
      statstxt[i].delete(0, tk.END)
-     statstxt[i].insert(0, str(int(newstats)))
+     statstxt[i].insert(0, str(int(math.ceil(newstats))))#statstxt[i].insert(0, str(int(newstats)))
      print("Statistica Calcolata:", i, newstats)
     CalcoloNatura(True)
 
